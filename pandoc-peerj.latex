@@ -193,6 +193,12 @@ $if(dir)$
 \fi
 $endif$
 
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
 % set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
@@ -221,11 +227,6 @@ $endif$
 \begin{document}
 $if(title)$
 \maketitle
-$endif$
-$if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
 $endif$
 
 $for(include-before)$

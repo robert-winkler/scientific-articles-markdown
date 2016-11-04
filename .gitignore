@@ -1,0 +1,8 @@
+# Ignore generated TeX files
+*.aux
+*.log
+*.out
+
+# Pandoc-generated files
+outfile.*
+!outfile.docx
