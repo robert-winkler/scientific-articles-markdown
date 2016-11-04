@@ -4,7 +4,7 @@ author: Robert Winkler
 bibliography: zotero.bib
 keywords: 'markdown, latex, publishing, typesetting'
 
-abstract: Publishing is an essential part of academic life and additional to the traditional print media, the distribution of knowledge in electronic form has become very important. To facilitate the handling of manuscripts during the editorial process, the publishers usually specify the format of submissions to some degree. Unfortunately, academic writers have to spend plenty of time to shape their material into the required document formats and specifications. Those depdend mainly on the intended format of the manuscript (EPUB, HTML, PDF, ..), the publisher and the journal. Technically, scientific manuscripts consist of contents (text, figures, formulas, tables, code, citations etc) and format. This article demonstrates the feasability to edit the contents for various academic pubication formats in a common format. Markdown files contain the content with some basic formatting rules in plain text, which facilitates the writing. The final document can be exported to high-quality publications in different formats such as LATEX, EPUB, PDF, DOCX or HTML using Pandoc. Therefore, we recommend a workflow based on mardown files to focus on content rather than format. Since the clean syntaxfacilitates the processing of  of the documents into different formats, also publishers could profit from accepting markdown manuscripts.
+abstract: Publishing is an essential part of academic life. Additional to the traditional print media, the distribution of knowledge in electronic form has become very important. To facilitate the handling of manuscripts during the editorial process, the publishers usually specify the format of submissions to some degree. Thus, academic writers have to spend a notable amount of time to shape their material into the required formats and specifications. These document specifications depdend on the intended publishing format of the manuscript (EPUB, HTML, PDF, ..), the publisher and the journal. Technically, scientific manuscripts consist of contents (text, figures, formulas, tables, code, citations, etc.) and formatting rules. This article demonstrates the feasability to edit the contents for various academic pubication formats in a common format. Markdown files contain the content with some basic formatting rules in plain text, which facilitates the writing. The final document can be exported to high-quality publications in different formats such as LATEX, EPUB, PDF, DOCX or HTML using Pandoc. Therefore, we recommend a workflow based on mardown files to focus on content rather than format. Since the clean syntaxfacilitates the processing of  of the documents into different formats, also publishers could profit from accepting markdown manuscripts.
 ---
 
 **Correspondence**: Prof. Dr. Robert Winkler, robert.winkler@cinvestav.mx, CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis (labABI, <http://www.ira.cinvestav.mx/lababi.aspx>), Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico, Tel.: +52 (462) 623 96 35, Fax +52 (462) 624 58 46
@@ -26,7 +26,7 @@ In academic publishing, the following types of works require the creation of dif
 
 ## Comparison of different markup languages
 
-**Table 1.** Formatting elements and their implementation in different document types.
+**Table 1.** Examples for Formatting elements and their implementations in different document types.
 
 Element              | Markdown     | LaTeX                  | HTML
 :------------------- | :----------- | ---------------------- | --------------------
@@ -35,6 +35,7 @@ section              | `# Intro`    | `\section{Intro}`      | `<h1><Intro></h1>
 subsection           | `## History` | `\subsection{History}` | `<h2><History></h2>`
 **text formatting**  |              |                        |
 bold                 | `**text**`   | `\textbf{text}`        | `text`
+italics              | `*text*`     | `textit{text}`         | `text`
 **cross references** |              |                        |
 to section           |              |                        | `text`
 http link            |              |                        | `text`
@@ -42,7 +43,10 @@ http link            |              |                        | `text`
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files.  
 Overall, markdown displays the simplest structure, which facilitates the editing of documents.
 
+Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substancial manual corrections. Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats. 
+
 # Concepts of markdown and Pandoc 
+Markdown was originally developed by John Gruber to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. 
 
 ![Workfow for the generation of multiple document formats with Pandoc](fig-pandoc-workflow.png)<br>
 **Figure xx.** Workfow for the generation of multiple document formats with Pandoc.
@@ -63,7 +67,7 @@ xx Google Docs test editing.
 
 In recent years, several platforms were developed for collaborative writing. Google Docs. OwnCloud with Markdown Editor plugin (see section xx).
 
-**Figure 2.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
+**Figure xx.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
 
 ## Document versioning and change control
 Integrated in editing software or cloud server, low overhead of the files diff, git.
@@ -71,6 +75,7 @@ Integrated in editing software or cloud server, low overhead of the files diff, 
 
 
 # Pandoc markdown for scientific texts
+Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
 
 ## Tables
 
@@ -90,7 +95,7 @@ LLL  |  CCC   |   RRR | DDD
 
 ## Figures
 
-## Formula
+## Formulas
 
 Formula can be inserted in LaTeX mode using delimiters (`$` for Pandoc, `$$` adds compatibility for online preview rendering with CuteMarkEd/MathJax). E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as: 
 
@@ -105,30 +110,16 @@ $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
 with $x_i$ the individual observations, $\overline{x}$ the sample mean and $N$ the total number of samples.
 
 ## Code listings
+Verbatim code blocks are indicated by three tilde symbols:
+    ~~~
+    verbatim code
+    ~~~
+Typeseting `inline code` is possible by enclosing text between back ticks ``.
 
 # Citations and biography
 
 ## Reference databases
 bibtex databases, which are supported by almost any reference management program.
-
-## Database of cited references
-A bibtex data base for the cited references only using BibTool:
-
-1. Extract refrence keys. This can be done by a simple Perl (<https://www.perl.org/>) command: 
-    ~~~
-    perl -ne 'print "$1," if /(?<=@)(.+?)(?=[\],])/' agile-editing-pandoc.md
-    ~~~
-    The command prints out the keys of the file `agile-editing-pandoc.md`, separated by comas. The domains of email adresses also will be returned, but this does not affect the creation of the final database.
-2. Write an bibtex `.aux` file (e.g. `bibextract.aux`) containing the name of the database (here: `zotero.bib`) and the extracted keys, separated by comas (from the previous step):
-    ~~~
-    \bibstyle{alpha}
-    \bibdata{zotero.bib}
-    \citation{smith_software_2016,key2,key3}
-    ~~~
-3. Process the complete database to extract the cited references into a now database (called `bibshort.bib`):
-    ~~~
-    bibtool -x bibextract.aux -o bibshort.bib
-    ~~~
 
 ## Styles
 Whereas natbib bibtex is supported by Pandoc, it is incompatible with DOCX xx. 
@@ -139,31 +130,34 @@ The bibliography style, which Pandoc should use for the target document can be c
 ## Creation of natbib citations in LaTeX
 For citations in scientific manuscripts written in LaTex, the natbib package is widely used. To create TEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.  
 
+## Database of cited references
+To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references.  
+If the `--natbib` option was used for creating a PDF file (xx LATEX-PDF?), LATEX creates an AUX file, which can be extracted using BibTool:
+    ~~~
+    bibtool -x md-article.aux -o bibshort.bib
+    ~~~
+In this case the new database would be called `bibshort.bib`.
+If no AUX file is present, it has to be created manually:
+1. The reference keys have to be extracted from the manuscript. This can be done by a simple Perl (<https://www.perl.org/>) command: 
+    ~~~
+    perl -ne 'print "$1," if /(?<=@)(.+?)(?=[\],])/' article.md
+    ~~~
+    The command prints out the keys of the file `article.md`, separated by comas. Domains of email adresses also will be returned, but this does not affect the creation of the final database.
+2. A bibtex `.aux` file (e.g. `bibextract.aux`) has to be created, containing the name of the database (here: `zotero.bib`) and the extracted keys, separated by comas (from the previous step):
+    ~~~
+    \bibstyle{alpha}
+    \bibdata{zotero.bib}
+    \citation{smith_software_2016,key2,key3}
+    ~~~
+3. Now the new database can be generated with BibTool as mentioned above.
 
-# Document code and software availability
-
-The software used was cited according to [@smith_software_2016; @winkler_esiprot:_2010, p23]. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
-
-Software        | Use                                   | Authors                         | Version  | Release date | Homepage/ repository
-:-------------- | :------------------------------------ | :------------------------------ | :------- | :----------- | :----------------------------------------------
-Pandoc          | universal markup converter            | John MacFarlane                 | 1.16.0.2 | 2016/01/13   | <http://www.pandoc.org>
-pandoc-citeproc | library for CSL citations with Pandoc | John MacFarlane, Andrea Rossato | 0.9.1    | 2016/03/19   | <https://github.com/jgm/pandoc-citeproc>
-ownCloud        | personal cloud software               | ownCloud GmbH, Community        | 9.1.1    | 2016/09/20   | <https://owncloud.org/>
-Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1      | 2016/03/08   | <https://github.com/icewind1991/files_markdown>
-BibTool | Bibtex database tool | Gerd Neugebauer | 2.63 | 2016/01/16 |  <https://github.com/ge-ne/bibtool>
-
-xx CuteMarkEd xx
-xx JotterPad Prof xx
-Pandoc is available for Windows, Mac OS X, Linux, BSD and as source code.
-
-The source code of this manuscript, as well as templates and the Pandoc script have been deposited to xx. 
-
-
+We wrote the Perl script `mdbibexport` with a simple user dialog, which asks asking for the relevant files and performs the generation of an article specific BIB database. 
 
 # Definition of output formatting
 command line parameters and templates xx
 
-# Example: Manuscript with output of DOCX format and TEX/PDF for PeerJ pre-print submission
+# Example: Manuscript with output of DOCX format and TEX/PDF for submission to different journals.
+DOCX the most common, but also LATEX only journals, PeerJ pre-print server
 
 ## Development of DOCX template
 
@@ -181,7 +175,7 @@ pandoc -S -s --reference-docx=pandoc-manuscript.docx
 --csl=apa.csl --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
 ~~~
 
-It is possible to directly re-use a previous output file as template (i.e. template and output file have the same file name): 
+It is also possible to directly re-use a previous output file as template (i.e. template and output file have the same file name): 
 
 ~~~
 pandoc -S -s --columns=10 --reference-docx=outfile.docx --csl=apa.csl --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
@@ -199,11 +193,30 @@ pandoc -D latex > template-peerj.latex
 ~~~
 
 # Conclusions
-
 Writing scientific manuscripts in markdown format helps to focus on the content rather than on the format. Lightweight format facilitates file editing and handling. With the same source file, multiple output files for different uses or publisher's specifications c can be generated with Pandoc. Therefore, a workflow based on markdown format is certainly an attractive option for scientific writers. Therefore, scientific publishers should consider to support the submission of documents in markdown format.
 
 # Acknowledgments
-
 We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+
+# Software and code availability
+The relevant software for creating this manuscript used is cited according to [@smith_software_2016]. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
+
+Software        | Use                                   | Authors                         | Version  | Release date | Homepage/ repository
+:-------------- | :------------------------------------ | :------------------------------ | :------- | :----------- | :----------------------------------------------
+Pandoc          | universal markup converter            | John MacFarlane                 | 1.16.0.2 | 2016/01/13   | <http://www.pandoc.org>
+pandoc-citeproc | library for CSL citations with Pandoc | John MacFarlane, Andrea Rossato | 0.9.1    | 2016/03/19   | <https://github.com/jgm/pandoc-citeproc>
+ownCloud        | personal cloud software               | ownCloud GmbH, Community        | 9.1.1    | 2016/09/20   | <https://owncloud.org/>
+Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1      | 2016/03/08   | <https://github.com/icewind1991/files_markdown>
+BibTool | Bibtex database tool | Gerd Neugebauer | 2.63 | 2016/01/16 |  <https://github.com/ge-ne/bibtool>
+mdbibexport   | bibliography of cited references | Robert Winkler | 0.10 | 2016/10/31 | https://github.com/robert-winkler/mdbibexport
+
+xx CuteMarkEd xx
+xx JotterPad Prof xx
+Pandoc is available for Windows, Mac OS X, Linux, BSD and as source code.
+
+The source code of this manuscript, as well as templates and the Pandoc script have been deposited to xx. 
+
+Icons for document types and applications have been adopted from Calibre <http://calibre-ebook.com/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>. 
+
 
 # Bibliography
