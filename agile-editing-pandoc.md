@@ -1,10 +1,9 @@
 ---
-title: 'Format follows function: Agile editing of scientific manuscripts with markdown'
-author: Robert Winkler
+title: 'Formatting Open Science'
+author: 'Albert Krewinkel, Robert Winkler'
 bibliography: zotero.bib
 keywords: 'markdown, latex, publishing, typesetting'
-
-abstract: Publishing is an essential part of academic life. Additional to the traditional print media, the distribution of knowledge in electronic form has become very important. To facilitate the handling of manuscripts during the editorial process, the publishers usually specify the format of submissions to some degree. Thus, academic writers have to spend a notable amount of time to shape their material into the required formats and specifications. These document specifications depend on the intended publishing format of the manuscript (EPUB, HTML, PDF, ..), the publisher and the journal. Technically, scientific manuscripts consist of contents (text, figures, formulas, tables, code, citations, etc.) and formatting rules. This article demonstrates the feasibility to edit the contents for various academic publication formats in a common format. Markdown files contain the content with some basic formatting rules in plain text, which facilitates the writing. The final document can be exported to high-quality publications in different formats such as LATEX, EPUB, PDF, DOCX or HTML using Pandoc. Therefore, we recommend a workflow based on mardown files to focus on content rather than format. Since the clean syntax facilitates the processing of  of the documents into different formats, also publishers could profit from accepting markdown manuscripts.
+abstract: Publishing is an essential part of academic life. Currently, a silent revolution is going on, because the concepts or pre-print and 'Open Access' publishing with rapid electronic distribution are challenging traditional print media. To facilitate the handling of manuscripts during the editorial process, the publishers usually specify the format of submissions to some degree. Thus, academic writers have to spend a notable amount of time to shape their material into the required formats and specifications. These document specifications depend on the intended publishing format of the manuscript (EPUB, HTML, PDF, ..), the publisher and the journal. Technically, scientific manuscripts consist of contents (text, figures, formulas, tables, code, citations, etc.) and formatting rules. This article demonstrates the feasibility to edit the contents for various academic publication formats in a common format. Markdown files contain the content with some basic formatting rules in plain text, which facilitates the writing. The final document can be exported to high-quality publications in different formats such as LATEX, EPUB, PDF, DOCX or HTML using Pandoc. Therefore, we recommend a workflow based on mardown files to focus on content rather than format. Since the clean syntax facilitates the processing of  of the documents into different formats, also publishers could profit from accepting markdown manuscripts.
 ---
 
 **Correspondence**: Prof. Dr. Robert Winkler, robert.winkler@cinvestav.mx, CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis (labABI, <http://www.ira.cinvestav.mx/lababi.aspx>), Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico, Tel.: +52 (462) 623 96 35, Fax +52 (462) 624 58 46
@@ -14,6 +13,23 @@ abstract: Publishing is an essential part of academic life. Additional to the tr
 # Introduction
 
 Although a submitted manuscript might be accepted by a journal 'as is', it still needs to be adjusted to the particular publication style in the production stage. Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be rather different.<br>
+
+The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). Ironically, even after paying for making the work free to the plublig, the author may only have limited rights for distribution and re-use of his own work.
+
+Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>) 
+
+## Cost of document production and impact on distribution
+
+Benkler predicts a new form of economy, which is based on the distributed creation of goods with not exclusively commercial motives xx. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
+PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.   
+Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.  
+
+## Current standard publishing formats
+
+Ignoring the **Guide for Authors**, e.g. by submitting a manuscript with a different reference style, gives a negative impression with a journal's editorial staff. Too carelessly prepared manuscripts can even provoke a straight 'desk-reject' [@volmer_how_2016].
+Scientific journal accept either DOC(X), LATEX and/ or PDF submissions. 
+
+
 a which are presented in a certain format. This format depends on the intended use, e.g. for for submission to a particular journal,  publication as a printed or electronic book, or for a webpage. Incompatible file formats, markdown with different target formats. 
 Current publishing formats PDF HTML EPUB.<br>
 Typesetting software, word processors such as Microsoft Word, LibreOffice, WPS Office, What You See Is What You Get (WYSIWYG), LaTeX What You See Is What You Want (WYSIWYW), hybrids such as LyX What You See Is What You Mean (WYSIWYM). Because of the sometimes complicated syntax specifications, simple conversions between file formats can be difficult or impossible.<br>
@@ -23,12 +39,20 @@ In academic publishing, the following types of works require the creation of dif
 - For distributing of a seminar script, with an online version in HTML and a print version in PDF.
 - For submitting a journal manuscript for peer-review in DOCX, as well as a pre-print version with another journal style in PDF.
 
-Ignoring the **Guide for Authors**, e.g. by submitting a manuscript with a different reference style, gives a negative impression with a journal's editorial staff. Too carelessly prepared manuscripts can even provoke a straight 'desk-reject' [@volmer_how_2016].
-Scientific journal accept either DOC(X), LATEX and/ or PDF submissions. 
 
-## Comparison of different markup languages
+**Table xx.** Current standard formats for publishing  
 
-**Table 1.** Examples for Formatting elements and their implementations in different document types.
+Type | Description | Use | Syntax | Reference
+:--- | :---------- | :-- | :----- | :--------
+DOCX | Office Open XML | WYSWYG editing | XML, ZIP |
+ODT |
+PDF |
+EPUB |
+LATEX |
+HTML |
+MD |
+
+**Table xx.** Examples for formatting elements and their implementations in different markup languages types.
 
 Element              | Markdown     | LaTeX                  | HTML
 :------------------- | :----------- | ---------------------- | --------------------
