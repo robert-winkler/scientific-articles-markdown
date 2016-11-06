@@ -13,8 +13,7 @@ abstract: Publishing is an essential part of academic life. Currently, a silent 
 # Introduction
 
 Although a submitted manuscript might be accepted by a journal 'as is', it still needs to be adjusted to the particular publication style in the production stage. Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be rather different.<br>
-
-
+The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). [@van_noorden_open_2013]. Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
 The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option') [@van_noorden_open_2013]. Ironically, even after paying for making the work free to the plublig, the author may only have limited rights for distribution and re-use of his own work.
 The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
 Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>)
@@ -24,6 +23,7 @@ Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>)
 Benkler predicts a new form of economy, which is based on the distributed creation of goods with not exclusively commercial motives [@benkler_wealth_2006]. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
 PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.   
 Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.  PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
+PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
 Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.
 
 ## Current standard publishing formats
