@@ -18,11 +18,11 @@ outfile.docx: agile-editing-pandoc.md
 				 -o $@ $<
 
 outfile.epub: agile-editing-pandoc.md
-	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc \
+	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc --toc \
 				 -o $@ $<
 
 outfile.html: agile-editing-pandoc.md
-	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc \
+	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc --toc \
 				 -o $@ $<
 
 clean:
