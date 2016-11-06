@@ -1,3 +1,6 @@
+# Ignore backup files
+*~
+
 # Ignore generated TeX files
 *.aux
 *.log
