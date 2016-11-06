@@ -3,7 +3,7 @@ title: 'Formatting Open Science'
 author: 'Albert Krewinkel, Robert Winkler'
 bibliography: zotero.bib
 keywords: 'markdown, latex, publishing, typesetting'
-abstract: Publishing is an essential part of academic life. Currently, a silent revolution is going on, because the concepts or pre-print and 'Open Access' publishing with rapid electronic distribution are challenging traditional print media. To facilitate the handling of manuscripts during the editorial process, the publishers usually specify the format of submissions to some degree. Thus, academic writers have to spend a notable amount of time to shape their material into the required formats and specifications. These document specifications depend on the intended publishing format of the manuscript (EPUB, HTML, PDF, ..), the publisher and the journal. Technically, scientific manuscripts consist of contents (text, figures, formulas, tables, code, citations, etc.) and formatting rules. This article demonstrates the feasibility to edit the contents for various academic publication formats in a common format. Markdown files contain the content with some basic formatting rules in plain text, which facilitates the writing. The final document can be exported to high-quality publications in different formats such as LATEX, EPUB, PDF, DOCX or HTML using Pandoc. Therefore, we recommend a workflow based on mardown files to focus on content rather than format. Since the clean syntax facilitates the processing of  of the documents into different formats, also publishers could profit from accepting markdown manuscripts.
+abstract: Publishing is an essential part of academic life. Currently, a silent revolution is going on, because the concepts or pre-print and 'Open Access' publishing with rapid electronic distribution are challenging traditional print media. To facilitate the handling of manuscripts during the editorial process, the publishers usually specify the format of submissions to some degree. Thus, academic writers have to spend a notable amount of time to shape their material into the required formats and specifications. These document specifications depend on the intended publishing format of the manuscript (EPUB, HTML, PDF, ..), the publisher and the journal. Technically, scientific manuscripts consist of contents (text, figures, formulas, tables, code, citations, etc.) and formatting rules. This article demonstrates the feasibility to edit the contents for various academic publication formats in a common format. Markdown files contain the content with some basic formatting rules in plain text, which facilitates the writing. The final document can be exported to high-quality publications in different formats such as LATEX, EPUB, PDF, DOCX or HTML using Pandoc. Therefore, we recommend a workflow based on mardown files to focus on content rather than format. Since the clean syntax facilitates the processing of  the documents into different formats, also publishers could profit from accepting markdown manuscripts.
 ---
 
 **Correspondence**: Prof. Dr. Robert Winkler, <robert.winkler@cinvestav.mx>, CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis (labABI, <http://www.ira.cinvestav.mx/lababi.aspx>), Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico, Tel.: +52 (462) 623 96 35, Fax +52 (462) 624 58 46
@@ -14,23 +14,32 @@ abstract: Publishing is an essential part of academic life. Currently, a silent 
 
 Although a submitted manuscript might be accepted by a journal 'as is', it still needs to be adjusted to the particular publication style in the production stage. Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be rather different.<br>
 
+<<<<<<< HEAD
 The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). [@van_noorden_open_2013]. Ironically, even after paying for making the work free to the plublig, the author may only have limited rights for distribution and re-use of his own work.
+=======
+The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
+>>>>>>> f929aa348a98e9c188f5d7b6e4f5702180036a14
 
-Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>) 
+Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>)
 
 ## Cost of document production and impact on distribution
 
 Benkler predicts a new form of economy, which is based on the distributed creation of goods with not exclusively commercial motives [@benkler_wealth_2006]. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
+<<<<<<< HEAD
 PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.   
 Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.  
+=======
+PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
+Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.
+>>>>>>> f929aa348a98e9c188f5d7b6e4f5702180036a14
 
 ## Current standard publishing formats
 
 Ignoring the **Guide for Authors**, e.g. by submitting a manuscript with a different reference style, gives a negative impression with a journal's editorial staff. Too carelessly prepared manuscripts can even provoke a straight 'desk-reject' [@volmer_how_2016].
-Scientific journal accept either DOC(X), LATEX and/ or PDF submissions. 
+Scientific journal accept either DOC(X), LATEX and/ or PDF submissions.
 
 
-a which are presented in a certain format. This format depends on the intended use, e.g. for for submission to a particular journal,  publication as a printed or electronic book, or for a webpage. Incompatible file formats, markdown with different target formats. 
+a which are presented in a certain format. This format depends on the intended use, e.g. for for submission to a particular journal,  publication as a printed or electronic book, or for a webpage. Incompatible file formats, markdown with different target formats.
 Current publishing formats PDF HTML EPUB.<br>
 Typesetting software, word processors such as Microsoft Word, LibreOffice, WPS Office, What You See Is What You Get (WYSIWYG), LaTeX What You See Is What You Want (WYSIWYW), hybrids such as LyX What You See Is What You Mean (WYSIWYM). Because of the sometimes complicated syntax specifications, simple conversions between file formats can be difficult or impossible.<br>
 In academic publishing, the following types of works require the creation of different output formats from the same source text:
@@ -40,7 +49,7 @@ In academic publishing, the following types of works require the creation of dif
 - For submitting a journal manuscript for peer-review in DOCX, as well as a pre-print version with another journal style in PDF.
 
 
-**Table xx.** Current standard formats for publishing  
+**Table xx.** Current standard formats for publishing
 
 Type | Description | Use | Syntax | Reference
 :--- | :---------- | :-- | :----- | :--------
@@ -66,13 +75,16 @@ italics              | `*text*`     | `textit{text}`         | `text`
 to section           |              |                        | `text`
 http link            |              |                        | `text`
 
-Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files.  
+Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files.
 Overall, markdown displays the simplest structure, which facilitates the editing of documents.
 
-Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substancial manual corrections. Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats. 
+Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substancial manual corrections. Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats.
 
-# Concepts of markdown and Pandoc 
-Markdown was originally developed by John Gruber to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. 
+# Concepts of markdown and Pandoc
+Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal of simplifying the writing of HTML documents <http://daringfireball.net/projects/markdown/>.
+
+Despite it's original focus on the web, it is has been proven to be well suited
+for academic writing [@ovadia_markdown_2014].
 
 ![Workfow for the generation of multiple document formats with Pandoc](fig-pandoc-workflow.png)<br>
 **Figure xx.** Workfow for the generation of multiple document formats with Pandoc.
@@ -80,8 +92,8 @@ Markdown was originally developed by John Gruber to simplify the writing of HTML
 # Markdown editors and online editing
 
 ## Editing programs
-Because of the simple syntax, basically any text editor is suitable for editing markdown files. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, such as syntax highlighting, live preview or structure browsing.  
-On the other side, in the last years plenty of special mardown editors have been published. Many of those are cross-platform compatible, e.g. Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).  
+Because of the simple syntax, basically any text editor is suitable for editing markdown files. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, such as syntax highlighting, live preview or structure browsing.
+On the other side, in the last years plenty of special mardown editors have been published. Many of those are cross-platform compatible, e.g. Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).
 xx Writing on the go mobile devices,
 Even for tablets, Android and iOS devices, numerous free and low-cost applications exist. Parts of this text were written in xx JotterPad dictation and swipe softwarexx Various of those applications support the cloud storage of documents.
 
@@ -123,11 +135,11 @@ LLL  |  CCC   |   RRR | DDD
 
 ## Formulas
 
-Formula can be inserted in LaTeX mode using delimiters (`$` for Pandoc, `$$` adds compatibility for online preview rendering with CuteMarkEd/MathJax). E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as: 
+Formula can be inserted in LaTeX mode using delimiters (`$` for Pandoc, `$$` adds compatibility for online preview rendering with CuteMarkEd/MathJax). E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ~~~
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
-~~~  
+~~~
 
 and gives:
 
@@ -148,23 +160,23 @@ Typeseting `inline code` is possible by enclosing text between back ticks ``.
 bibtex databases, which are supported by almost any reference management program.
 
 ## Styles
-Whereas natbib bibtex is supported by Pandoc, it is incompatible with DOCX xx. 
-The  Citation Style Language (CSL) <http://citationstyles.org/> is used for the citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>.  
-CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>.  
+Whereas natbib bibtex is supported by Pandoc, it is incompatible with DOCX xx.
+The  Citation Style Language (CSL) <http://citationstyles.org/> is used for the citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>.
+CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>.
 The bibliography style, which Pandoc should use for the target document can be chosen or in the YAML block of the markdown document or can be passed as an command line option. The later is more recommendable, because different bibliography style may be used for different documents.
 
 ## Creation of natbib citations in LaTeX
-For citations in scientific manuscripts written in LaTex, the natbib package is widely used. To create TEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.  
+For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create TEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.
 
 ## Database of cited references
-To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references.  
+To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references.
 If the `--natbib` option was used for creating a PDF file (xx LATEX-PDF?), LATEX creates an AUX file, which can be extracted using BibTool:
     ~~~
     bibtool -x md-article.aux -o bibshort.bib
     ~~~
 In this case the new database would be called `bibshort.bib`.
 If no AUX file is present, it has to be created manually:
-1. The reference keys have to be extracted from the manuscript. This can be done by a simple Perl (<https://www.perl.org/>) command: 
+1. The reference keys have to be extracted from the manuscript. This can be done by a simple Perl (<https://www.perl.org/>) command:
     ~~~
     perl -ne 'print "$1," if /(?<=@)(.+?)(?=[\],])/' article.md
     ~~~
@@ -177,7 +189,7 @@ If no AUX file is present, it has to be created manually:
     ~~~
 3. Now the new database can be generated with BibTool as mentioned above.
 
-We wrote the Perl script `mdbibexport` with a simple user dialog, which asks asking for the relevant files and performs the generation of an article specific BIB database. 
+We wrote the Perl script `mdbibexport` with a simple user dialog, which asks asking for the relevant files and performs the generation of an article specific BIB database.
 
 # Definition of output formatting
 command line parameters and templates xx
@@ -201,17 +213,17 @@ pandoc -S -s --reference-docx=pandoc-manuscript.docx
 --csl=apa.csl --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
 ~~~
 
-It is also possible to directly re-use a previous output file as template (i.e. template and output file have the same file name): 
+It is also possible to directly re-use a previous output file as template (i.e. template and output file have the same file name):
 
 ~~~
 pandoc -S -s --columns=10 --reference-docx=outfile.docx --csl=apa.csl --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
 ~~~
 
-In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as Pandoc template for other manuscripts with the same specifications. In this case, running Pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template. 
+In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as Pandoc template for other manuscripts with the same specifications. In this case, running Pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template.
 A page with DOCX manuscript formatting of this article is shown in figure xx.
 
 
-**Figure xx.** DOCX output with a modified document template. 
+**Figure xx.** DOCX output with a modified document template.
 
 ## Development of a TEX/PDF template
 ~~~
@@ -240,9 +252,9 @@ xx CuteMarkEd xx
 xx JotterPad Prof xx
 Pandoc is available for Windows, Mac OS X, Linux, BSD and as source code.
 
-The source code of this manuscript, as well as templates and the Pandoc script have been deposited to xx. 
+The source code of this manuscript, as well as templates and the Pandoc script have been deposited to xx.
 
-Icons for document types and applications have been adopted from Calibre <http://calibre-ebook.com/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>. 
+Icons for document types and applications have been adopted from Calibre <http://calibre-ebook.com/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>.
 
 
 # Bibliography
