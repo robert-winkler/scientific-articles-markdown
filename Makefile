@@ -13,7 +13,7 @@ outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
 				 -o $@ $<
 
 outfile.docx: agile-editing-pandoc.md
-	pandoc -S -s --columns=10 --reference-docx=reference-file.docx --csl=apa.csl \
+	pandoc -S -s --columns=10 --reference-docx=pandoc-manuscript.docx --csl=apa.csl \
 				 --filter pandoc-citeproc \
 				 -o $@ $<
 
