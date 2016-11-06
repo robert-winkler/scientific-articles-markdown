@@ -3,13 +3,13 @@ all: outfile.tex outfile.pdf outfile.docx outfile.epub outfile.html
 outfile.tex: agile-editing-pandoc.md pandoc-peerj.latex
 	pandoc -S -s --columns=10 --template=pandoc-peerj.latex \
 				 -M fontsize=10pt -M classoption=fleq -M documentclass=wlpeerj \
-				 --csl=peerj.csl --bibliography=zotero.bib \
+				 --csl=peerj.csl --bibliography=agile-markdown.bib \
 				 -o $@ $<
 
-outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex zotero.bib
+outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
 	pandoc -S -s --columns=10 --template=pandoc-peerj.latex \
 				 -M fontsize=10pt -M classoption=fleq -M documentclass=wlpeerj \
-				 --csl=peerj.csl --bibliography=zotero.bib \
+				 --csl=peerj.csl --bibliography=agile-markdown.bib \
 				 -o $@ $<
 
 outfile.docx: agile-editing-pandoc.md
