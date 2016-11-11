@@ -12,6 +12,8 @@ abstract: The timely publication of scientific results is essential for dynamic 
 **Keywords**: markdown, latex, publishing, typesetting
 
 # Introduction
+Agile development of science depends on the continuous exchange of information between the researchers. In the past, physical copies of scientific works had to be produced and distributed. Therefore, publishers needed to invest considerable economical resources for typesetting and printing. Since the journals were mainly financed by their subscribers, their editors not only had to decide on the scientific quality of a submitted manuscript, but also on the potential interest for their readers. The availability of globally connected computers enabled the rapid exchange of information at low cost. 
+Yokai Benkler predicts a new form of economy, which is based on the distributed creation of nonrival goods with not exclusively commercial motives [@benkler_wealth_2007]. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
 
 Although a submitted manuscript might be accepted by a journal 'as is', it still needs to be adjusted to the particular publication style in the production stage. Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be rather different.<br>
 The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). [@van_noorden_open_2013]. Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
@@ -34,7 +36,7 @@ PeerJ (<https://peerj.com/>), an OA journal for biological and computer sciences
 
 ## Cost of document production and impact on distribution
 
-Benkler predicts a new form of economy, which is based on the distributed creation of goods with not exclusively commercial motives [@benkler_wealth_2007]. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
+
 PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.   
 Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.  PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
 PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
@@ -253,7 +255,7 @@ The commands necessary to produce the document in a specific formats or styles c
 The `make` process was tested on xx Windows 10, Linux 64 bit and iOS X. All documents - DOCX, LATEX, PDF, EPUB and HTML - were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
 
 # Conclusions
-Authoring scientific manuscripts in markdown (MD) format is straight-forward and manual formatting  is reduced to a minimum. The simple syntax of MD facilitates editing and collaborative writing.  Pandoc enables the rapid conversion of MD to multiple document formats such as DOCX, LATEX, PDF, EPUB and HTML. Templates enable the automated generation of documents according to specific journal styles. Therefore, the MD format facilitates writing and production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
+Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting  is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing.  The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using Pandoc, and templates enable the automated generation of documents according to specific journal styles. Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
 
 # Acknowledgments
 We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
