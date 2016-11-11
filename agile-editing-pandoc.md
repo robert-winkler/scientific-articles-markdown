@@ -27,7 +27,7 @@ In more conservative areas, such as chemistry and biology, accepting the publish
 A major drawback of preprint publishing are the sometimes restrictive policies of scientific publishers. The SHERPA/RoMEO project informs about copyright policies and self-archiving options of individual publishers (<www.sherpa.ac.uk/romeo/>).    
 
 ## Open Access 
-Frustrated by the difficulty to access even digital scientific literature, three scientists founded the Public Library of Science (PLoS). In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003, @eisen_publish_2003]. Thanks to the great success of OA publishing, many traditional print publishers now offer a so-called 'Open Access option', to make accepted articles free to read. The copyright in this hybrid model might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons  
+Frustrated by the difficulty to access even digital scientific literature, three scientists founded the Public Library of Science (PLoS). In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003, @eisen_publish_2003]. Thanks to the great success of OA publishing, many traditional print publishers now offer a so-called 'Open Access option', to make accepted articles free to read. The copyright in this hybrid model might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/). 
 In a recent study, the article processing charges (APCs) for research intensive universities in the USA and Canada were estimated to be about 1,800 USD for fully OA journals and 3,000 USD for hybrid OA journals [@solomon_article_2016].
 PeerJ (<https://peerj.com/>), an OA journal for biological and computer sciences launched 2013, drastically reduced the publishing cost and offers its members a life-time publishing plan for a small registration fee [@van_noorden_journal_2012]. 
 
@@ -97,6 +97,11 @@ for academic writing [@ovadia_markdown_2014].
 **Figure xx.** Workfow for the generation of multiple document formats with Pandoc.
 
 # Markdown editors and online editing
+**Fig. xx** summarized various options for local or networked editing of MD files.
+ 
+![](fig-editing-options.png)  
+
+**Figure xx.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository may ve used. 
 
 
 ## Markdown editors
