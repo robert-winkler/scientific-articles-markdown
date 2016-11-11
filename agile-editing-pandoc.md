@@ -19,9 +19,22 @@ The cost related to the editing and production of articles is the justification 
 The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
 Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>)
 
+
+## Preprints and e-prints
+In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints - 'e-prints' - about high-energy particle theory at the  Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001]. 
+Currently, arXiv (<https://arxiv.org/>) publishes e-prints related to physics, mathematics, computer science, quantitative biology quantitative finance and statistics. Just a few years after the start of the first preprint servers, their important contribution to scientific communication was evident [@ginsparg_first_1994,youngen_citation_1998,@brown_e-volution_2001]. ArXiv reached the impressive number of 1 million e-prints in 2014 [@van_noorden_arxiv_2014].
+In more conservative areas, such as chemistry and biology, accepting the publishing prior peer-review took more time [@brown_role_2003]. A preprint server for life sciences (<http://biorxiv.org/>) was launched by the Cold Spring Habor Laboratory, USA, in 2013 [@callaway_preprints_2013]. PeerJ preprints (<https://peerj.com/preprints/>), started in the same year, accepts manuscripts from biological sciences, medical sciences, health sciences and computer sciences. The terms 'preprints' and 'e-prints' are used synonymously, since the physical distribution of preprints has become obsolete.
+A major drawback of preprint publishing are the sometimes restrictive policies of scientific publishers. The SHERPA/RoMEO project informs about copyright policies and self-archiving options of individual publishers (<www.sherpa.ac.uk/romeo/>).    
+
+## Open Access 
+Frustrated by the difficulty to access even digital scientific literature, three scientists founded the Public Library of Science (PLoS). In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003, @eisen_publish_2003]. Thanks to the great success of OA publishing, many traditional print publishers now offer a so-called 'Open Access option', to make accepted articles free to read. The copyright in this hybrid model might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons  
+In a recent study, the article processing charges (APCs) for research intensive universities in the USA and Canada were estimated to be about 1,800 USD for fully OA journals and 3,000 USD for hybrid OA journals [@solomon_article_2016].
+PeerJ (<https://peerj.com/>), an OA journal for biological and computer sciences launched 2013, drastically reduced the publishing cost and offers its members a life-time publishing plan for a small registration fee [@van_noorden_journal_2012]. 
+
+
 ## Cost of document production and impact on distribution
 
-Benkler predicts a new form of economy, which is based on the distributed creation of goods with not exclusively commercial motives [@benkler_wealth_2006]. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
+Benkler predicts a new form of economy, which is based on the distributed creation of goods with not exclusively commercial motives [@benkler_wealth_2007]. In science literature production, an interesting trend to open access articles and non-commercial publishing models can be observed xx.
 PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.   
 Examples as the *Journal of Statistical Software* (https://www.jstatsoft.org/) demonstrate the possiblity of completely community supported open access publications.  PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
 PLoS journals, but associated with high cost for the authors. PeerJ has a different business model, which stimulates the early reporting of results with a preprint server, as well as an accessible pricing scheme for the authors.
@@ -57,17 +70,17 @@ MD |
 
 **Table xx.** Examples for formatting elements and their implementations in different markup languages types.
 
-Element              | Markdown     | LaTeX                  | HTML
+Element              | Markdown     | LATEX                  | HTML
 :------------------- | :----------- | ---------------------- | --------------------
 **structure**        |              |                        |
 section              | `# Intro`    | `\section{Intro}`      | `<h1><Intro></h1>`
 subsection           | `## History` | `\subsection{History}` | `<h2><History></h2>`
 **text formatting**  |              |                        |
-bold                 | `**text**`   | `\textbf{text}`        | `text`
-italics              | `*text*`     | `textit{text}`         | `text`
+bold                 | `**text**`   | `\textbf{text}`        | `<b>text</b>`
+italics              | `*text*`     | `\textit{text}`        | `<i>text</i>`
 **cross references** |              |                        |
-to section           |              |                        | `text`
-http link            |              |                        | `text`
+http link            | `<https://arxiv.org/>` | `\usepackage{url}`                        | ` <a href="https://arxiv.org/"></a> `
+                     |              | `\url{https://arxiv.org/}`                       | 
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files.
 Overall, markdown displays the simplest structure, which facilitates the editing of documents.
@@ -85,13 +98,15 @@ for academic writing [@ovadia_markdown_2014].
 
 # Markdown editors and online editing
 
-## Editing programs
+
+## Markdown editors
 Because of the simple syntax, basically any text editor is suitable for editing markdown files. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, such as syntax highlighting, live preview or structure browsing.
 On the other side, in the last years plenty of special mardown editors have been published. Many of those are cross-platform compatible, e.g. Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).
 xx Writing on the go mobile devices,
 Even for tablets, Android and iOS devices, numerous free and low-cost applications exist. Parts of this text were written in xx JotterPad dictation and swipe softwarexx Various of those applications support the cloud storage of documents.
 
-**Figure xx.** Coding, preview and table of contents view using the CuteMarkEd editor.
+![](fig-cutemarked-editor.png)<br>
+**Figure xx.** Editing window, HTML preview and table of contents using the CuteMarkEd editor.
 
 ## Online editing and collaborative writing
 
@@ -99,12 +114,14 @@ xx Google Docs test editing.
 
 In recent years, several platforms were developed for collaborative writing. Google Docs. OwnCloud with Markdown Editor plugin (see section xx).
 
+![](fig-owncloud-md-editor.png)<br>
 **Figure xx.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
 
 ## Document versioning and change control
 Integrated in editing software or cloud server, low overhead of the files diff, git.
 
-
+![](fig-bitbucket-diff.png)<br>
+**Figure xx.** Version control and collaborative editing using a git repository on bitbucket.
 
 # Pandoc markdown for scientific texts
 Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
@@ -254,7 +271,7 @@ Pandoc is available for Windows, Mac OS X, Linux, BSD and as source code.
 
 The source code of this manuscript, as well as templates and the Pandoc script have been deposited to xx.
 
-Icons for document types and applications have been adopted from Calibre <http://calibre-ebook.com/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>.
+Drawings for document types, devices and applications have been adopted from Calibre <http://calibre-ebook.com/>, openclipart <https://openclipart.org/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>.
 
 
 # Bibliography
