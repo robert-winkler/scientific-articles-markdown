@@ -50,8 +50,6 @@ Examples such as the *Journal of Statistical Software* (JSS, <https://www.jstats
 
 Although a submitted manuscript might be accepted by a journal 'as is', it still needs to be adjusted to the particular publication style in the production stage. Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be rather different.<br>
 The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). [@van_noorden_open_2013]. Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
-The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option') [@van_noorden_open_2013]. Ironically, even after paying for making the work free to the plublig, the author may only have limited rights for distribution and re-use of his own work.
-The cost related to the editing and production of articles is the justification scientifc publishers to either charge high subscription fees or the author for making their articles freely available ('Open Access Option'). Ironically, even after paying for making the work free to the public, the author may only have limited rights for distribution and re-use of his own work.
 
 
 ## Current standard publishing formats
@@ -115,7 +113,7 @@ for academic writing [@ovadia_markdown_2014].
  
 ![](fig-editing-options.png)  
 
-**Figure xx.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository may ve used. 
+**Figure xx.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository may be used. 
 
 
 ## Markdown editors
