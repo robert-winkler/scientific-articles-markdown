@@ -177,10 +177,12 @@ with $x_i$ the individual observations, $\overline{x}$ the sample mean and $N$ t
 
 ## Code listings
 Verbatim code blocks are indicated by three tilde symbols:
+
     ~~~
     verbatim code
     ~~~
-Typeseting `inline code` is possible by enclosing text between back ticks ``.
+
+Typeseting `inline code` is possible by enclosing text between back ticks: `\`inline code\``.
 
 # Citations and biography
 
@@ -199,22 +201,22 @@ For citations in scientific manuscripts written in LaTeX, the natbib package is 
 ## Database of cited references
 To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references.
 If the `--natbib` option was used for creating a PDF file (xx LATEX-PDF?), LATEX creates an AUX file, which can be extracted using BibTool:
-    ~~~
+
     bibtool -x md-article.aux -o bibshort.bib
-    ~~~
+
 In this case the new database would be called `bibshort.bib`.
 If no AUX file is present, it has to be created manually:
 1. The reference keys have to be extracted from the manuscript. This can be done by a simple Perl (<https://www.perl.org/>) command:
-    ~~~
+
     perl -ne 'print "$1," if /(?<=@)(.+?)(?=[\],])/' article.md
-    ~~~
-    The command prints out the keys of the file `article.md`, separated by comas. Domains of email adresses also will be returned, but this does not affect the creation of the final database.
+
+The command prints out the keys of the file `article.md`, separated by comas. Domains of email adresses also will be returned, but this does not affect the creation of the final database.
 2. A bibtex `.aux` file (e.g. `bibextract.aux`) has to be created, containing the name of the database (here: `zotero.bib`) and the extracted keys, separated by comas (from the previous step):
-    ~~~
+
     \bibstyle{alpha}
     \bibdata{zotero.bib}
     \citation{smith_software_2016,key2,key3}
-    ~~~
+
 3. Now the new database can be generated with BibTool as mentioned above.
 
 We wrote the Perl script `mdbibexport` with a simple user dialog, which asks asking for the relevant files and performs the generation of an article specific BIB database.
