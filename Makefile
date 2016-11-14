@@ -8,7 +8,7 @@ outfile.tex: agile-editing-pandoc.md pandoc-peerj.latex
 
 outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
 	pandoc -S -s --columns=10 --template=pandoc-peerj.latex \
-				 -M fontsize=10pt -M classoption=fleq -M documentclass=wlpeerj \
+				 -M fontsize=10pt -M classoption=fleqn -M documentclass=wlpeerj \
 				 --csl=peerj.csl --bibliography=agile-markdown.bib \
 				 -o $@ $<
 

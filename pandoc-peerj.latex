@@ -133,10 +133,23 @@ $if(subtitle)$
 \providecommand{\subtitle}[1]{}
 \subtitle{$subtitle$}
 $endif$
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+$for(author)$
+$if(author.name)$
+$if(author.affiliation)$
+\author[$author.affiliation$]{$author.name$}
+$if(author.email)$
+\corrauthor[$author.affiliation$]{$if(author.fullname)$$author.fullname$$else$$author.name$$endif$}{$author.email$}
 $endif$
-\keywords{$for(keywords)$$keywords$$sep$, $endfor$}
+$else$
+\author{$author.name$}
+$endif$
+$endif$
+$endfor$
+$for(institute)$
+\affil[$institute.index$]{$institute.name$}
+$endfor$
+$if(corrauthor)$
+$endif$
 $if(institute)$
 \providecommand{\institute}[1]{}
 \institute{$for(institute)$$institute$$sep$ \and $endfor$}
