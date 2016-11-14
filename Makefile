@@ -15,14 +15,17 @@ outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
 outfile.docx: agile-editing-pandoc.md
 	pandoc -S -s --columns=10 --reference-docx=pandoc-manuscript.docx --csl=apa.csl \
 				 --filter pandoc-citeproc \
+				 --filter filters/flatten-meta.py \
 				 -o $@ $<
 
 outfile.epub: agile-editing-pandoc.md
 	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc --toc \
+				 --filter filters/flatten-meta.py \
 				 -o $@ $<
 
 outfile.html: agile-editing-pandoc.md
 	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc --toc \
+				 --filter filters/flatten-meta.py \
 				 -o $@ $<
 
 clean:
