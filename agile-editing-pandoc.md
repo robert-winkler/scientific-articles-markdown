@@ -1,14 +1,25 @@
 ---
 title: 'Formatting Open Science'
-author: 'Albert Krewinkel, Robert Winkler'
+author:
+  - name: Albert Krewinkel
+    affiliation: 1
+  - name: Robert Winkler
+    affiliation: 2
+    fullname: Prof. Dr. Robert Winkler
+    email: robert.winkler@cinvestav.mx
+institute:
+  - index: 1
+    name: FTI Touristik GmbH, Berlin, Germany
+  - index: 2
+    name: >
+      CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology,
+      Laboratory of Biochemical and Instrumental Analysis,
+      Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato,
+      Gto. Mexico
 bibliography: agile-markdown.bib
 keywords: 'markdown, latex, publishing, typesetting'
 abstract: The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts - formulas, tables, code blocks and citations - and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
 ---
-
-**Correspondence**: Prof. Dr. Robert Winkler, <robert.winkler@cinvestav.mx>, CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis (labABI, <http://www.ira.cinvestav.mx/lababi.aspx>), Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico, Tel.: +52 (462) 623 96 35, Fax +52 (462) 624 58 46
-
-**Keywords**: markdown, latex, publishing, typesetting
 
 # Introduction
 Agile development of science depends on the continuous exchange of information between the researchers [@woelfle_open_2011]. In the past, physical copies of scientific works had to be produced and distributed. Therefore, publishers needed to invest considerable economical resources for typesetting and printing. Since the journals were mainly financed by their subscribers, their editors not only had to decide on the scientific quality of a submitted manuscript, but also on the potential interest for their readers. The availability of globally connected computers enabled the rapid exchange of information at low cost. Yochai Benkler (2006) predicts important changes in the information production economy, which are based on three observations: 
@@ -188,6 +199,7 @@ Verbatim code blocks are indicated by three tilde symbols:
     ~~~
     verbatim code
     ~~~
+
 Typeseting `inline code` is possible by enclosing text between back ticks ``.
 
 # Citations and biography
@@ -211,19 +223,37 @@ If the `--natbib` option was used for creating a PDF file (xx LATEX-PDF?), LATEX
     bibtool -x md-article.aux -o bibshort.bib
     ~~~
 In this case the new database would be called `bibshort.bib`.
-If no AUX file is present, it has to be created manually:
+If no AUX file is present, it has to be created manually
+
 1. The reference keys have to be extracted from the manuscript. This can be done by a simple Perl (<https://www.perl.org/>) command:
     ~~~
     perl -ne 'print "$1," if /(?<=@)(.+?)(?=[\],])/' article.md
     ~~~
     The command prints out the keys of the file `article.md`, separated by comas. Domains of email adresses also will be returned, but this does not affect the creation of the final database.
 2. A bibtex `.aux` file (e.g. `bibextract.aux`) has to be created, containing the name of the database (here: `zotero.bib`) and the extracted keys, separated by comas (from the previous step):
+3.  The reference keys have to be extracted from the manuscript. This can be don
+    by Pandoc in combination with a simple Perl (<https://www.perl.org/>)
+    command:
+
+    ~~~
+    pandoc -t json article.md | perl -ne 'print(join ",", /"citationId":"(.*?)"/)'
+    ~~~
+
+    The command prints out the keys of the file `article.md`, separated by commas.
+4.  A bibtex `.aux` file (e.g. `bibextract.aux`) has to be created, containing
+    the name of the database (here: `zotero.bib`) and the extracted keys,
+    separated by commas (from the previous step):
+
     ~~~
     \bibstyle{alpha}
     \bibdata{zotero.bib}
     \citation{smith_software_2016,key2,key3}
     ~~~
+
 3. Now the new database can be generated with BibTool as mentioned above.
+
+
+3.  Now the new database can be generated with BibTool as mentioned above.
 
 We wrote the Perl script `mdbibexport` with a simple user dialog, which asks asking for the relevant files and performs the generation of an article specific BIB database.
 
@@ -262,6 +292,7 @@ A page with DOCX manuscript formatting of this article is shown in figure xx.
 **Figure xx.** DOCX output with a modified document template.
 
 ## Development of a TEX/PDF template
+
 ~~~
 pandoc -D latex > template-peerj.latex
 ~~~
