@@ -1,34 +1,53 @@
+PANDOC_DEFAULT_OPTIONS = -S -s --columns=10 --filter pandoc-citeproc
+
+PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
+PANDOC_LATEX_OPTIONS += -M fontsize=10pt
+PANDOC_LATEX_OPTIONS += -M classoption=fleqn
+PANDOC_LATEX_OPTIONS += -M documentclass=wlpeerj
+PANDOC_LATEX_OPTIONS += --csl=peerj.csl
+
+PANDOC_NONTEX_OPTIONS = --csl=apa.csl
+
+# test if panflute is installed
+PANFLUTE_INSTALLED = $(shell echo "1" | pandoc -t markdown --filter filters/identity.py 2>/dev/null)
+# Only try to run the filter if Panflute seems to be available. This will
+# prevent errors at the cost of all authors being set to "true" of panflute is
+# not setup correctly.
+ifneq ($(strip $(PANFLUTE_INSTALLED)),)
+PANDOC_NONTEX_OPTIONS += --filter=filters/flatten-meta.py
+endif
+
 all: outfile.tex outfile.pdf outfile.docx outfile.epub outfile.html
 
 outfile.tex: agile-editing-pandoc.md pandoc-peerj.latex
-	pandoc -S -s --columns=10 --template=pandoc-peerj.latex \
-				 -M fontsize=10pt -M classoption=fleq -M documentclass=wlpeerj \
-				 --csl=peerj.csl --bibliography=agile-markdown.bib \
-				 -o $@ $<
+	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	       $(PANDOC_LATEX_OPTIONS) \
+	       -o $@ $<
 
 outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
-	pandoc -S -s --columns=10 --template=pandoc-peerj.latex \
-				 -M fontsize=10pt -M classoption=fleqn -M documentclass=wlpeerj \
-				 --csl=peerj.csl --bibliography=agile-markdown.bib \
-				 -o $@ $<
+	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	       $(PANDOC_LATEX_OPTIONS) \
+	       -o $@ $<
 
 outfile.docx: agile-editing-pandoc.md
-	pandoc -S -s --columns=10 --reference-docx=pandoc-manuscript.docx --csl=apa.csl \
-				 --filter pandoc-citeproc \
-				 --filter filters/flatten-meta.py \
-				 -o $@ $<
+	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	       $(PANDOC_NONTEX_OPTIONS) \
+	       --reference-docx=pandoc-manuscript.docx \
+	       -o $@ $<
 
 outfile.epub: agile-editing-pandoc.md
-	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc --toc \
-				 --filter filters/flatten-meta.py \
-				 -o $@ $<
+	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	       $(PANDOC_NONTEX_OPTIONS) \
+	       --toc \
+	       -o $@ $<
 
 outfile.html: agile-editing-pandoc.md
-	pandoc -S -s --columns=10 --csl=apa.csl --filter pandoc-citeproc --toc \
-				 --filter filters/flatten-meta.py \
-				 -o $@ $<
+	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	       $(PANDOC_NONTEX_OPTIONS) \
+	       --toc \
+	       -o $@ $<
 
 clean:
-	rm outfile.*
+	rm -f outfile.*
 
 .PHONY: all clean
