@@ -18,7 +18,7 @@ institute:
       Gto. Mexico
 bibliography: agile-markdown.bib
 keywords: 'markdown, latex, publishing, typesetting'
-abstract: The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts - formulas, tables, code blocks and citations - and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
+abstract: The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
 ---
 
 # Introduction
@@ -28,21 +28,21 @@ Agile development of science depends on the continuous exchange of information b
 2. The actual rise of nonmarket production, made possible through networked individuals and coordinate effects.
 3. The emergence of large-scale peer production, e.g. of software and encyclopaedias.
 
-Immaterial goods such as knowledge and culture are not lost, when consumed or shared - they are 'nonrival' -, which enables a networked information economy, which is not commercially driven [@benkler_wealth_2006].
+Immaterial goods such as knowledge and culture are not lost, when consumed or shared -- they are 'nonrival' --, which enables a networked information economy, which is not commercially driven [@benkler_wealth_2006].
 
 
 ## Preprints and e-prints
-In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints - 'e-prints' - about high-energy particle theory at the  Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001]. 
-Currently, arXiv (<https://arxiv.org/>) publishes e-prints related to physics, mathematics, computer science, quantitative biology quantitative finance and statistics. Just a few years after the start of the first preprint servers, their important contribution to scientific communication was evident [@ginsparg_first_1994,youngen_citation_1998,@brown_e-volution_2001]. In 2014, arXiv reached the impressive number of 1 million e-prints [@van_noorden_arxiv_2014].
+In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints -- 'e-prints' -- about high-energy particle theory at the  Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001]. 
+Currently, arXiv (<https://arxiv.org/>) publishes e-prints related to physics, mathematics, computer science, quantitative biology quantitative finance and statistics. Just a few years after the start of the first preprint servers, their important contribution to scientific communication was evident [@ginsparg_first_1994;@youngen_citation_1998;@brown_e-volution_2001]. In 2014, arXiv reached the impressive number of 1 million e-prints [@van_noorden_arxiv_2014].
 In more conservative areas, such as chemistry and biology, accepting the publishing prior peer-review took more time [@brown_role_2003]. A preprint server for life sciences (<http://biorxiv.org/>) was launched by the Cold Spring Habor Laboratory, USA, in 2013 [@callaway_preprints_2013]. PeerJ preprints (<https://peerj.com/preprints/>), started in the same year, accepts manuscripts from biological sciences, medical sciences, health sciences and computer sciences. The terms 'preprints' and 'e-prints' are used synonymously, since the physical distribution of preprints has become obsolete.
-A major drawback of preprint publishing are the sometimes restrictive policies of scientific publishers. The SHERPA/RoMEO project informs about copyright policies and self-archiving options of individual publishers (<http://www.sherpa.ac.uk/romeo/>).    
+A major drawback of preprint publishing are the sometimes restrictive policies of scientific publishers. The SHERPA/RoMEO project informs about copyright policies and self-archiving options of individual publishers (<http://www.sherpa.ac.uk/romeo/>).
 
 ## Open Access 
 The term *'Open Access'* was introduced 2002 by the Budapest Open Access Initiative and was defined as:
   
 *"Barrier-free access to online works and other resources. OA literature is digital, online, free of charge (gratis OA), and free of needless copyright and licensing restrictions (libre OA)."* [@suber_open_2012]   
 
-Frustrated by the difficulty to access even digital scientific literature, three scientists founded the *Public Library of Science (PLoS)*. In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003, @eisen_publish_2003]. Thanks to the great success of OA publishing, many traditional print publishers now offer a so-called 'Open Access option', to make accepted articles free to read. The copyright in this hybrid models might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/). 
+Frustrated by the difficulty to access even digital scientific literature, three scientists founded the *Public Library of Science (PLoS)*. In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003;@eisen_publish_2003]. Thanks to the great success of OA publishing, many traditional print publishers now offer a so-called 'Open Access option', to make accepted articles free to read. The copyright in this hybrid models might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/). 
 OA literature is only one component of a more general *'open'* philosophy, which also includes the access to scholarships, software, and data [@willinsky_unacknowledged_2005]. Interestingly, there are several different 'schools' of thinking on how to understand and define *'Open Science'*, including the position that any science is open, because of its objective to make generated knowledge public [@fecher_open_2014].
 
 
@@ -89,15 +89,15 @@ In academic publishing, the following types of works require the creation of dif
 
 **Table xx.** Current standard formats for publishing
 
-Type | Description | Use | Syntax | Reference
-:--- | :---------- | :-- | :----- | :--------
-DOCX | Office Open XML | WYSWYG editing | XML, ZIP |
-ODT |
-PDF |
-EPUB |
+Type  | Description          | Use              | Syntax   | Reference
+:---- | :------------------- | :--------------- | :------- | :--------
+DOCX  | Office Open XML      | WYSIWYG editing  | XML, ZIP |
+ODT   | Libre Office         | WYSIWYG editing  |          |
+PDF   | portable document    | Print replacment | simplified postscript |
+EPUB  | electonic publishing | ebooks           | HTML5, ZIP |
 LATEX |
-HTML |
-MD |
+HTML  | hypertext markup     | Websites           | (X)HTML     |
+MD    | Markdown             | Lightweight Markup | lightweight |
 
 **Table xx.** Examples for formatting elements and their implementations in different markup languages types.
 
@@ -301,7 +301,7 @@ pandoc -D latex > template-peerj.latex
 The commands necessary to produce the document in a specific formats or styles can be defined in a simple `Makefile`. An example `Makefile` is included in the source code of this preprint.  The desired output file format can be chosen when calling `make`. E.g. `make outfile.pdf` produces this preprint in PDF format.Calling `make` without any option creates all listed document types.
 
 ## Cross-platform compatibility
-The `make` process was tested on xx Windows 10, Linux 64 bit and iOS X. All documents - DOCX, LATEX, PDF, EPUB and HTML - were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
+The `make` process was tested on xx Windows 10, Linux 64 bit and iOS X. All documents -- DOCX, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
 
 # Conclusions
 Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting  is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing.  The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using Pandoc, and templates enable the automated generation of documents according to specific journal styles. Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
