@@ -92,7 +92,7 @@ PDF   | portable document    | Print replacment | simplified postscript |
 EPUB  | electonic publishing | ebooks           | HTML5, ZIP |
 LATEX |
 HTML  | hypertext markup     | Websites           | (X)HTML     |
-MD    | Markdown             | Lightweight Markup | lightweight |
+MD    | Markdown             | Lightweight Markup | lightweight | [@ovadia_markdown_2014;@rfc7764]
 
 **Table xx.** Examples for formatting elements and their implementations in different markup languages types.
 
