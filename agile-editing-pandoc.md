@@ -188,8 +188,11 @@ $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
 
 with $x_i$ the individual observations, $\overline{x}$ the sample mean and $N$ the total number of samples.
 
+Pandoc parses formulas into internal structures and allows conversion into formats other than LaTeX.  This allows for format-specific formula representation and enables computational analysis of the formulas [@garnet_semiautomatic_2015].
+
 ## Code listings
 Verbatim code blocks are indicated by three tilde symbols:
+
     ~~~
     verbatim code
     ~~~
