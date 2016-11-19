@@ -112,7 +112,7 @@ Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and
 Overall, markdown displays the simplest structure, which facilitates the editing of documents.
 
 Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substancial manual corrections. Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats.
-The need for hybrid publishing is not unique to the sciences and has been recognized by other disciplines as well. [@dptcollective_toolkit_2015]
+The need for hybrid publishing has been recognized outside of science[@dptcollective_toolkit_2015;@kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far.
 
 # Concepts of markdown and Pandoc
 Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal of simplifying the writing of HTML documents <http://daringfireball.net/projects/markdown/>.
@@ -155,7 +155,7 @@ Integrated in editing software or cloud server, low overhead of the files diff, 
 **Figure xx.** Version control and collaborative editing using a git repository on bitbucket.
 
 # Pandoc markdown for scientific texts
-Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
+Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by @dominici_pandoc_2014.  The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
 
 ## Tables
 
