@@ -86,12 +86,12 @@ In academic publishing, the following types of works require the creation of dif
 
 Type  | Description          | Use              | Syntax   | Reference
 :---- | :------------------- | :--------------- | :------- | :--------
-DOCX  | Office Open XML      | WYSIWYG editing  | XML, ZIP |
-ODT   | Libre Office         | WYSIWYG editing  |          |
+DOCX  | Office Open XML      | WYSIWYG editing  | XML, ZIP | [@OOXML]
+ODT   | Libre Office         | WYSIWYG editing  | XML, ZIP | [@ODF]
 PDF   | portable document    | Print replacment | simplified postscript |
 EPUB  | electonic publishing | ebooks           | HTML5, ZIP |
 LATEX |
-HTML  | hypertext markup     | Websites           | (X)HTML     |
+HTML  | hypertext markup     | Websites           | (X)HTML     | [@HTML4;@HTML5]
 MD    | Markdown             | Lightweight Markup | lightweight | [@ovadia_markdown_2014;@rfc7764]
 
 **Table xx.** Examples for formatting elements and their implementations in different markup languages types.
