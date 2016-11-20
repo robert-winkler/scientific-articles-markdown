@@ -89,7 +89,7 @@ Type  | Description          | Use              | Syntax   | Reference
 DOCX  | Office Open XML      | WYSIWYG editing  | XML, ZIP | [@OOXML]
 ODT   | Libre Office         | WYSIWYG editing  | XML, ZIP | [@ODF]
 PDF   | portable document    | Print replacment | simplified postscript |
-EPUB  | electonic publishing | ebooks           | HTML5, ZIP |
+EPUB  | electonic publishing | ebooks           | HTML5, ZIP | [@eikebrokk_epub_2014]
 LATEX |
 HTML  | hypertext markup     | Websites           | (X)HTML     | [@HTML4;@HTML5]
 MD    | Markdown             | Lightweight Markup | lightweight | [@ovadia_markdown_2014;@rfc7764]
