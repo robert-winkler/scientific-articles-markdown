@@ -84,29 +84,32 @@ In academic publishing, the following types of works require the creation of dif
 
 **Table xx.** Current standard formats for publishing
 
-Type  | Description          | Use              | Syntax   | Reference
-:---- | :------------------- | :--------------- | :------- | :--------
-DOCX  | Office Open XML      | WYSIWYG editing  | XML, ZIP | [@OOXML]
-ODT   | Libre Office         | WYSIWYG editing  | XML, ZIP | [@ODF]
-PDF   | portable document    | Print replacment | simplified postscript |
-EPUB  | electonic publishing | ebooks           | HTML5, ZIP | [@eikebrokk_epub_2014]
-LATEX |
-HTML  | hypertext markup     | Websites           | (X)HTML     | [@HTML4;@HTML5]
-MD    | Markdown             | Lightweight Markup | lightweight | [@ovadia_markdown_2014;@rfc7764]
+**Type**  | **Description**          | **Use**            | **Syntax**     | **Reference**
+:-------- | :----------------------- | :----------------- | :------------- | :--------------------------------
+DOCX      | Office Open XML          | WYSIWYG editing    | XML, ZIP       | [@OOXML]
+ODT       | Libre Office             | WYSIWYG editing    | XML, ZIP       | [@ODF]
+PDF       | portable document        | print replacement  | PDF            | [@international_organization_for_standardization_iso_2013]
+EPUB      | electronic publishing    | ebooks             | HTML5, ZIP     | [@eikebrokk_epub_2014]
+LATEX     | typesetting system       | high-quality print | TEX            | [@lamport_latex:_1994]
+HTML      | hypertext markup         | websites           | (X)HTML        | [@HTML4;@HTML5]
+MD        | Markdown                 | lightweight markup | plain text MD  | [@ovadia_markdown_2014;@rfc7764]
 
 **Table xx.** Examples for formatting elements and their implementations in different markup languages types.
 
-Element              | Markdown     | LATEX                  | HTML
-:------------------- | :----------- | ---------------------- | --------------------
-**structure**        |              |                        |
-section              | `# Intro`    | `\section{Intro}`      | `<h1><Intro></h1>`
-subsection           | `## History` | `\subsection{History}` | `<h2><History></h2>`
-**text formatting**  |              |                        |
-bold                 | `**text**`   | `\textbf{text}`        | `<b>text</b>`
-italics              | `*text*`     | `\textit{text}`        | `<i>text</i>`
-**cross references** |              |                        |
-http link            | `<https://arxiv.org/>` | `\usepackage{url}`                        | ` <a href="https://arxiv.org/"></a> `
-                     |              | `\url{https://arxiv.org/}`                       | 
+**Element**    | **Markdown**  | **LATEX**          | **HTML**
+:--------------| :-------------| :------------------| :-------------------
+**structure**  |               |                    |
+section        | `# Intro`     | `\section{Intro}`  | `<h1><Intro></h1>`
+subsection     | `## History`  | `\subsection`      | `<h2><History></h2>`
+|              |               |  `{History}`       |
+**text style** |               |                    |
+bold           | `**text**`    | `\textbf{text}`    | `<b>text</b>**`
+italics        | `*text*`      | `\textit{text}`    | `<i>text</i>`
+**links**      |               |                    |
+http link      | `<https://`   | `\usepackage{url}` | `<a href="https://`
+|              | `arxiv.org/>` | `\url{https://`    | `arxiv.org/"></a> `
+|              |               | `arxiv.org/}`      | 
+
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files.
 Overall, markdown displays the simplest structure, which facilitates the editing of documents.
@@ -115,7 +118,7 @@ Several programs for the conversion between documents formats exist, such as the
 The need for hybrid publishing has been recognized outside of science[@dptcollective_toolkit_2015;@kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far.
 
 # Concepts of markdown and Pandoc
-Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal of simplifying the writing of HTML documents <http://daringfireball.net/projects/markdown/>.
+Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>.
 
 Despite it's original focus on the web, it is has been proven to be well suited
 for academic writing [@ovadia_markdown_2014].
@@ -162,16 +165,16 @@ Following the potential of typesetting scientific manuscripts with Pandoc is dem
 Pipe tables are less strict in their syntax
 
 ```
-| Left | Center | Right | Default |
-|:-----|:------:|------:|---------|
-| LLL  | CCC    | RRR   | DDD     |
+ Left | Center | Right | Default 
+:-----|:------:|------:|---------
+ LLL  | CCC    | RRR   | DDD     
 ```
 
 gives
 
 Left | Center | Right | Default
 :--- | :----: | ----: | -------
-LLL  |  CCC   |   RRR | DDD
+LLL  | CCC    | RRR   | DDD
 
 ## Figures
 
@@ -215,45 +218,13 @@ The bibliography style, which Pandoc should use for the target document can be c
 For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create TEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.
 
 ## Database of cited references
-To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references.
-If the `--natbib` option was used for creating a PDF file (xx LATEX-PDF?), LATEX creates an AUX file, which can be extracted using BibTool:
+To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references. If LATEX output was generated with the `--natbib`, the compilation of the file with LATEX gives an AUX file (in the example named `md-article.aux`), which subsequently can be extracted using BibTool <https://github.com/ge-ne/bibtool>:
     ~~~
     bibtool -x md-article.aux -o bibshort.bib
     ~~~
-In this case the new database would be called `bibshort.bib`.
-If no AUX file is present, it has to be created manually
+In this example, the article database will be called `bibshort.bib`.
 
-1. The reference keys have to be extracted from the manuscript. This can be done by a simple Perl (<https://www.perl.org/>) command:
-    ~~~
-    perl -ne 'print "$1," if /(?<=@)(.+?)(?=[\],])/' article.md
-    ~~~
-    The command prints out the keys of the file `article.md`, separated by comas. Domains of email adresses also will be returned, but this does not affect the creation of the final database.
-2. A bibtex `.aux` file (e.g. `bibextract.aux`) has to be created, containing the name of the database (here: `zotero.bib`) and the extracted keys, separated by comas (from the previous step):
-3.  The reference keys have to be extracted from the manuscript. This can be don
-    by Pandoc in combination with a simple Perl (<https://www.perl.org/>)
-    command:
-
-    ~~~
-    pandoc -t json article.md | perl -ne 'print(join ",", /"citationId":"(.*?)"/)'
-    ~~~
-
-    The command prints out the keys of the file `article.md`, separated by commas.
-4.  A bibtex `.aux` file (e.g. `bibextract.aux`) has to be created, containing
-    the name of the database (here: `zotero.bib`) and the extracted keys,
-    separated by commas (from the previous step):
-
-    ~~~
-    \bibstyle{alpha}
-    \bibdata{zotero.bib}
-    \citation{smith_software_2016,key2,key3}
-    ~~~
-
-3. Now the new database can be generated with BibTool as mentioned above.
-
-
-3.  Now the new database can be generated with BibTool as mentioned above.
-
-We wrote the Perl script `mdbibexport` with a simple user dialog, which asks asking for the relevant files and performs the generation of an article specific BIB database.
+For the direct creation of an article specific BIB database without using LATEX, we wrote a simple Perl script `mdbibexport` (<https://github.com/robert-winkler/mdbibexport>).
 
 # Definition of output formatting
 command line parameters and templates xx
@@ -310,14 +281,13 @@ We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bi
 # Software and code availability
 The relevant software for creating this manuscript used is cited according to [@smith_software_2016]. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
 
-Software        | Use                                   | Authors                         | Version  | Release date | Homepage/ repository
-:-------------- | :------------------------------------ | :------------------------------ | :------- | :----------- | :----------------------------------------------
-Pandoc          | universal markup converter            | John MacFarlane                 | 1.16.0.2 | 2016/01/13   | <http://www.pandoc.org>
-pandoc-citeproc | library for CSL citations with Pandoc | John MacFarlane, Andrea Rossato | 0.9.1    | 2016/03/19   | <https://github.com/jgm/pandoc-citeproc>
-ownCloud        | personal cloud software               | ownCloud GmbH, Community        | 9.1.1    | 2016/09/20   | <https://owncloud.org/>
-Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1      | 2016/03/08   | <https://github.com/icewind1991/files_markdown>
-BibTool | Bibtex database tool | Gerd Neugebauer | 2.63 | 2016/01/16 |  <https://github.com/ge-ne/bibtool>
-mdbibexport   | bibliography of cited references | Robert Winkler | 0.10 | 2016/10/31 | https://github.com/robert-winkler/mdbibexport
+**Software**    | **Use**                                | **Authors**                     | **Version**  | **Release** | **Homepage/ repository**
+:-------------- | :------------------------------------- | :------------------------------ | :----------- | :--------------- | :-----------------------------------------------
+Pandoc          | universal markup converter             | John MacFarlane                 | 1.16.0.2     | 16/01/13         | <http://www.pandoc.org>
+pandoc-citeproc | library for CSL citations with Pandoc  | John MacFarlane, Andrea Rossato | 0.9.1        | 16/03/19         | <https://github.com/jgm/pandoc-citeproc>
+ownCloud        | personal cloud software                | ownCloud GmbH, Community        | 9.1.1        | 16/09/20         | <https://owncloud.org/>
+Markdown Editor | plugin for ownCloud                    | Robin Appelman                  | 0.1          | 16/03/08         | <https://github.com/icewind1991/files_markdown>
+BibTool         | Bibtex database tool                   | Gerd Neugebauer                 | 2.63         | 16/01/16         | <https://github.com/ge-ne/bibtool>
 
 xx CuteMarkEd xx
 xx JotterPad Prof xx

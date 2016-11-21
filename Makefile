@@ -1,4 +1,4 @@
-PANDOC_DEFAULT_OPTIONS = -S -s --columns=10 --filter pandoc-citeproc
+PANDOC_DEFAULT_OPTIONS = -S -s --columns=5 
 
 PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
 PANDOC_LATEX_OPTIONS += -M fontsize=10pt
@@ -6,7 +6,10 @@ PANDOC_LATEX_OPTIONS += -M classoption=fleqn
 PANDOC_LATEX_OPTIONS += -M documentclass=wlpeerj
 PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 
-PANDOC_NONTEX_OPTIONS = --csl=apa.csl
+PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos-one.csl 
+
+# LATEX code will produce with the --natbib option, which also enables the extraction of citations using BibTool
+# PDF generation uses the --filter pandoc-citeproc option.
 
 # test if panflute is installed
 PANFLUTE_INSTALLED = $(shell echo "1" | pandoc -t markdown --filter filters/identity.py 2>/dev/null)
@@ -21,11 +24,13 @@ all: outfile.tex outfile.pdf outfile.docx outfile.epub outfile.html
 
 outfile.tex: agile-editing-pandoc.md pandoc-peerj.latex
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	       --natbib \
 	       $(PANDOC_LATEX_OPTIONS) \
 	       -o $@ $<
 
 outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+	        --filter pandoc-citeproc \
 	       $(PANDOC_LATEX_OPTIONS) \
 	       -o $@ $<
 
