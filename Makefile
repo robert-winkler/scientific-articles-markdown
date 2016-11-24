@@ -1,4 +1,4 @@
-PANDOC_DEFAULT_OPTIONS = -S -s --columns=5 
+PANDOC_DEFAULT_OPTIONS = -S -s --columns=5
 
 PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
 PANDOC_LATEX_OPTIONS += -M fontsize=10pt
@@ -6,7 +6,7 @@ PANDOC_LATEX_OPTIONS += -M classoption=fleqn
 PANDOC_LATEX_OPTIONS += -M documentclass=wlpeerj
 PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 
-PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos-one.csl 
+PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 
 # LATEX code will produce with the --natbib option, which also enables the extraction of citations using BibTool
 # PDF generation uses the --filter pandoc-citeproc option.
@@ -20,7 +20,7 @@ ifneq ($(strip $(PANFLUTE_INSTALLED)),)
 PANDOC_NONTEX_OPTIONS += --filter=filters/flatten-meta.py
 endif
 
-all: outfile.tex outfile.pdf outfile.docx outfile.epub outfile.html
+all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 
 outfile.tex: agile-editing-pandoc.md pandoc-peerj.latex
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
@@ -39,6 +39,13 @@ outfile.docx: agile-editing-pandoc.md
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --reference-docx=pandoc-manuscript.docx \
 	       -o $@ $<
+
+outfile.odt: agile-editing-pandoc.md
+	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+				 $(PANDOC_NONTEX_OPTIONS) \
+				 --reference-docx=pandoc-manuscript.odt \
+				 -o $@ $<
+
 
 outfile.epub: agile-editing-pandoc.md
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \

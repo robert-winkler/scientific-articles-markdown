@@ -22,7 +22,7 @@ abstract: The timely publication of scientific results is essential for dynamic 
 ---
 
 # Introduction
-Agile development of science depends on the continuous exchange of information between the researchers [@woelfle_open_2011]. In the past, physical copies of scientific works had to be produced and distributed. Therefore, publishers needed to invest considerable economical resources for typesetting and printing. Since the journals were mainly financed by their subscribers, their editors not only had to decide on the scientific quality of a submitted manuscript, but also on the potential interest for their readers. The availability of globally connected computers enabled the rapid exchange of information at low cost. Yochai Benkler (2006) predicts important changes in the information production economy, which are based on three observations: 
+Agile development of science depends on the continuous exchange of information between the researchers [@woelfle_open_2011]. In the past, physical copies of scientific works had to be produced and distributed. Therefore, publishers needed to invest considerable economical resources for typesetting and printing. Since the journals were mainly financed by their subscribers, their editors not only had to decide on the scientific quality of a submitted manuscript, but also on the potential interest for their readers. The availability of globally connected computers enabled the rapid exchange of information at low cost. Yochai Benkler (2006) predicts important changes in the information production economy, which are based on three observations:
 
 1. A nonmarket motivation in areas such as education, arts, science, politics and theology.
 2. The actual rise of nonmarket production, made possible through networked individuals and coordinate effects.
@@ -32,17 +32,17 @@ Immaterial goods such as knowledge and culture are not lost, when consumed or sh
 
 
 ## Preprints and e-prints
-In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints -- 'e-prints' -- about high-energy particle theory at the  Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001]. 
+In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints -- 'e-prints' -- about high-energy particle theory at the  Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001].
 Currently, arXiv (<https://arxiv.org/>) publishes e-prints related to physics, mathematics, computer science, quantitative biology quantitative finance and statistics. Just a few years after the start of the first preprint servers, their important contribution to scientific communication was evident [@ginsparg_first_1994;@youngen_citation_1998;@brown_e-volution_2001]. In 2014, arXiv reached the impressive number of 1 million e-prints [@van_noorden_arxiv_2014].
 In more conservative areas, such as chemistry and biology, accepting the publishing prior peer-review took more time [@brown_role_2003]. A preprint server for life sciences (<http://biorxiv.org/>) was launched by the Cold Spring Habor Laboratory, USA, in 2013 [@callaway_preprints_2013]. *PeerJ preprints* (<https://peerj.com/preprints/>), started in the same year, accepts manuscripts from biological sciences, medical sciences, health sciences and computer sciences. The terms 'preprints' and 'e-prints' are used synonymously, since the physical distribution of preprints has become obsolete.
 A major drawback of preprint publishing are the sometimes restrictive policies of scientific publishers. The SHERPA/RoMEO project informs about copyright policies and self-archiving options of individual publishers (<http://www.sherpa.ac.uk/romeo/>).
 
-## Open Access 
+## Open Access
 The term *'Open Access'* was introduced 2002 by the Budapest Open Access Initiative and was defined as:
-  
+
 *"Barrier-free access to online works and other resources. OA literature is digital, online, free of charge (gratis OA), and free of needless copyright and licensing restrictions (libre OA)."* [@suber_open_2012]   
 
-Frustrated by the difficulty to access even digitalized scientific literature, three scientists founded the *Public Library of Science (PLoS)*. In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003;@eisen_publish_2003]. Thanks to the great success of OA publishing, many conventional print publishers now offer a so-called 'Open Access option', i.e. to make accepted articles free to read for an additional payment. The copyright in this hybrid models might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/>). 
+Frustrated by the difficulty to access even digitalized scientific literature, three scientists founded the *Public Library of Science (PLoS)*. In 2003, *PLoS Biology* was published as the first fully Open Access (OA) journal for biology [@brown_why_2003;@eisen_publish_2003]. Thanks to the great success of OA publishing, many conventional print publishers now offer a so-called 'Open Access option', i.e. to make accepted articles free to read for an additional payment. The copyright in this hybrid models might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/>).
 OA literature is only one component of a more general *'open'* philosophy, which also includes the access to scholarships, software, and data [@willinsky_unacknowledged_2005]. Interestingly, there are several different 'schools' of thinking on how to understand and define *'Open Science'*, as well the position that any science is open by definition, because of its objective to make generated knowledge public [@fecher_open_2014].
 
 
@@ -53,7 +53,7 @@ PeerJ (<https://peerj.com/>), an OA journal for biological and computer sciences
 Examples such as the *Journal of Statistical Software* (*JSS*, <https://www.jstatsoft.org/>) and *eLife* (<https://elifesciences.org/>) demonstrate the possibility of completely community-supported OA publications. **Fig. xx** compares the APCs of different OA publishing business models.   
 *JSS* and *eLife* are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
-![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png)
+![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png)  
 **Figure xx.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal webpages.
 
 In 2009, a study was carried concerning the *"Economic Implications of Alternative Scholarly Publishing Models"*, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. xx**.
@@ -108,7 +108,7 @@ italics        | `*text*`      | `\textit{text}`    | `<i>text</i>`
 **links**      |               |                    |
 http link      | `<https://`   | `\usepackage{url}` | `<a href="https://`
 |              | `arxiv.org/>` | `\url{https://`    | `arxiv.org/"></a> `
-|              |               | `arxiv.org/}`      | 
+|              |               | `arxiv.org/}`      |
 
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files.
@@ -128,10 +128,9 @@ for academic writing [@ovadia_markdown_2014].
 
 # Markdown editors and online editing
 **Fig. xx** summarized various options for local or networked editing of MD files.
- 
-![Offline and online editing of mardown files](fig-editing-options.png)  
-**Figure xx.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository may be used. 
 
+![Offline and online editing of mardown files](fig-editing-options.png)  
+**Figure xx.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository may be used.
 
 ## Markdown editors
 Because of the simple syntax, basically any text editor is suitable for editing markdown files. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, such as syntax highlighting, live preview or structure browsing.
@@ -146,10 +145,12 @@ Even for tablets, Android and iOS devices, numerous free and low-cost applicatio
 
 xx Google Docs test editing.
 
-In recent years, several platforms were developed for collaborative writing. Google Docs. OwnCloud with Markdown Editor plugin (see section xx).
+In recent years, several platforms were developed for collaborative writing. The online editor StackEdit (<https://stackedit.io>) can be used for editing markdown files on a Google Drive (<https://drive.google.com>). OwnCloud with Markdown Editor plugin (see section xx).
 
 ![Online editing on with an ownCloud plugin](fig-owncloud-md-editor.png)<br>
 **Figure xx.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
+
+
 
 ## Document versioning and change control
 Integrated in editing software or cloud server, low overhead of the files diff, git.
@@ -165,7 +166,7 @@ Following the potential of typesetting scientific manuscripts with Pandoc is dem
 Pipe tables are less strict in their syntax
 
 ```
- Left | Center | Right | Default 
+ Left | Center | Right | Default
 :-----|:------:|------:|---------
  LLL  | CCC    | RRR   | DDD     
 ```
@@ -201,7 +202,7 @@ Verbatim code blocks are indicated by three tilde symbols:
     verbatim code
     ~~~
 
-Typeseting `inline code` is possible by enclosing text between back ticks ``.
+Typeseting `inline code` is possible by enclosing text between back ticks ` `.
 
 # Citations and biography
 
@@ -226,18 +227,45 @@ In this example, the article database will be called `bibshort.bib`.
 
 For the direct creation of an article specific BIB database without using LATEX, we wrote a simple Perl script `mdbibexport` (<https://github.com/robert-winkler/mdbibexport>).
 
-# Definition of output formatting
-command line parameters and templates xx
 
-# Example: Manuscript with output of DOCX format and TEX/PDF for submission to different journals.
+# Meta information of the document
+
+Document information  such as title, authors, abstract etc. can be defined in a metadata block written in YAML syntax. YAML ("YAML Ain't Markup Language", <http://yaml.org/>) is a data serialization standard with simple, human readable format. Variables defined in the YAML section are processed by pandoc and integrated into the generated documents. The YAML metadata block is recognized by three hyphens (`---`) at the beginning, and three hyphens or dots (`...`) at the end, e.g.:
+
+~~~
+---
+title: 'Formatting Open Science'
+author:
+  - name: Albert Krewinkel
+    affiliation: 1
+  - name: Robert Winkler
+    affiliation: 2
+    fullname: Prof. Dr. Robert Winkler
+    email: robert.winkler@cinvestav.mx
+institute:
+  - index: 1
+    name: FTI Touristik GmbH, Berlin, Germany
+  - index: 2
+    name: >
+      CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology,
+      Laboratory of Biochemical and Instrumental Analysis,
+      Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato,
+      Gto. Mexico
+bibliography: agile-markdown.bib
+keywords: 'markdown, latex, publishing, typesetting'
+abstract: The timely ..
+---
+~~~
+
+# Example: Manuscript with output of DOCX/ODT format and TEX/PDF for submission to different journals.
 DOCX the most common, but also LATEX only journals, PeerJ pre-print server
 
 ## Development of DOCX template
 
-A first DOCX document with bibliography in APA format is created with Pandoc DOCX output:
+A first DOCX document with bibliography in *PLoS* format is created with Pandoc DOCX output:
 
 ~~~
-pandoc -S -s --csl=apa.csl --filter pandoc-citeproc
+pandoc -S -s --csl=plos.csl --filter pandoc-citeproc
 -o pandoc-manuscript.docx agile-editing-pandoc.md
 ~~~
 
@@ -255,10 +283,13 @@ pandoc -S -s --columns=10 --reference-docx=outfile.docx --csl=apa.csl --filter p
 ~~~
 
 In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as Pandoc template for other manuscripts with the same specifications. In this case, running Pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template.
-A page with DOCX manuscript formatting of this article is shown in figure xx.
+A page with DOCX manuscript formatting of this article is shown in **Fig. xx**.
 
 
-**Figure xx.** DOCX output with a modified document template.
+![Editing a pandoc generated DOCX in Office 365](fig-DOCX-document-in-O365.png)<br>
+**Figure xx.** Editing a pandoc generated DOCX in Office 365.
+
+The same proceedure can be applied for an ODT formatted document.
 
 ## Development of a TEX/PDF template
 
@@ -270,7 +301,7 @@ pandoc -D latex > template-peerj.latex
 The commands necessary to produce the document in a specific formats or styles can be defined in a simple `Makefile`. An example `Makefile` is included in the source code of this preprint.  The desired output file format can be chosen when calling `make`. E.g. `make outfile.pdf` produces this preprint in PDF format.Calling `make` without any option creates all listed document types.
 
 ## Cross-platform compatibility
-The `make` process was tested on xx Windows 10, Linux 64 bit and iOS X. All documents -- DOCX, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
+The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- DOCX, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
 
 # Conclusions
 Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting  is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing.  The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using Pandoc, and templates enable the automated generation of documents according to specific journal styles. Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
