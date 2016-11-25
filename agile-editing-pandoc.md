@@ -50,18 +50,18 @@ OA literature is only one component of a more general *'open'* philosophy, which
 
 In a recent study, the article processing charges (APCs) for research intensive universities in the USA and Canada were estimated to be about 1,800 USD for fully OA journals and 3,000 USD for hybrid OA journals [@solomon_article_2016].
 PeerJ (<https://peerj.com/>), an OA journal for biological and computer sciences launched 2013, drastically reduced the publishing cost and offers its members a life-time publishing plan for a small registration fee [@van_noorden_journal_2012]; alternatively the authors can choose to pay an APC of 1,095 USD, which may be cheaper, if multiple co-authors participate.  
-Examples such as the *Journal of Statistical Software* (*JSS*, <https://www.jstatsoft.org/>) and *eLife* (<https://elifesciences.org/>) demonstrate the possibility of completely community-supported OA publications. **Fig. xx** compares the APCs of different OA publishing business models.   
+Examples such as the *Journal of Statistical Software* (*JSS*, <https://www.jstatsoft.org/>) and *eLife* (<https://elifesciences.org/>) demonstrate the possibility of completely community-supported OA publications. **Fig. 1** compares the APCs of different OA publishing business models.   
 *JSS* and *eLife* are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
 ![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png)  
-**Figure xx.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal webpages.
+**Figure 1.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal webpages.
 
-In 2009, a study was carried concerning the *"Economic Implications of Alternative Scholarly Publishing Models"*, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. xx**.
+In 2009, a study was carried concerning the *"Economic Implications of Alternative Scholarly Publishing Models"*, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
 
 ![Publishing costs](fig-hybrid-publishing-costs.png)
-**Figure xx.** Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].
+**Figure 2.** Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].
 
-Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdraw from the science budget [@van_noorden_open_2013]. Generally, the production costs of an article could be roughly divided into commercial and academic/ technical costs (**Fig. xx**). For nonmarket production, the commercial costs such as margins/ profits, management etc. can be drastically reduced. Hardware and services for hosting an editorial system, such as Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>) can be provided by public institutions. Employed scholars can perform editor and reviewer activities without additional cost for the journals. Nevertheless, 'article processing', which includes the manuscript handling during peer review and production represents the most expensive part.   
+Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdraw from the science budget [@van_noorden_open_2013]. Generally, the production costs of an article could be roughly divided into commercial and academic/ technical costs (**Fig. 2**). For nonmarket production, the commercial costs such as margins/ profits, management etc. can be drastically reduced. Hardware and services for hosting an editorial system, such as Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>) can be provided by public institutions. Employed scholars can perform editor and reviewer activities without additional cost for the journals. Nevertheless, 'article processing', which includes the manuscript handling during peer review and production represents the most expensive part.   
 Therefore, we investigated a strategy for the efficient formatting of scientific manuscripts.
 
 ## Current standard publishing formats
@@ -82,7 +82,7 @@ In academic publishing, the following types of works require the creation of dif
 - For submitting a journal manuscript for peer-review in DOCX, as well as a pre-print version with another journal style in PDF.
 
 
-**Table xx.** Current standard formats for publishing
+**Table 1.** Current standard formats for publishing
 
 **Type**  | **Description**          | **Use**            | **Syntax**     | **Reference**
 :-------- | :----------------------- | :----------------- | :------------- | :--------------------------------
@@ -94,7 +94,7 @@ LATEX     | typesetting system       | high-quality print | TEX            | [@l
 HTML      | hypertext markup         | websites           | (X)HTML        | [@HTML4;@HTML5]
 MD        | Markdown                 | lightweight markup | plain text MD  | [@ovadia_markdown_2014;@rfc7764]
 
-**Table xx.** Examples for formatting elements and their implementations in different markup languages types.
+**Table 2.** Examples for formatting elements and their implementations in different markup languages types.
 
 **Element**    | **Markdown**  | **LATEX**          | **HTML**
 :--------------| :-------------| :------------------| :-------------------
@@ -118,19 +118,17 @@ Several programs for the conversion between documents formats exist, such as the
 The need for hybrid publishing has been recognized outside of science[@dptcollective_toolkit_2015;@kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far.
 
 # Concepts of markdown and Pandoc
-Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>.
-
-Despite it's original focus on the web, it is has been proven to be well suited
-for academic writing [@ovadia_markdown_2014].
+Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, this markdown (MD) file  parsed to generate the final HTML document. With this concept,  the source file remains easily readable and the  author  can focus on the contents rather than formatting.
+Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, Pandoc MD xx adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in Pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
 
 ![Workfow for the generation of multiple document formats with Pandoc](fig-pandoc-workflow.png)<br>
-**Figure xx.** Workfow for the generation of multiple document formats with Pandoc.
+**Figure 3.** Workfow for the generation of multiple document formats with Pandoc.
 
 # Markdown editors and online editing
-**Fig. xx** summarized various options for local or networked editing of MD files.
+**Fig. 4** summarized various options for local or networked editing of MD files.
 
 ![Offline and online editing of mardown files](fig-editing-options.png)  
-**Figure xx.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository may be used.
+**Figure 4.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository, e.g. github or bitbucket xxs may be used.
 
 ## Markdown editors
 Because of the simple syntax, basically any text editor is suitable for editing markdown files. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, such as syntax highlighting, live preview or structure browsing.
@@ -139,16 +137,14 @@ xx Writing on the go mobile devices,
 Even for tablets, Android and iOS devices, numerous free and low-cost applications exist. Parts of this text were written in xx JotterPad dictation and swipe softwarexx Various of those applications support the cloud storage of documents.
 
 ![CuteMarkEd editor](fig-cutemarked-editor.png)<br>
-**Figure xx.** Editing window, HTML preview and table of contents using the CuteMarkEd editor.
+**Figure 5.** Editing window, HTML preview and table of contents using the CuteMarkEd editor.
 
 ## Online editing and collaborative writing
-
-xx Google Docs test editing.
 
 In recent years, several platforms were developed for collaborative writing. The online editor StackEdit (<https://stackedit.io>) can be used for editing markdown files on a Google Drive (<https://drive.google.com>). OwnCloud with Markdown Editor plugin (see section xx).
 
 ![Online editing on with an ownCloud plugin](fig-owncloud-md-editor.png)<br>
-**Figure xx.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
+**Figure 6.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
 
 
 
@@ -156,7 +152,7 @@ In recent years, several platforms were developed for collaborative writing. The
 Integrated in editing software or cloud server, low overhead of the files diff, git.
 
 ![Version control using a git repository](fig-bitbucket-diff.png)<br>
-**Figure xx.** Version control and collaborative editing using a git repository on bitbucket.
+**Figure 7.** Version control and collaborative editing using a git repository on bitbucket.
 
 # Pandoc markdown for scientific texts
 Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by @dominici_pandoc_2014.  The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
@@ -205,18 +201,23 @@ Verbatim code blocks are indicated by three tilde symbols:
 Typeseting `inline code` is possible by enclosing text between back ticks ` `.
 
 # Citations and biography
-
+ The efficient organization and typesetting of citations and bibliographies is crucial for academic writing. Pandoc supports various strategies for managing references.
 ## Reference databases
-bibtex databases, which are supported by almost any reference management program.
-
+Pandoc is able to process all mainstream literature.database formats, such as RIS, BIB, .. Xx 
+However, for maintaining compatibility with LATEX/ BIBTEX, the use of BIB databases is recommended. The used database either can be defined in the YAML metablock of the MD file (see below) or can be passed as parameter when calling Pandoc.
+## Inserting citations
+For inserting a reference, the database key is given within square brackets, and indicated by an '@'. It is also possible to add information, such as page:
+~~~
+xxx
+~~~
+gives xx
 ## Styles
-Whereas natbib bibtex is supported by Pandoc, it is incompatible with DOCX xx.
 The  Citation Style Language (CSL) <http://citationstyles.org/> is used for the citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>.
 CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>.
-The bibliography style, which Pandoc should use for the target document can be chosen or in the YAML block of the markdown document or can be passed as an command line option. The later is more recommendable, because different bibliography style may be used for different documents.
+The bibliography style, which Pandoc should use for the target document can be chosen or in the YAML block of the markdown document or can be passed as an command line option. The later is more recommendable, because distinct bibliography style may be used for different documents.
 
 ## Creation of natbib citations in LaTeX
-For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create TEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.
+For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create a LATEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.
 
 ## Database of cited references
 To share the bibliography for a certain manuscript with co-authors or the publisher's production team, it is often desirable to generate a subset of a larger database, which only contains cited references. If LATEX output was generated with the `--natbib`, the compilation of the file with LATEX gives an AUX file (in the example named `md-article.aux`), which subsequently can be extracted using BibTool <https://github.com/ge-ne/bibtool>:
@@ -279,15 +280,15 @@ pandoc -S -s --reference-docx=pandoc-manuscript.docx
 It is also possible to directly re-use a previous output file as template (i.e. template and output file have the same file name):
 
 ~~~
-pandoc -S -s --columns=10 --reference-docx=outfile.docx --csl=apa.csl --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
+pandoc -S -s --columns=10 --reference-docx= pandoc-manuscript.docx --csl=apa.csl --filter pandoc-citeproc -o pandoc-manuscript.docx agile-editing-pandoc.md
 ~~~
 
 In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as Pandoc template for other manuscripts with the same specifications. In this case, running Pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template.
-A page with DOCX manuscript formatting of this article is shown in **Fig. xx**.
+A page with DOCX manuscript formatting of this article is shown in **Fig. 8**.
 
 
 ![Editing a pandoc generated DOCX in Office 365](fig-DOCX-document-in-O365.png)<br>
-**Figure xx.** Editing a pandoc generated DOCX in Office 365.
+**Figure 8.** Editing a pandoc generated DOCX in Office 365.
 
 The same proceedure can be applied for an ODT formatted document.
 
@@ -298,10 +299,10 @@ pandoc -D latex > template-peerj.latex
 ~~~
 
 # Automating document production
-The commands necessary to produce the document in a specific formats or styles can be defined in a simple `Makefile`. An example `Makefile` is included in the source code of this preprint.  The desired output file format can be chosen when calling `make`. E.g. `make outfile.pdf` produces this preprint in PDF format.Calling `make` without any option creates all listed document types.
+The commands necessary to produce the document in a specific formats or styles can be defined in a simple `Makefile`. An example `Makefile` is included in the source code of this preprint/ .  The desired output file format can be chosen when calling `make`. E.g. `make outfile.pdf` produces this preprint in PDF format.Calling `make` without any option creates all listed document types.
 
 ## Cross-platform compatibility
-The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- DOCX, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
+The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- DOCX, ODT, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
 
 # Conclusions
 Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting  is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing.  The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using Pandoc, and templates enable the automated generation of documents according to specific journal styles. Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
@@ -310,8 +311,8 @@ Authoring scientific manuscripts in markdown (MD) format is straight-forward, an
 We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
 
 # Software and code availability
-The relevant software for creating this manuscript used is cited according to [@smith_software_2016]. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
-
+The relevant software for creating this manuscript used is cited according to [@smith_software_2016] and listed in **Tab. 3**. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
+**Table 3.** Relevant software used for this article.
 **Software**    | **Use**                                | **Authors**                     | **Version**  | **Release** | **Homepage/ repository**
 :-------------- | :------------------------------------- | :------------------------------ | :----------- | :--------------- | :-----------------------------------------------
 Pandoc          | universal markup converter             | John MacFarlane                 | 1.16.0.2     | 16/01/13         | <http://www.pandoc.org>
