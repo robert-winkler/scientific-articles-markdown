@@ -183,7 +183,7 @@ LLL  |  CCC   |   RRR | DDD
 
 ## Formulas
 
-Formula can be inserted in LaTeX mode using delimiters (`$` for Pandoc, `$$` adds compatibility for online preview rendering with CuteMarkEd/MathJax). E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
+Formula can be inserted in LaTeX mode using delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ```
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
@@ -235,7 +235,7 @@ gives [@suber_open_2012; @benkler_wealth_2006, 57 ff.].
 
 The Citation Style Language (CSL) <http://citationstyles.org/> is used for the citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>. CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>. The bibliography style, which Pandoc should use for the target document can be chosen or in the YAML block of the markdown document or can be passed as an command line option. The later is more recommendable, because distinct bibliography style may be used for different documents.
 
-## Creation of natbib citations in LaTeX
+## Creation of LaTeX `natbib` citations
 
 For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create a LATEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.
 
