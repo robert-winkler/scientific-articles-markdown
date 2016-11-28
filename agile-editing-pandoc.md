@@ -17,31 +17,7 @@ institute:
       Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico
 bibliography: agile-markdown.bib
 keywords: 'markdown, latex, publishing, typesetting'
-abstract: >-
-  The timely publication of scientific results is essential for dynamic advances
-  in science. The ubiquitous availability of computers which are connected to a
-  global network made the rapid and low-cost distribution of information through
-  electronic channels possible. New concepts, such as Open Access publishing and
-  preprint servers are currently changing the traditional print media business
-  towards a community-driven peer production. However, the cost of scientific
-  literature generation, which is either charged to readers, authors or
-  sponsors, is still high. The main active participants in the authoring and
-  evaluation of scientific manuscripts are volunteers, and the cost for online
-  publishing infrastructure is close to negligible. A major time and cost factor
-  though is the formatting of manuscripts in the production stage. In this
-  article we demonstrate the feasibility to write scientific manuscripts in
-  plain markdown (MD) text files, which can be easily converted into common
-  publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple
-  syntax of markdown assures the long-term readability of raw files and the
-  development of software and workflows. We show the implementation of typical
-  elements of scientific manuscripts -- formulas, tables, code blocks and
-  citations -- and present tools or editing, collaborative writing and version
-  control. We give an example on how to prepare a manuscript with distinct
-  output formats, a DOCX file for submission to a journal and a LATEX/PDF
-  version for deposition as a PeerJ preprint. Reducing the work spent on
-  manuscript formatting translates directly to time and cost savings for
-  writers, publishers, readers and sponsors. Therefore, the adoption of the MD
-  format contributes to the agile production of open science literature.
+abstract: 'The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.'
 ---
 
 # Introduction
@@ -141,10 +117,9 @@ For the end user, the convenience of work with text, either writing alone or wit
 
 ## Markdown editors
 
-Because of the simple MD syntax, basically any text editor is suitable for editing markdown files. The formatting tags are written in plain text and easy to remember. Therefore, the author is not distracted by looking around for layout options with the mouse.
-For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, e.g. syntax highlighting, command helpers, live preview or structure browsing.  
-Also various dedicated mardown editors have been published. Many of those are cross-platform compatible, such as Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).  
-The lightweight format is also ideal for writing on mobile devices. Numerous applications are available on the App stors for Android and iOS systems. The programs Swype and Dragon (<http://www.nuance.com/>) facilitate the input of text on such devices by guessing words from gestures and speach recognition (dictation).  
+Because of the simple MD syntax, basically any text editor is suitable for editing markdown files. The formatting tags are written in plain text and easy to remember. Therefore, the author is not distracted by looking around for layout options with the mouse. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, e.g. syntax highlighting, command helpers, live preview or structure browsing.<br>
+Also various dedicated mardown editors have been published. Many of those are cross-platform compatible, such as Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).<br>
+The lightweight format is also ideal for writing on mobile devices. Numerous applications are available on the App stors for Android and iOS systems. The programs Swype and Dragon (<http://www.nuance.com/>) facilitate the input of text on such devices by guessing words from gestures and speach recognition (dictation).<br>
 **Fig. 5.** shows the editing of a text with the markdown editor CuteMarkEd.
 
 ![CuteMarkEd editor](fig-cutemarked-editor.png)<br>
@@ -194,9 +169,9 @@ The headings and the alignment of the cells is given in the first two lines. The
 
 Figures are inserted as follows:
 
-~~~
+```
 ![alt text](image location)
-~~~
+```
 
 The alt text is used e.g. in HTML output. Additional parameters such as image width are possible.
 
@@ -307,7 +282,7 @@ abstract: The timely ..
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
-At this moment, DOCX the most common format for manuscript submission. Some publishers also ask for LATEX or accept ODT. In this example,  we want to create a manuscript for a _PLoS_ journal, in DOCX and ODT for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.
+At this moment, DOCX the most common format for manuscript submission. Some publishers also ask for LATEX or accept ODT. In this example, we want to create a manuscript for a _PLoS_ journal, in DOCX and ODT for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.
 
 ## Development of DOCX template
 
