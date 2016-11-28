@@ -133,39 +133,48 @@ Markdown was originally developed by John Gruber in collaboration with Aaron Swa
 
 # Markdown editors and online editing
 
-**Fig. 4** summarized various options for local or networked editing of MD files.
+For the end user, the convenience of work with text, either writing alone or with several co-authors is important. Therefore, in this section we present software and strategies for different scenarios. **Fig. 4** summarized various options for local or networked editing of MD files.
 
 ![Offline and online editing of mardown files](fig-editing-options.png)<br>
-**Figure 4.** Markdownfile can be edited on local devices or on cloud drives. For advanced version control in collaborative working, a local or remote git repository, e.g. github or bitbucket xxs may be used.
+
+**Figure 4.** Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.
 
 ## Markdown editors
 
-Because of the simple syntax, basically any text editor is suitable for editing markdown files. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, such as syntax highlighting, live preview or structure browsing. On the other side, in the last years plenty of special mardown editors have been published. Many of those are cross-platform compatible, e.g. Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>). xx Writing on the go mobile devices, Even for tablets, Android and iOS devices, numerous free and low-cost applications exist. Parts of this text were written in xx JotterPad dictation and swipe softwarexx Various of those applications support the cloud storage of documents.
+Because of the simple MD syntax, basically any text editor is suitable for editing markdown files. The formatting tags are written in plain text and easy to remember. Therefore, the author is not distracted by looking around for layout options with the mouse.
+For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, e.g. syntax highlighting, command helpers, live preview or structure browsing.  
+Also various dedicated mardown editors have been published. Many of those are cross-platform compatible, such as Abricotine (<http://abricotine.brrd.fr/>), Ghostview (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).  
+The lightweight format is also ideal for writing on mobile devices. Numerous applications are available on the App stors for Android and iOS systems. The programs Swype and Dragon (<http://www.nuance.com/>) facilitate the input of text on such devices by guessing words from gestures and speach recognition (dictation).  
+**Fig. 5.** shows the editing of a text with the markdown editor CuteMarkEd.
 
 ![CuteMarkEd editor](fig-cutemarked-editor.png)<br>
 **Figure 5.** Editing window, HTML preview and table of contents using the CuteMarkEd editor.
 
 ## Online editing and collaborative writing
 
-In recent years, several platforms were developed for collaborative writing. The online editor StackEdit (<https://stackedit.io>) can be used for editing markdown files on a Google Drive (<https://drive.google.com>). OwnCloud with Markdown Editor plugin (see section xx).
+Storing manuscripts on network drives (_The Cloud_) has become popular because of several reasons: Protection against data loss, synchronization of documents between several devices and collaborative editing options. Markdown files on a Google Drive (<https://drive.google.com>) for instance can be edited online with StackEdit (<https://stackedit.io>). m can be used for editing markdown files . **Fig. 6** demonstrates the online editing of a markdown file on an OwnCloud (<https://owncloud.com/>) installation, using a plugin.
 
 ![Online editing on with an ownCloud plugin](fig-owncloud-md-editor.png)<br>
 **Figure 6.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
 
+Even formalas are rendered correctly in the HTML live preview window of the OwnCloud markdown plugin (**Fig. 6** ).
+
 ## Document versioning and change control
 
-Integrated in editing software or cloud server, low overhead of the files diff, git.
+Programmers, especially when working in distributed teams, rely on version control systems to manage changes of code. Currently, Git (<https://git-scm.com/>), which is also used e.g. for the development of the Linux kernel, is one of the most employed software solutions for versioning. Git allows the parallel work of collaborators and has an efficient merging and conflict resolution system. A Git respository may be used from a single local author to keep track of changes, or by a team with a remote repository, e.g. on github (<https://github.com/>) or bitbucket (<https://bitbucket.org/>).
 
 ![Version control using a git repository](fig-bitbucket-diff.png)<br>
 **Figure 7.** Version control and collaborative editing using a git repository on bitbucket.
 
+For the writing of the present article, the co-authors (Germany and Mexico) used a remote Git repository on bitbucket. The plain text syntax of markdown facilitates the visualization of differences of document versions, as shown in **Fig. 7**.
+
 # Pandoc markdown for scientific texts
 
-Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by @dominici_pandoc_2014\. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
+Following, the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as tables, figures, formulas, code listings and references. A brief introduction is given by [@dominici_pandoc_2014]. The complete Pandoc User's Manual is available at <http://pandoc.org/MANUAL.html>.
 
 ## Tables
 
-Pipe tables are less strict in their syntax
+There are several options to write tables in markdown. The most flexible alternative - which was also used for this article - are pipe tables. The contents of different cells are separated by pipe symbols (`|`):
 
 ```
 Left | Center | Right | Default
@@ -179,11 +188,21 @@ Left | Center | Right | Default
 :--- | :----: | ----: | -------
 LLL  |  CCC   |   RRR | DDD
 
+The headings and the alignment of the cells is given in the first two lines. The cell width is variable. The Pandoc parameter `--columns=NUM` can be used to define the length of lines in characters. If contents do not fit, they will be wrapped.
+
 ## Figures
+
+Figures are inserted as follows:
+
+~~~
+![alt text](image location)
+~~~
+
+The alt text is used e.g. in HTML output. Additional parameters such as image width are possible.
 
 ## Formulas
 
-Formula can be inserted in LaTeX mode using delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
+Formula are written in LaTeX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ```
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
@@ -213,13 +232,17 @@ Typeseting `inline code` is possible by enclosing text between back ticks.
 `inline code`
 ```
 
+## Other document elements
+
+Those examples are only a short demonstration of the capacities of Pandoc concerning scientific documents. For more detailed information, we refer to the official manual ( <http://pandoc.org/MANUAL.html>).
+
 # Citations and biography
 
-The efficient organization and typesetting of citations and bibliographies is crucial for academic writing. Pandoc supports various strategies for managing references.
+The efficient organization and typesetting of citations and bibliographies is crucial for academic writing. Pandoc supports various strategies for managing references. For processing the citations and the creation of the bibliography, the command line parameter `--filter pandoc-citeproc` is used, with variables for the reference database and the bibliography style. The bibliography will be located automatically at the header `# References` or `# Bibliography`.
 
 ## Reference databases
 
-Pandoc is able to process all mainstream literature.database formats, such as RIS, BIB, .. Xx However, for maintaining compatibility with LATEX/ BIBTEX, the use of BIB databases is recommended. The used database either can be defined in the YAML metablock of the MD file (see below) or can be passed as parameter when calling Pandoc.
+Pandoc is able to process all mainstream literature database formats, such as RIS, BIB, etc. However, for maintaining compatibility with LATEX/ BIBTEX, the use of BIB databases is recommended. The used database either can be defined in the YAML metablock of the MD file (see below) or it can be passed as parameter when calling Pandoc.
 
 ## Inserting citations
 
@@ -237,7 +260,7 @@ The Citation Style Language (CSL) <http://citationstyles.org/> is used for the c
 
 ## Creation of LaTeX `natbib` citations
 
-For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create a LATEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option.
+For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create a LATEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option, but without the `--filter pandoc-citeproc` parameter.
 
 ## Database of cited references
 
@@ -282,9 +305,9 @@ abstract: The timely ..
 ---
 ```
 
-# Example: Manuscript with output of DOCX/ODT format and TEX/PDF for submission to different journals.
+# Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
-DOCX the most common, but also LATEX only journals, PeerJ pre-print server
+At this moment, DOCX the most common format for manuscript submission. Some publishers also ask for LATEX or accept ODT. In this example,  we want to create a manuscript for a _PLoS_ journal, in DOCX and ODT for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.
 
 ## Development of DOCX template
 
