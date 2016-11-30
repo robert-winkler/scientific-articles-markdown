@@ -1,3 +1,4 @@
+MARKDOWN_FILE = agile-editing-pandoc.md
 PANDOC_DEFAULT_OPTIONS = -S -s --columns=5
 
 PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
@@ -22,38 +23,38 @@ endif
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 
-outfile.tex: agile-editing-pandoc.md pandoc-peerj.latex
+outfile.tex: $(MARKDOWN_FILE) pandoc-peerj.latex
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	       --natbib \
 	       $(PANDOC_LATEX_OPTIONS) \
 	       -o $@ $<
 
-outfile.pdf: agile-editing-pandoc.md pandoc-peerj.latex agile-markdown.bib
+outfile.pdf: $(MARKDOWN_FILE) pandoc-peerj.latex agile-markdown.bib
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	        --filter pandoc-citeproc \
 	       $(PANDOC_LATEX_OPTIONS) \
 	       -o $@ $<
 
-outfile.docx: agile-editing-pandoc.md
+outfile.docx: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --reference-docx=pandoc-manuscript.docx \
 	       -o $@ $<
 
-outfile.odt: agile-editing-pandoc.md
+outfile.odt: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 				 $(PANDOC_NONTEX_OPTIONS) \
 				 --reference-docx=pandoc-manuscript.odt \
 				 -o $@ $<
 
 
-outfile.epub: agile-editing-pandoc.md
+outfile.epub: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 	       -o $@ $<
 
-outfile.html: agile-editing-pandoc.md
+outfile.html: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
