@@ -161,7 +161,7 @@ Integrated in editing software or cloud server, low overhead of the files diff, 
 
 # Pandoc markdown for scientific texts
 
-Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by @dominici_pandoc_2014\. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
+Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by [@dominici_pandoc_2014]. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
 
 ## Tables
 
@@ -180,6 +180,16 @@ Left | Center | Right | Default
 LLL  |  CCC   |   RRR | DDD
 
 ## Figures
+
+## Symbols
+
+Unicode characters: ° α ä
+
+UTF-8 defined in <http://www.ietf.org/rfc/rfc3629.txt> and ISO/IEC 10646:2014 The Unicode Consortium
+
+<http://www.unicode.org/> Code charts, specifications
+
+For facilitating the input of language specific characters, so-called mnemonics can be used in some editors (such as atom, using the character-table package). E.g. the 2-character Mnemonics ':u' gives 'ü' (diaeresis), or 'D*' the greek Δ. The possible character mnemonics and character sets are listed in <https://tools.ietf.org/html/rfc1345>. To enable the processing of UTF-8 encoding, using the XELATEX option is recomendable for creating TEX/PDF documents (`--latex-engine=xelatex`).
 
 ## Formulas
 

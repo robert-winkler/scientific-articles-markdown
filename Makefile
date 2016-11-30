@@ -2,6 +2,7 @@ MARKDOWN_FILE = agile-editing-pandoc.md
 PANDOC_DEFAULT_OPTIONS = -S -s --columns=5
 
 PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
+PANDOC_LATEX_OPTIONS += --latex-engine=xelatex
 PANDOC_LATEX_OPTIONS += -M fontsize=10pt
 PANDOC_LATEX_OPTIONS += -M classoption=fleqn
 PANDOC_LATEX_OPTIONS += -M documentclass=wlpeerj
@@ -58,6 +59,8 @@ outfile.html: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
+				 -c pandoc.css \
+    	   -M header-includes:'<style>img {max-width:100%;}</style>' \
 	       -o $@ $<
 
 clean:
