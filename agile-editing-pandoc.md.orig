@@ -145,7 +145,13 @@ For the writing of the present article, the co-authors (Germany and Mexico) used
 
 # Pandoc markdown for scientific texts
 
+<<<<<<< HEAD
+Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by [@dominici_pandoc_2014]. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
+||||||| merged common ancestors
+Following the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as formulas, figures, tables, code listings and references. A brief introduction is given by @dominici_pandoc_2014\. The complete Pandoc User's Manual can be found at <http://pandoc.org/MANUAL.html>.
+=======
 Following, the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as tables, figures, formulas, code listings and references. A brief introduction is given by [@dominici_pandoc_2014]. The complete Pandoc User's Manual is available at <http://pandoc.org/MANUAL.html>.
+>>>>>>> ecc894f9b6c8fd4ba9d85db22387d8f861791e3f
 
 ## Tables
 
@@ -167,6 +173,7 @@ The headings and the alignment of the cells is given in the first two lines. The
 
 ## Figures
 
+<<<<<<< HEAD
 ## Symbols
 
 Unicode characters: ° α ä
@@ -177,6 +184,8 @@ UTF-8 defined in <http://www.ietf.org/rfc/rfc3629.txt> and ISO/IEC 10646:2014 Th
 
 For facilitating the input of language specific characters, so-called mnemonics can be used in some editors (such as atom, using the character-table package). E.g. the 2-character Mnemonics ':u' gives 'ü' (diaeresis), or 'D*' the greek Δ. The possible character mnemonics and character sets are listed in <https://tools.ietf.org/html/rfc1345>. To enable the processing of UTF-8 encoding, using the XELATEX option is recomendable for creating TEX/PDF documents (`--latex-engine=xelatex`).
 
+||||||| merged common ancestors
+=======
 Figures are inserted as follows:
 
 ```
@@ -185,6 +194,7 @@ Figures are inserted as follows:
 
 The alt text is used e.g. in HTML output. Additional parameters such as image width are possible.
 
+>>>>>>> ecc894f9b6c8fd4ba9d85db22387d8f861791e3f
 ## Formulas
 
 Formula are written in LaTeX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
