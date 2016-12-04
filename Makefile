@@ -10,16 +10,17 @@ PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 
 PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 
-# LATEX code will produce with the --natbib option, which also enables the extraction of citations using BibTool
-# PDF generation uses the --filter pandoc-citeproc option.
+# LATEX code will produce with the --natbib option, which also enables the
+# extraction of citations using BibTool PDF generation uses the --filter
+# pandoc-citeproc option.
 
 # test if panflute is installed
 PANFLUTE_INSTALLED = $(shell echo "1" | pandoc -t markdown --filter filters/identity.py 2>/dev/null)
 # Only try to run the filter if Panflute seems to be available. This will
-# prevent errors at the cost of all authors being set to "true" of panflute is
-# not setup correctly.
+# prevent errors at the cost of less-than-optimal output if panflute is not
+# setup correctly.
 ifneq ($(strip $(PANFLUTE_INSTALLED)),)
-PANDOC_NONTEX_OPTIONS += --filter=filters/flatten-meta.py
+PANDOC_LATEX_OPTIONS += --filter=filters/unflatten-meta.py
 endif
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
@@ -60,7 +61,7 @@ outfile.html: $(MARKDOWN_FILE)
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 				 -c pandoc.css \
-    	   -M header-includes:'<style>img {max-width:100%;}</style>' \
+	       -M header-includes:'<style>img {max-width:100%;}</style>' \
 	       -o $@ $<
 
 clean:
