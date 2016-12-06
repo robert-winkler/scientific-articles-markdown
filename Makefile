@@ -60,6 +60,7 @@ outfile.html: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
+				 --mathjax \
 				 -c pandoc.css \
 	       -M header-includes:'<style>img {max-width:100%;}</style>' \
 	       -o $@ $<

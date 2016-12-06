@@ -1,7 +1,20 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{wlpeerj}
 \usepackage{lineno}
+\usepackage{unicode-math}
+\setmainfont
+[    Extension = .otf,
+   UprightFont = *-regular,
+      BoldFont = *-bold,
+    ItalicFont = *-italic,
+BoldItalicFont = *-bolditalic,
+]{xits}
+\setmathfont
+[    Extension = .otf,
+      BoldFont = *bold,
+]{xits-math}
 \linenumbers
 \usepackage{ifxetex,ifluatex}
+\usepackage[CJK]{ucharclasses} %provides fontreplacement
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
@@ -9,13 +22,13 @@
 $if(euro)$
   \usepackage{eurosym}
 $endif$
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+%\else % if luatex or xelatex
+%  \ifxetex
+%    \usepackage{mathspec}
+%  \else
+%    \usepackage{fontspec}
+%  \fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -111,11 +124,11 @@ $if(dir)$
 \fi
 $endif$
 
-%$if(abstract)$
-%\begin{abstract}
-%$abstract$
-%\end{abstract}
-%$endif$
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
 
 % set default figure placement to htbp
 \makeatletter

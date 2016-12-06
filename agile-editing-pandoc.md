@@ -1,12 +1,12 @@
 ---
 title: Formatting Open Science
-author: Albert Krewinkel$^1$ and Robert Winkler$^2$
+author: 'Albert Krewinkel$^1$ and Robert Winkler$^{2,\star}$'
 bibliography: agile-markdown.bib
 ---
 
-**Affiliations:** ¹ TBD (Pandoc Development Team), ² CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis, Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico
+**Affiliations:** ¹ TBD (Pandoc Development Team), ² CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis, Km. 9.6 Libramiento Norte Carr. Irapuato-León, 36821 Irapuato, Gto. Mexico
 
-**Correspondence:** Prof. Dr. Robert Winkler, <robert.winkler@cinvestav.mx>
+**Correspondence:** Prof. Dr. Robert Winkler, [robert.winkler@cinvestav.mx](mailto:robert.winkler@cinvestav.mx)
 
 **Keywords:** markdown, latex, publishing, typesetting
 
@@ -47,7 +47,8 @@ _JSS_ and _eLife_ are peer-reviewed and indexed by Thomson Reuters. Both journal
 
 In 2009, a study was carried concerning the _"Economic Implications of Alternative Scholarly Publishing Models"_, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
 
-![Publishing costs](fig-hybrid-publishing-costs.png) **Figure 2.** Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].
+![Publishing costs](fig-hybrid-publishing-costs.png)<br>
+**Figure 2.** Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].
 
 Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdraw from the science budget [@van_noorden_open_2013]. Generally, the production costs of an article could be roughly divided into commercial and academic/ technical costs (**Fig. 2**). For nonmarket production, the commercial costs such as margins/ profits, management etc. can be drastically reduced. Hardware and services for hosting an editorial system, such as Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>) can be provided by public institutions. Employed scholars can perform editor and reviewer activities without additional cost for the journals. Nevertheless, 'article processing', which includes the manuscript handling during peer review and production represents the most expensive part.<br>
 Therefore, we investigated a strategy for the efficient formatting of scientific manuscripts.
@@ -161,23 +162,44 @@ The headings and the alignment of the cells is given in the first two lines. The
 
 ## Figures
 
-## Symbols
-
-Unicode characters: ° α ä
-
-UTF-8 defined in <http://www.ietf.org/rfc/rfc3629.txt> and ISO/IEC 10646:2014 The Unicode Consortium
-
-<http://www.unicode.org/> Code charts, specifications
-
-For facilitating the input of language specific characters, so-called mnemonics can be used in some editors (such as atom, using the character-table package). E.g. the 2-character Mnemonics ':u' gives 'ü' (diaeresis), or 'D*' the greek Δ. The possible character mnemonics and character sets are listed in <https://tools.ietf.org/html/rfc1345>. To enable the processing of UTF-8 encoding, using the XELATEX option is recomendable for creating TEX/PDF documents (`--latex-engine=xelatex`).
-
 Figures are inserted as follows:
 
 ```
-![alt text](image location)
+![alt text](image location/ name)
 ```
 
-The alt text is used e.g. in HTML output. Additional parameters such as image width are possible.
+e.g.
+
+```
+![Publishing costs](fig-hybrid-publishing-costs.png)
+```
+
+The `alt text` is used e.g. in HTML output. Additional parameters such as image width are possible.
+
+## Symbols
+
+Scientific texts often require special characters, e.g. Greek letters, mathematical and physical symbols etc.<br>
+
+The UTF-8 standard, developed and maintained by _Unicode Consortium_, enables the use of characters across languages and computer platforms. The encoding is defined as RFC document 3629 of the Network Working group [@rfc3629] and as ISO standard ISO/IEC 10646:2014 [@international_organization_for_standardization_iso/iec_2014]. Specifications of Unicode and code charts are provided on the Unicode homopage (<http://www.unicode.org/>).<br>
+
+In Pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. For the correct processing of UTF-8 encoding in LATEX, the use of the `--latex-engine=xelatex` option is necessary, further the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
+
+```
+\usepackage{unicode-math}
+\setmainfont
+[    Extension = .otf,
+   UprightFont = *-regular,
+      BoldFont = *-bold,
+    ItalicFont = *-italic,
+BoldItalicFont = *-bolditalic,
+]{xits}
+\setmathfont
+[    Extension = .otf,
+      BoldFont = *bold,
+]{xits-math}
+```
+
+To facilitate the input of specific characters, so-called mnemonics can be enabled in some editors (e.g. in atom by the `character-table` package). For example, the 2-character Mnemonics ':u' gives 'ü' (diaeresis), or 'D*' the greek Δ. The possible character mnemonics and character sets are listed in RFC 1345 [@rfc1345].
 
 ## Formulas
 
@@ -261,28 +283,13 @@ Document information such as title, authors, abstract etc. can be defined in a m
 
 ```
 ---
-title: 'Formatting Open Science'
-author:
-  - name: Albert Krewinkel
-    affiliation: 1
-  - name: Robert Winkler
-    affiliation: 2
-    fullname: Prof. Dr. Robert Winkler
-    email: robert.winkler@cinvestav.mx
-institute:
-  - index: 1
-    name: FTI Touristik GmbH, Berlin, Germany
-  - index: 2
-    name: >
-      CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology,
-      Laboratory of Biochemical and Instrumental Analysis,
-      Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato,
-      Gto. Mexico
+title: Formatting Open Science
+author: 'Albert Krewinkel$^1$ and Robert Winkler$^{2,\star}$'
 bibliography: agile-markdown.bib
-keywords: 'markdown, latex, publishing, typesetting'
-abstract: The timely ..
 ---
 ```
+
+Using the LATEX syntax for superscripts (`$^{2,*}$`) enables the correct processing for different output formats.
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
