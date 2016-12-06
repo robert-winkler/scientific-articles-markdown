@@ -148,16 +148,16 @@
   Email address: #3\par}
 }
 
-\def\xabstract{abstract}
-\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
-\long\gdef\theabstract{\ignorespaces#1}
-\def\go{\end{abstract}}\else
-\typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
-COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
-\gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
-NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
-THE ABSTRACT\vskip12pt}\let\go\relax\fi
-\go}
+%\def\xabstract{abstract}
+%\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
+%\long\gdef\theabstract{\ignorespaces#1}
+%\def\go{\end{abstract}}\else
+%\typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
+%COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
+%\gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
+%NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
+%THE ABSTRACT\vskip12pt}\let\go\relax\fi
+%\go}
 
 %
 % custom title page 
@@ -174,19 +174,19 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \ifdefined\thecorrauthor
   {\raggedright\sffamily\thecorrauthor\par}
 \fi
-\vskip18pt
-{%
-\noindent
-{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{color1}\large\sffamily\textbf{ABSTRACT}}}
-}%
-\vskip10pt\nolinenumbers
-{%
-\noindent
-\colorbox{color2}{%
-\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
-\sffamily\small\vskip1ex\if@peerjlineno\internallinenumbers\fi\theabstract
-}%
-}%
+%\vskip18pt
+%{%
+%\noindent
+%{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{color1}\large\sffamily\textbf{ABSTRACT}}}
+%}%
+%\vskip10pt\nolinenumbers
+%{%
+%\noindent
+%\colorbox{color2}{%
+%\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+%\sffamily\small\vskip1ex\if@peerjlineno\internallinenumbers\fi\theabstract
+%}%
+%}%
 %% LLT 18 Aug 2016: no more keywords
 % \vskip18pt%
 % \noindent
@@ -194,16 +194,16 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 % \if@peerjlineno\internallinenumbers\fi%
 % {\color{color1}\keywordname\hspace*{1em}} \@keywords%
 % }%
-}%
+%}%
 \vskip25pt%
 }%
 }%
 %-----------------------------------------------
 \setlength{\columnsep}{0.55cm} % Distance between the two columns of text
-\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+%\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
 
 \definecolor{color1}{RGB}{0,0,0} % Color of section headings
-\definecolor{color2}{RGB}{250,232,207} % Color of the box behind the abstract
+%\definecolor{color2}{RGB}{250,232,207} % Color of the box behind the abstract
 \newcommand{\keywordname}{Keywords:} % Defines the keywords heading name
 
 \renewcommand\Authfont{\fontsize{12}{14}\usefont{OT1}{phv}{b}{n}}

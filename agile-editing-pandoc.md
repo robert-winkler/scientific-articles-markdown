@@ -1,27 +1,18 @@
 ---
 title: Formatting Open Science
-author:
-  - Albert Krewinkel
-  - Robert Winkler
-institute:
-  - TBD (Pandoc Development Team)
-  - >
-    CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology,
-    Laboratory of Biochemical and Instrumental Analysis, Km. 9.6 Libramiento
-    Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico
-affiliation:
-  - author: 1
-    institute: 1
-  - author: 2
-    institute: 2
-correspondence:
-  name: Prof. Dr. Robert Winkler
-  email: robert.winkler@cinvestav.mx
-  institute: 2
+author: Albert Krewinkel$^1$ and Robert Winkler$^2$
 bibliography: agile-markdown.bib
-keywords: 'markdown, latex, publishing, typesetting'
-abstract: 'The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.'
 ---
+
+**Affiliations:** ¹ TBD (Pandoc Development Team), ² CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis, Km. 9.6 Libramiento Norte Carr. Irapuato-León 36821 Irapuato, Gto. Mexico
+
+**Correspondence:** Prof. Dr. Robert Winkler, <robert.winkler@cinvestav.mx>
+
+**Keywords:** markdown, latex, publishing, typesetting
+
+# Abstract
+
+The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
 
 # Introduction
 
