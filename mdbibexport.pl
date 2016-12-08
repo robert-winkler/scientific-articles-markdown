@@ -16,21 +16,18 @@ chomp($namemd);
 print "Extract from bibtex database (.bib) file: ";
 my $namebib = <STDIN>;
 chomp($namebib);
-print "Choose name of temp .aux file (e.g. temp.aux): ";
-my $nameaux = <STDIN>;
-chomp($nameaux);
-print "Choose name of output .bib file (e.g. out.bib): ";
-my $nameout = <STDIN>;
-chomp($nameout);
 
-print "Choices: $namemd, $namebib, $nameaux, $nameout \n";
+#mdbibexport files
+my $nameaux = "mdbibexport.aux";
+my $nameout = "mdbibexport.bib";
+
 
 open my $fm, '<', $namemd or die "Could not open '$namemd' $!\n";
 
 my $mdcitations = "";
 
-system('pandoc -t json agile-editing-pandoc.md > pandoc-json.tmp');
-my $pandoctmp = "pandoc-json.tmp";
+system('pandoc -t json agile-editing-pandoc.md > mdbibexport.tmp');
+my $pandoctmp = "mdbibexport.tmp";
 open my $fm2, '<', $pandoctmp or die "Could not open '$pandoctmp' $!\n";
 
 while (my $line = <$fm2>) {
