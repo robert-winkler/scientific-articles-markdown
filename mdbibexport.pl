@@ -3,7 +3,7 @@
 #The installation of BibTool is required
 #Version: 0.1
 #Release: 2016/10/31
-#Copyright: Dr. Robert Winkler 
+#Copyright: Dr. Robert Winkler
 #Contact: robert.winkler@bioprocess.org, robert.winkler@cinvestav.mx
 #License: General Public License (GPL), 3.0
 
@@ -28,13 +28,18 @@ print "Choices: $namemd, $namebib, $nameaux, $nameout \n";
 open my $fm, '<', $namemd or die "Could not open '$namemd' $!\n";
 
 my $mdcitations = "";
-while (my $line = <$fm>) {
-   chomp $line;
-   if ($line =~ /(?<=@)(.+?)(?=[\];,])/){
-   $mdcitations .= "$1,"};
-}
 
-print "Extracted citations: $mdcitations \n";
+system('pandoc -t json agile-editing-pandoc.md > pandoc-json.tmp');
+my $pandoctmp = "pandoc-json.tmp";
+open my $fm2, '<', $pandoctmp or die "Could not open '$pandoctmp' $!\n";
+
+while (my $line = <$fm2>) {
+   chomp $line;
+   if ($line =~ /"citationId":"([^"]*)"/g){
+   print "Extracted citation: $1\n";
+   $mdcitations .= "$1,";
+    }
+}
 
 open(my $fa, '>', $nameaux) or die;
 print $fa "\\bibstyle{alpha}\n";
@@ -46,6 +51,3 @@ print "$nameaux created.\n";
 my $btcmd = 'bibtool -x '. $nameaux . ' -o ' . $nameout;
 system($btcmd);
 print "$nameout created.\n";
-
-
-
