@@ -72,3 +72,16 @@ dd p {
         color: gray;
         text-align: center;
         }
+
+img {
+    max-width: 100%;
+}
+
+/* Graphs */
+.bar:hover {
+  fill: brown;
+}
+
+.axis--x path {
+  display: none;
+}
