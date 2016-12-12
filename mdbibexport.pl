@@ -1,9 +1,10 @@
 #!/usr/bin/perl
 #Simple script to extract references from a bibtex database which are cited in a markdown file
-#The installation of BibTool is required
-#Version: 0.1
+#The installation of BibTool, Pandoc and Perl is required
+#Version: 0.2
 #Release: 2016/10/31
 #Copyright: Dr. Robert Winkler
+#Contributor: Alfred Krewinkel
 #Contact: robert.winkler@bioprocess.org, robert.winkler@cinvestav.mx
 #License: General Public License (GPL), 3.0
 
@@ -32,7 +33,7 @@ open my $fm2, '<', $pandoctmp or die "Could not open '$pandoctmp' $!\n";
 
 while (my $line = <$fm2>) {
    chomp $line;
-   if ($line =~ /"citationId":"([^"]*)"/g){
+   while ($line =~ /"citationId":"([^"]*)"/g){
    print "Extracted citation: $1\n";
    $mdcitations .= "$1,";
     }
