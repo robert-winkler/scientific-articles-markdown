@@ -36,7 +36,7 @@ The term _'Open Access'_ was introduced 2002 by the Budapest Open Access Initiat
 
 _"Barrier-free access to online works and other resources. OA literature is digital, online, free of charge (gratis OA), and free of needless copyright and licensing restrictions (libre OA)."_ [@suber_open_2012]
 
-Frustrated by the difficulty to access even digitalized scientific literature, three scientists founded the _Public Library of Science (PLoS)_. In 2003, _PLoS Biology_ was published as the first fully Open Access (OA) journal for biology [@brown_why_2003;@eisen_publish_2003].<br>
+Frustrated by the difficulty to access even digitized scientific literature, three scientists founded the _Public Library of Science (PLoS)_. In 2003, _PLoS Biology_ was published as the first fully Open Access (OA) journal for biology [@brown_why_2003;@eisen_publish_2003].<br>
 Thanks to the great success of OA publishing, many conventional print publishers now offer a so-called 'Open Access option', i.e. to make accepted articles free to read for an additional payment. The copyright in this hybrid models might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/>).<br>
 OA literature is only one component of a more general _open_ philosophy, which also includes the access to scholarships, software, and data [@willinsky_unacknowledged_2005]. Interestingly, there are several different 'schools' of thinking on how to understand and define _Open Science_, as well the position that any science is open by definition, because of its objective to make generated knowledge public [@fecher_open_2014].
 
@@ -47,7 +47,7 @@ Examples such as the _Journal of Statistical Software_ (_JSS_, <https://www.jsta
 _JSS_ and _eLife_ are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
 ![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png){#pub-costs}<br>
-**Figure 1.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal webpages.
+**Figure 1.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.
 
 In 2009, a study was carried concerning the _"Economic Implications of Alternative Scholarly Publishing Models"_, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
 
@@ -117,15 +117,15 @@ Despite its original focus on the web, the MD format has been proven to be well 
 
 The usability of a text editor is important for the author, either writing alone or with several co-authors. In this section we present software and strategies for different scenarios. **Fig. 4** summarizes various options for local or networked editing of MD files.
 
-![Offline and online editing of mardown files](fig-editing-options.png)<br>
+![Offline and online editing of markdown files](fig-editing-options.png)<br>
 
 **Figure 4.** Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.
 
 ## Markdown editors
 
 Because of the simple MD syntax, basically any text editor is suitable for editing markdown files. The formatting tags are written in plain text and easy to remember. Therefore, the author is not distracted by looking around for layout options with the mouse. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins additional functionality for markdown editing, e.g. syntax highlighting, command helpers, live preview or structure browsing.<br>
-Various dedicated mardown editors have been published as well. Many of those are cross-platform compatible, such as Abricotine (<http://abricotine.brrd.fr/>), ghostwriter (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).<br>
-The lightweight format is also ideal for writing on mobile devices. Numerous applications are available on the App stors for Android and iOS systems. The programs Swype and Dragon (<http://www.nuance.com/>) facilitate the input of text on such devices by guessing words from gestures and speach recognition (dictation).<br>
+Various dedicated markdown editors have been published as well. Many of those are cross-platform compatible, such as Abricotine (<http://abricotine.brrd.fr/>), ghostwriter (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).<br>
+The lightweight format is also ideal for writing on mobile devices. Numerous applications are available on the App stores for Android and iOS systems. The programs Swype and Dragon (<http://www.nuance.com/>) facilitate the input of text on such devices by guessing words from gestures and speech recognition (dictation).<br>
 **Fig. 5.** shows the editing of a markdown file, using the cross-platform editor Atom with several markdown plugins.
 
 ![CuteMarkEd editor](fig-atom-editor.png)<br>
@@ -195,9 +195,9 @@ The `alt text` is used e.g. in HTML output. Additional parameters such as image 
 
 Scientific texts often require special characters, e.g. Greek letters, mathematical and physical symbols etc.<br>
 
-The UTF-8 standard, developed and maintained by _Unicode Consortium_, enables the use of characters across languages and computer platforms. The encoding is defined as RFC document 3629 of the Network Working group [@rfc3629] and as ISO standard ISO/IEC 10646:2014 [@international_organization_for_standardization_iso/iec_2014]. Specifications of Unicode and code charts are provided on the Unicode homopage (<http://www.unicode.org/>).<br>
+The UTF-8 standard, developed and maintained by _Unicode Consortium_, enables the use of characters across languages and computer platforms. The encoding is defined as RFC document 3629 of the Network Working group [@rfc3629] and as ISO standard ISO/IEC 10646:2014 [@international_organization_for_standardization_iso/iec_2014]. Specifications of Unicode and code charts are provided on the Unicode homepage (<http://www.unicode.org/>).<br>
 
-In Pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. For the correct processing of UTF-8 encoding in LATEX, the use of the `--latex-engine=xelatex` option is necessary, further the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
+In Pandoc markdown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. For the correct processing of UTF-8 encoding in LATEX, the use of the `--latex-engine=xelatex` option is necessary, further the use of an appropriate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
 
 ```
 \usepackage{unicode-math}
@@ -218,7 +218,7 @@ To facilitate the input of specific characters, so-called mnemonics can be enabl
 
 ## Formulas
 
-Formula are written in LaTeX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
+Formulas are written in LaTeX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ```
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
@@ -337,7 +337,7 @@ In this way, the template can be incrementally adjusted to the desired document 
 ![Editing a pandoc generated DOCX in Office 365](fig-DOCX-document-in-O365.png)<br>
 **Figure 8.** Editing a Pandoc-generated DOCX in Microsoft Office 365.
 
-The same proceedure can be applied for an ODT formatted document.
+The same procedure can be applied with an ODT formatted document.
 
 ## Development of a TEX/PDF template
 
