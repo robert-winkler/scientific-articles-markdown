@@ -373,13 +373,14 @@ The relevant software for creating this manuscript used is cited according to [@
 
 **Table 3.** Relevant software used for this article.
 
-**Software**    | **Use**                               | **Authors**                     | **Version** | **Release** | **Homepage/ repository**
-:-------------- | :------------------------------------ | :------------------------------ | :---------- | :---------- | :----------------------------------------------
-Pandoc          | universal markup converter            | John MacFarlane                 | 1.16.0.2    | 16/01/13    | <http://www.pandoc.org>
-pandoc-citeproc | library for CSL citations with Pandoc | John MacFarlane, Andrea Rossato | 0.9.1       | 16/03/19    | <https://github.com/jgm/pandoc-citeproc>
-ownCloud        | personal cloud software               | ownCloud GmbH, Community        | 9.1.1       | 16/09/20    | <https://owncloud.org/>
-Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1         | 16/03/08    | <https://github.com/icewind1991/files_markdown>
-BibTool         | Bibtex database tool                  | Gerd Neugebauer                 | 2.63        | 16/01/16    | <https://github.com/ge-ne/bibtool>
+**Software**    | **Use**                               | **Authors**                      | **Version** | **Release** | **Homepage/ repository**
+:-------------- | :------------------------------------ | :------------------------------- | :---------- | :---------- | :----------------------------------------------
+Pandoc          | universal markup converter            | John MacFarlane                  | 1.16.0.2    | 16/01/13    | <http://www.pandoc.org>
+pandoc-citeproc | library for CSL citations with Pandoc | John MacFarlane, Andrea Rossato  | 0.9.1       | 16/03/19    | <https://github.com/jgm/pandoc-citeproc>
+ownCloud        | personal cloud software               | ownCloud GmbH, Community         | 9.1.1       | 16/09/20    | <https://owncloud.org/>
+Markdown Editor | plugin for ownCloud                   | Robin Appelman                   | 0.1         | 16/03/08    | <https://github.com/icewind1991/files_markdown>
+BibTool         | Bibtex database tool                  | Gerd Neugebauer                  | 2.63        | 16/01/16    | <https://github.com/ge-ne/bibtool>
+mdbibexport     | MD/BIB database tool                  | Robert Winkler, Albert Krewinkel | 0.2         | 16/12/11    | <https://github.com/robert-winkler/mdbibexport>
 
 The source code of this manuscript, as well as templates and the Pandoc script have been deposited to XX.
 
