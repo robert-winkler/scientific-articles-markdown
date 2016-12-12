@@ -7,7 +7,7 @@ var data = [
         cost: 1800
     }, {
         type: "PeerJ",
-        cost: 1150
+        cost: 1095
     }, {
         type: "community-sponsored",
         cost: 50
