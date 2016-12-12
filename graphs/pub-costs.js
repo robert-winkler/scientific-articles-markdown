@@ -44,8 +44,6 @@ g.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
     .attr("dy", "5em");
-    // .selectAll(".tick text")
-    // .call(wrap, x.rangeBand());
 
 g.append("g")
     .attr("class", "axis axis--y")
@@ -58,7 +56,7 @@ g.append("g")
 svg.append("g")
     .attr("class", "label--y")
     .append("text")
-    .attr("x", -(imgHeight - margin.bottom/2))
+    .attr("x", -(imgHeight - margin.bottom))
     .attr("y", 0)
     .attr("transform", "rotate(-90)")
     .attr("dy", "1.2em")
