@@ -46,7 +46,7 @@ outfile.docx: $(MARKDOWN_FILE)
 outfile.odt: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 				 $(PANDOC_NONTEX_OPTIONS) \
-				 --reference-docx=pandoc-manuscript.odt \
+				 --reference-odt=pandoc-manuscript.odt \
 				 -o $@ $<
 
 
