@@ -8,11 +8,11 @@ bibliography: agile-markdown.bib
 
 **Correspondence:** Prof. Dr. Robert Winkler, [robert.winkler@cinvestav.mx](mailto:robert.winkler@cinvestav.mx)
 
-**Keywords:** markdown, latex, publishing, typesetting
+**Keywords:** open science, document formats, markdown, latex, publishing, typesetting
 
 # Abstract
 
-The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
+The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools for editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
 
 # Introduction
 
@@ -22,7 +22,7 @@ Agile development of science depends on the continuous exchange of information b
 2. The actual rise of nonmarket production, made possible through networked individuals and coordinate effects.
 3. The emergence of large-scale peer production, e.g. of software and encyclopaedias.
 
-Immaterial goods such as knowledge and culture are not lost, when consumed or shared -- they are 'nonrival' --, which enables a networked information economy, which is not commercially driven [@benkler_wealth_2006].
+Immaterial goods such as knowledge and culture are not lost, when consumed or shared -- they are 'nonrival' --, and they enable a networked information economy, which is not commercially driven [@benkler_wealth_2006].
 
 ## Preprints and e-prints
 
@@ -62,7 +62,7 @@ Generally speaking, a scientific manuscript is composed from contents and format
 **Type** | **Description**       | **Use**            | **Syntax**    | **Reference**
 :------- | :-------------------- | :----------------- | :------------ | :---------------------------------------------------------
 DOCX     | Office Open XML       | WYSIWYG editing    | XML, ZIP      | [@OOXML]
-ODT      | Libre Office          | WYSIWYG editing    | XML, ZIP      | [@ODF]
+ODT      | OpenDocument          | WYSIWYG editing    | XML, ZIP      | [@ODF]
 PDF      | portable document     | print replacement  | PDF           | [@international_organization_for_standardization_iso_2013]
 EPUB     | electronic publishing | ebooks             | HTML5, ZIP    | [@eikebrokk_epub_2014]
 LATEX    | typesetting system    | high-quality print | TEX           | [@lamport_latex:_1994]
@@ -344,7 +344,7 @@ Authoring scientific manuscripts in markdown (MD) format is straight-forward, an
 
 # Acknowledgments
 
-We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
 
 # Software and code availability
 
