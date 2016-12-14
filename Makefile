@@ -46,7 +46,7 @@ outfile.docx: $(MARKDOWN_FILE)
 outfile.odt: $(MARKDOWN_FILE)
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
 				 $(PANDOC_NONTEX_OPTIONS) \
-				 --reference-docx=pandoc-manuscript.odt \
+				 --reference-odt=pandoc-manuscript.odt \
 				 -o $@ $<
 
 
@@ -62,7 +62,7 @@ outfile.html: $(MARKDOWN_FILE)
 	       --toc \
 				 --mathjax \
 				 -c pandoc.css \
-	       -M header-includes:'<style>img {max-width:100%;}</style>' \
+	       -M include-after:'<script src="https://d3js.org/d3.v4.min.js"></script><script src="graphs/pub-costs.js"></script>' \
 	       -o $@ $<
 
 clean:
