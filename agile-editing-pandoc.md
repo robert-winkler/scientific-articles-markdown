@@ -217,7 +217,7 @@ To facilitate the input of specific characters, so-called mnemonics can be enabl
 
 ## Formulas
 
-Formula are written in LATEX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
+Formulas are written in LATEX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ```
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
@@ -321,32 +321,33 @@ pandoc -S -s --csl=plos.csl --filter pandoc-citeproc
 The document settings and styles of the resulting file `pandoc-manuscript.docx` can be modified, and following it can be used as document template (`--reference-docx=pandoc-manuscript.docx`).
 
 ```
-pandoc -S -s --reference-docx=pandoc-manuscript.docx
---csl=apa.csl --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
+pandoc -S -s --reference-docx=pandoc-manuscript.docx --csl=plos.csl
+--filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
 ```
 
 It is also possible to directly re-use a previous output file as template (i.e. template and output file have the same file name):
 
 ```
-pandoc -S -s --columns=10 --reference-docx= pandoc-manuscript.docx --csl=apa.csl --filter pandoc-citeproc -o pandoc-manuscript.docx agile-editing-pandoc.md
+pandoc -S -s --columns=10 --reference-docx= pandoc-manuscript.docx --csl=plos.csl
+--filter pandoc-citeproc -o pandoc-manuscript.docx agile-editing-pandoc.md
 ```
 
 In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as pandoc template for other manuscripts with the same specifications. In this case, running pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template. A page with DOCX manuscript formatting of this article is shown in **Fig. 8**.
 
 ![Editing a pandoc generated DOCX in Office 365](fig-DOCX-document-in-O365.png)<br>
-**Figure 8.** Editing a Pandoc-generated DOCX in Microsoft Office 365.
+**Figure 8.** Opening a pandoc-generated DOCX in Microsoft Office 365.
 
 The same procedure can be applied with an ODT formatted document.
 
 ## Development of a TEX/PDF template
 
-The default Pandoc LATEX template can be written into a separate file by:
+The default pandoc LATEX template can be written into a separate file by:
 
 ```
 pandoc -D latex > template-peerj.latex
 ```
 
-This template can be adjusted, e.g. by defining Unicode encoding (see above), by including particular packages or setting document options (line numbering, font size). Following, the template can be used with the Pandoc parameter `--template=pandoc-peerj.latex`.<br>
+This template can be adjusted, e.g. by defining Unicode encoding (see above), by including particular packages or setting document options (line numbering, font size). Following, the template can be used with the pandoc parameter `--template=pandoc-peerj.latex`.<br>
 The templates used for this document are included as Supplemental Material (see section _Software and code availability_ below).
 
 # Automating document production
