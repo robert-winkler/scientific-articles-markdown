@@ -4,7 +4,7 @@ author: 'Albert Krewinkel$^1$ and Robert Winkler$^{2,\star}$'
 bibliography: agile-markdown.bib
 ---
 
-**Affiliations:** ¹ TBD (Pandoc Development Team), ² CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis, Km. 9.6 Libramiento Norte Carr. Irapuato-León, 36821 Irapuato, Gto. Mexico
+**Affiliations:** ¹ Pandoc Development Team, ² CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Laboratory of Biochemical and Instrumental Analysis, Km. 9.6 Libramiento Norte Carr. Irapuato-León, 36821 Irapuato, Gto. Mexico
 
 **Correspondence:** Prof. Dr. Robert Winkler, <robert.winkler@cinvestav.mx>
 
