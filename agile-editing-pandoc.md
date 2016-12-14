@@ -1,6 +1,6 @@
 ---
-title: Formatting Open Science
-author: "Albert Krewinkel$^1$ and Robert Winkler$^{2,\\star}$"
+title: 'Formatting Open Science: agile creation of multiple document types by writing academic manuscripts in pandoc markdown'
+author: 'Albert Krewinkel$^1$ and Robert Winkler$^{2,\star}$'
 bibliography: agile-markdown.bib
 ---
 
@@ -8,11 +8,11 @@ bibliography: agile-markdown.bib
 
 **Correspondence:** Prof. Dr. Robert Winkler, <robert.winkler@cinvestav.mx>
 
-**Keywords:** markdown, latex, publishing, typesetting
+**Keywords:** open science, document formats, markdown, latex, publishing, typesetting
 
 # Abstract
 
-The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using Pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- symbols, formulas, tables, code blocks and citations -- and present tools or editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats: DOCX/ ODT files for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time savings and cost reduction for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
+The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools for editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
 
 # Introduction
 
@@ -22,7 +22,7 @@ Agile development of science depends on the continuous exchange of information b
 2. The actual rise of nonmarket production, made possible through networked individuals and coordinate effects.
 3. The emergence of large-scale peer production, e.g. of software and encyclopedias.
 
-Immaterial goods such as knowledge and culture are not lost, when consumed or shared -- they are 'nonrival' --, which enables a networked information economy, which is not commercially driven [@benkler_wealth_2006].
+Immaterial goods such as knowledge and culture are not lost, when consumed or shared -- they are 'nonrival' --, and they enable a networked information economy, which is not commercially driven [@benkler_wealth_2006].
 
 ## Preprints and e-prints
 
@@ -68,7 +68,7 @@ Currently DOC(X), LATEX and/ or PDF file formats are the most frequently used fo
 **Type** | **Description**       | **Use**            | **Syntax**    | **Reference**
 :------- | :-------------------- | :----------------- | :------------ | :---------------------------------------------------------
 DOCX     | Office Open XML       | WYSIWYG editing    | XML, ZIP      | [@OOXML]
-ODT      | Libre Office          | WYSIWYG editing    | XML, ZIP      | [@ODF]
+ODT      | OpenDocument          | WYSIWYG editing    | XML, ZIP      | [@ODF]
 PDF      | portable document     | print replacement  | PDF           | [@international_organization_for_standardization_iso_2013]
 EPUB     | electronic publishing | ebooks             | HTML5, ZIP    | [@eikebrokk_epub_2014]
 LATEX    | typesetting system    | high-quality print | TEX           | [@lamport_latex:_1994]
@@ -100,18 +100,17 @@ In academic publishing, additionally the creation of different output formats fr
 
 - For the publishing of a book, with a print version in PDF and an electronic version in EPUB.
 - For the distribution of a seminar script, with an online version in HTML and a print version in PDF.
-- For submitting a journal manuscript for peer-review in DOCX, as well as a pre-print version with another journal style in PDF.
+- For submitting a journal manuscript for peer-review in DOCX, as well as a preprint version with another journal style in PDF.
 
 Some of the tasks can be performed e.g. with LATEX, but an integrated solution remains a challenge. Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substantial manual corrections.<br>
 Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats. The need for hybrid publishing has been recognized outside of science [@dptcollective_toolkit_2015; @kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far. Therefore, we investigated the possibility to generate multiple publication formats from a simple manuscript source file.
 
-# Concepts of markdown and Pandoc
+# Concepts of markdown and pandoc
 
-Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, this markdown (MD) file is parsed to generate the final HTML document. With this concept, the source file remains easily readable and the author can focus on the contents rather than formatting.<br>
-Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, Pandoc MD (<http://pandoc.org/>) adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Tab. 2** demonstrates the simplicity of MD compared to other markup languages. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in Pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
+Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, this markdown (MD) file are parsed to generate the final HTML document. With this concept, the source file remains easily readable and the author can focus on the contents rather than formatting. Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, pandoc MD (<http://pandoc.org/>) adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Tab. 2** demonstrates the simplicity of MD compared to other markup languages. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
 
-![Workfow for the generation of multiple document formats with Pandoc](fig-pandoc-workflow.png)<br>
-**Figure 3.** Workfow for the generation of multiple document formats with Pandoc.
+![Workfow for the generation of multiple document formats with pandoc](fig-pandoc-workflow.png)<br>
+**Figure 3.** Workfow for the generation of multiple document formats with pandoc.
 
 # Markdown editors and online editing
 
@@ -155,7 +154,7 @@ Programmers, especially when working in distributed teams, rely on version contr
 
 # Pandoc markdown for scientific texts
 
-Following, the potential of typesetting scientific manuscripts with Pandoc is demonstrated with examples for typical document elements, such as tables, figures, formulas, code listings and references. A brief introduction is given by [@dominici_pandoc_2014]. The complete Pandoc User's Manual is available at <http://pandoc.org/MANUAL.html>.
+Following, the potential of typesetting scientific manuscripts with pandoc is demonstrated with examples for typical document elements, such as tables, figures, formulas, code listings and references. A brief introduction is given by [@dominici_pandoc_2014]. The complete Pandoc User's Manual is available at <http://pandoc.org/MANUAL.html>.
 
 ## Tables
 
@@ -173,7 +172,7 @@ Left | Center | Right | Default
 :--- | :----: | ----: | -------
 LLL  |  CCC   |   RRR | DDD
 
-The headings and the alignment of the cells is given in the first two lines. The cell width is variable. The Pandoc parameter `--columns=NUM` can be used to define the length of lines in characters. If contents do not fit, cells will be wrapped.
+The headings and the alignment of the cells is given in the first two lines. The cell width is variable. The pandoc parameter `--columns=NUM` can be used to define the length of lines in characters. If contents do not fit, they will be wrapped.
 
 ## Figures
 
@@ -197,7 +196,7 @@ Scientific texts often require special characters, e.g. Greek letters, mathemati
 
 The UTF-8 standard, developed and maintained by _Unicode Consortium_, enables the use of characters across languages and computer platforms. The encoding is defined as RFC document 3629 of the Network Working group [@rfc3629] and as ISO standard ISO/IEC 10646:2014 [@international_organization_for_standardization_iso/iec_2014]. Specifications of Unicode and code charts are provided on the Unicode homepage (<http://www.unicode.org/>).<br>
 
-In Pandoc markdown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. For the correct processing of UTF-8 encoding in LATEX, the use of the `--latex-engine=xelatex` option is necessary, further the use of an appropriate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
+In pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. For the correct processing of UTF-8 encoding in LATEX, the use of the `--latex-engine=xelatex` option is necessary, further the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
 
 ```
 \usepackage{unicode-math}
@@ -218,7 +217,7 @@ To facilitate the input of specific characters, so-called mnemonics can be enabl
 
 ## Formulas
 
-Formulas are written in LaTeX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
+Formula are written in LATEX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ```
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
@@ -230,7 +229,7 @@ $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
 
 with $x_i$ the individual observations, $\overline{x}$ the sample mean and $N$ the total number of samples.
 
-Pandoc parses formulas into internal structures and allows conversion into formats other than LaTeX. This allows for format-specific formula representation and enables computational analysis of the formulas [@garnet_semiautomatic_2015].
+Pandoc parses formulas into internal structures and allows conversion into formats other than LATEX. This allows for format-specific formula representation and enables computational analysis of the formulas [@garnet_semiautomatic_2015].
 
 ## Code listings
 
@@ -250,7 +249,7 @@ Typeseting `inline code` is possible by enclosing text between back ticks.
 
 ## Other document elements
 
-Those examples are only a short demonstration of the capacities of Pandoc concerning scientific documents. For more detailed information, we refer to the official manual ( <http://pandoc.org/MANUAL.html>).
+Those examples are only a short demonstration of the capacities of pandoc concerning scientific documents. For more detailed information, we refer to the official manual ( <http://pandoc.org/MANUAL.html>).
 
 # Citations and biography
 
@@ -258,7 +257,7 @@ The efficient organization and typesetting of citations and bibliographies is cr
 
 ## Reference databases
 
-Pandoc is able to process all mainstream literature database formats, such as RIS, BIB, etc. However, for maintaining compatibility with LATEX/ BIBTEX, the use of BIB databases is recommended. The used database either can be defined in the YAML metablock of the MD file (see below) or it can be passed as parameter when calling Pandoc.
+Pandoc is able to process all mainstream literature database formats, such as RIS, BIB, etc. However, for maintaining compatibility with LATEX/ BIBTEX, the use of BIB databases is recommended. The used database either can be defined in the YAML metablock of the MD file (see below) or it can be passed as parameter when calling pandoc.
 
 ## Inserting citations
 
@@ -272,11 +271,11 @@ gives [@suber_open_2012; @benkler_wealth_2006, 57 ff.].
 
 ## Styles
 
-The Citation Style Language (CSL) <http://citationstyles.org/> is used for formatting citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>. CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>. The bibliography style, which Pandoc should use for the target document, can be chosen or in the YAML block (see below) of the markdown document or can be passed as an command line parameter. The later option is more recommendable, because distinct bibliography styles may be used for different documents.
+The Citation Style Language (CSL) <http://citationstyles.org/> is used for the citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>. CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>. The bibliography style, which pandoc should use for the target document can be chosen or in the YAML block of the markdown document or can be passed as an command line option. The later is more recommendable, because distinct bibliography style may be used for different documents.
 
-## Creation of LaTeX `natbib` citations
+## Creation of LATEX `natbib` citations
 
-For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create a LATEX output file with natbib citations, Pandoc simply has to be run with the `--natbib` option, but without the `--filter pandoc-citeproc` parameter.
+For citations in scientific manuscripts written in LATEX, the natbib package is widely used. To create a LATEX output file with natbib citations, pandoc simply has to be run with the `--natbib` option, but without the `--filter pandoc-citeproc` parameter.
 
 ## Database of cited references
 
@@ -312,7 +311,7 @@ At this moment, DOCX is the most common format for manuscript submission. Some p
 
 ## Development of a DOCX/ ODT template
 
-A first DOCX document with bibliography in _PLoS_ format is created with Pandoc DOCX output:
+A first DOCX document with bibliography in _PLoS_ format is created with pandoc DOCX output:
 
 ```
 pandoc -S -s --csl=plos.csl --filter pandoc-citeproc
@@ -332,7 +331,7 @@ It is also possible to directly re-use a previous output file as template (i.e. 
 pandoc -S -s --columns=10 --reference-docx= pandoc-manuscript.docx --csl=apa.csl --filter pandoc-citeproc -o pandoc-manuscript.docx agile-editing-pandoc.md
 ```
 
-In this way, the template can be incrementally adjusted to the desired document formatting. The final document can be employed later as Pandoc template for other manuscripts with the same specifications. Running Pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX document. A page with DOCX manuscript formatting of this article is shown in **Fig. 8**.
+In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as pandoc template for other manuscripts with the same specifications. In this case, running pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template. A page with DOCX manuscript formatting of this article is shown in **Fig. 8**.
 
 ![Editing a pandoc generated DOCX in Office 365](fig-DOCX-document-in-O365.png)<br>
 **Figure 8.** Editing a Pandoc-generated DOCX in Microsoft Office 365.
@@ -361,11 +360,11 @@ The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- D
 
 # Conclusions
 
-Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing. The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using Pandoc, and templates enable the automated generation of documents according to specific journal styles. Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
+Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing. The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using pandoc, and templates enable the automated generation of documents according to specific journal styles. Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
 
 # Acknowledgments
 
-We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
 
 # Software and code availability
 
@@ -373,16 +372,15 @@ The relevant software for creating this manuscript used is cited according to [@
 
 **Table 3.** Relevant software used for this article.
 
-**Software**    | **Use**                               | **Authors**                      | **Version** | **Release** | **Homepage/ repository**
-:-------------- | :------------------------------------ | :------------------------------- | :---------- | :---------- | :----------------------------------------------
-Pandoc          | universal markup converter            | John MacFarlane                  | 1.16.0.2    | 16/01/13    | <http://www.pandoc.org>
-pandoc-citeproc | library for CSL citations with Pandoc | John MacFarlane, Andrea Rossato  | 0.9.1       | 16/03/19    | <https://github.com/jgm/pandoc-citeproc>
-ownCloud        | personal cloud software               | ownCloud GmbH, Community         | 9.1.1       | 16/09/20    | <https://owncloud.org/>
-Markdown Editor | plugin for ownCloud                   | Robin Appelman                   | 0.1         | 16/03/08    | <https://github.com/icewind1991/files_markdown>
-BibTool         | Bibtex database tool                  | Gerd Neugebauer                  | 2.63        | 16/01/16    | <https://github.com/ge-ne/bibtool>
-mdbibexport     | MD/BIB database tool                  | Robert Winkler, Albert Krewinkel | 0.2         | 16/12/11    | <https://github.com/robert-winkler/mdbibexport>
+**Software**    | **Use**                               | **Authors**                     | **Version** | **Release** | **Homepage/ repository**
+:-------------- | :------------------------------------ | :------------------------------ | :---------- | :---------- | :----------------------------------------------
+pandoc          | universal markup converter            | John MacFarlane                 | 1.16.0.2    | 16/01/13    | <http://www.pandoc.org>
+pandoc-citeproc | library for CSL citations with pandoc | John MacFarlane, Andrea Rossato | 0.9.1       | 16/03/19    | <https://github.com/jgm/pandoc-citeproc>
+ownCloud        | personal cloud software               | ownCloud GmbH, Community        | 9.1.1       | 16/09/20    | <https://owncloud.org/>
+Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1         | 16/03/08    | <https://github.com/icewind1991/files_markdown>
+BibTool         | Bibtex database tool                  | Gerd Neugebauer                 | 2.63        | 16/01/16    | <https://github.com/ge-ne/bibtool>
 
-The source code of this manuscript, as well as templates and the Pandoc script have been deposited to XX.
+The source code of this manuscript, as well as templates and the pandoc Makefile have been deposited to <https://github.com/robert-winkler/scientific-articles-markdown/>, DOI: [10.5281/zenodo.202604](https://doi.org/10.5281/zenodo.202604).
 
 Drawings for document types, devices and applications have been adopted from Calibre <http://calibre-ebook.com/>, openclipart <https://openclipart.org/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>.
 
