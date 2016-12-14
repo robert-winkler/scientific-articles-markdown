@@ -138,12 +138,12 @@ Storing manuscripts on network drives (_The Cloud_) has become popular because o
 - Synchronization of documents between several devices.
 - Collaborative editing options.
 
-Markdown files on a Google Drive (<https://drive.google.com>) for instance can be edited online with StackEdit (<https://stackedit.io>). **Fig. 6** demonstrates the online editing of a markdown file on an OwnCloud (<https://owncloud.com/>) installation.
+Markdown files on a Google Drive (<https://drive.google.com>) for instance can be edited online with StackEdit (<https://stackedit.io>). **Fig. 6** demonstrates the online editing of a markdown file on an ownCloud (<https://owncloud.com/>) installation.
 
 ![Online editing on with an ownCloud plugin](fig-owncloud-md-editor.png)<br>
 **Figure 6.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
 
-Even mathematical formulas are rendered correctly in the HTML live preview window of the OwnCloud markdown plugin (**Fig. 6** ).
+Even mathematical formulas are rendered correctly in the HTML live preview window of the ownCloud markdown plugin (**Fig. 6** ).
 
 ## Document versioning and change control
 
