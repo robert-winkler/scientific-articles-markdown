@@ -203,7 +203,7 @@ To facilitate the input of specific characters, so-called mnemonics can be enabl
 
 ## Formulas
 
-Formula are written in LaTeX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
+Formula are written in LATEX mode using the delimiters `$`. E.g. the formula for calculating the standard deviation $s$ of a random sampling would be written as:
 
 ```
 $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
@@ -215,7 +215,7 @@ $s=\sqrt{\frac{1}{N-1}\sum_{i=1}^N(x_i-\overline{x})^{2}}$
 
 with $x_i$ the individual observations, $\overline{x}$ the sample mean and $N$ the total number of samples.
 
-Pandoc parses formulas into internal structures and allows conversion into formats other than LaTeX. This allows for format-specific formula representation and enables computational analysis of the formulas [@garnet_semiautomatic_2015].
+Pandoc parses formulas into internal structures and allows conversion into formats other than LATEX. This allows for format-specific formula representation and enables computational analysis of the formulas [@garnet_semiautomatic_2015].
 
 ## Code listings
 
@@ -259,9 +259,9 @@ gives [@suber_open_2012; @benkler_wealth_2006, 57 ff.].
 
 The Citation Style Language (CSL) <http://citationstyles.org/> is used for the citations and bibliographies. This file format is supported e.g. by the reference management programs Mendeley <https://www.mendeley.com/>, Papers <http://papersapp.com/> and Zotero <https://www.zotero.org/>. CSL styles for particular journals can be found from the Zotero style repository <https://www.zotero.org/styles>. The bibliography style, which pandoc should use for the target document can be chosen or in the YAML block of the markdown document or can be passed as an command line option. The later is more recommendable, because distinct bibliography style may be used for different documents.
 
-## Creation of LaTeX `natbib` citations
+## Creation of LATEX `natbib` citations
 
-For citations in scientific manuscripts written in LaTeX, the natbib package is widely used. To create a LATEX output file with natbib citations, pandoc simply has to be run with the `--natbib` option, but without the `--filter pandoc-citeproc` parameter.
+For citations in scientific manuscripts written in LATEX, the natbib package is widely used. To create a LATEX output file with natbib citations, pandoc simply has to be run with the `--natbib` option, but without the `--filter pandoc-citeproc` parameter.
 
 ## Database of cited references
 
