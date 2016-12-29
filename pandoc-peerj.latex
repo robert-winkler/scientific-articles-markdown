@@ -148,30 +148,14 @@ $if(subtitle)$
 $endif$
 
 $for(author)$
-$if(author.name)$
-$if(author.affiliation)$
-\author[$author.affiliation$]{$author.name$}
+\author[$for(author.institute_indices)$$author.institute_indices$$sep$,$endfor$$if(author.email)$,✉$endif$]{$author.name$}
 $if(author.email)$
-\corrauthor[$author.affiliation$]{$if(author.fullname)$$author.fullname$$else$$author.name$$endif$}{$author.email$}
-$endif$
-$else$
-\author{$author.name$}
-$endif$
-$else$
-\author{$author$}
+\corrauthor[✉]{$if(author.fullname)$$author.fullname$$else$$author.name$$endif$}{$author.email$}
 $endif$
 $endfor$
 
-$if(correspondence)$
-\corrauthor[$correspondence.institute$]{$correspondence.name$}{$correspondence.email$}
-$endif$
-
 $for(institute)$
-$if(institute.index)$
 \affil[$institute.index$]{$institute.name$}
-$else$
-\affil{$institute$}
-$endif$
 $endfor$
 
 \date{$date$}

@@ -1,5 +1,8 @@
 MARKDOWN_FILE = agile-editing-pandoc.md
-PANDOC_DEFAULT_OPTIONS = -S -s --columns=5
+AFFILIATIONS_JSON_FILE = outfile.affiliations.json
+DEFAULT_JSON_FILE = outfile.json
+PANDOC_READER_OPTIONS = --smart
+PANDOC_WRITER_OPTIONS = --standalone
 
 PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
 PANDOC_LATEX_OPTIONS += --latex-engine=xelatex
@@ -16,44 +19,56 @@ PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 
-outfile.tex: $(MARKDOWN_FILE) pandoc-peerj.latex
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+$(AFFILIATIONS_JSON_FILE): $(MARKDOWN_FILE) scripts/affiliations.lua
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       -t scripts/affiliations.lua \
+	       -o $@ $<
+
+$(DEFAULT_JSON_FILE): $(MARKDOWN_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       -t json \
+	       -o $@ $<
+
+outfile.tex: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex
+	pandoc $(PANDOC_WRITER_OPTIONS) \
+	       $(PANDOC_LATEX_OPTIONS) \
 	       --natbib \
-	       $(PANDOC_LATEX_OPTIONS) \
 	       -o $@ $<
 
-outfile.pdf: $(MARKDOWN_FILE) pandoc-peerj.latex agile-markdown.bib
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
-	        --filter pandoc-citeproc \
+outfile.pdf: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex agile-markdown.bib
+	pandoc $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_LATEX_OPTIONS) \
+	       --filter pandoc-citeproc \
 	       -o $@ $<
 
-outfile.docx: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+outfile.docx: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --reference-docx=pandoc-manuscript.docx \
 	       -o $@ $<
 
-outfile.odt: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
-				 $(PANDOC_NONTEX_OPTIONS) \
+outfile.odt: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
+	       $(PANDOC_NONTEX_OPTIONS) \
 				 --reference-odt=pandoc-manuscript.odt \
 				 -o $@ $<
 
-
-outfile.epub: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+outfile.epub: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 	       -o $@ $<
 
-outfile.html: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+outfile.html: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 				 --mathjax \
 				 -c pandoc.css \
-	       -M include-after:'<script src="https://d3js.org/d3.v4.min.js"></script><script src="graphs/pub-costs.js"></script>' \
 	       -o $@ $<
 
 clean:
