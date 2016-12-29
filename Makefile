@@ -14,15 +14,6 @@ PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 # extraction of citations using BibTool PDF generation uses the --filter
 # pandoc-citeproc option.
 
-# test if panflute is installed
-PANFLUTE_INSTALLED = $(shell echo "1" | pandoc -t markdown --filter filters/identity.py 2>/dev/null)
-# Only try to run the filter if Panflute seems to be available. This will
-# prevent errors at the cost of less-than-optimal output if panflute is not
-# setup correctly.
-ifneq ($(strip $(PANFLUTE_INSTALLED)),)
-PANDOC_LATEX_OPTIONS += --filter=filters/unflatten-meta.py
-endif
-
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 
 outfile.tex: $(MARKDOWN_FILE) pandoc-peerj.latex
