@@ -11,11 +11,12 @@ PANDOC_LATEX_OPTIONS += -M classoption=fleqn
 PANDOC_LATEX_OPTIONS += -M documentclass=wlpeerj
 PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 
-PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
-
 # LATEX code will produce with the --natbib option, which also enables the
 # extraction of citations using BibTool PDF generation uses the --filter
 # pandoc-citeproc option.
+PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
+
+LUA_PATH := panlunatic/?.lua;scripts/?.lua;?.lua;
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 
@@ -24,9 +25,9 @@ $(AFFILIATIONS_JSON_FILE): $(MARKDOWN_FILE) scripts/affiliations.lua
 	       -t scripts/affiliations.lua \
 	       -o $@ $<
 
-$(DEFAULT_JSON_FILE): $(MARKDOWN_FILE)
+$(DEFAULT_JSON_FILE): $(MARKDOWN_FILE) scripts/default.lua
 	pandoc $(PANDOC_READER_OPTIONS) \
-	       -t json \
+	       -t scripts/default.lua \
 	       -o $@ $<
 
 outfile.tex: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex
