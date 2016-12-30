@@ -43,29 +43,25 @@ outfile.pdf: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex agile
 	       -o $@ $<
 
 outfile.docx: $(DEFAULT_JSON_FILE)
-	pandoc $(PANDOC_READER_OPTIONS) \
-	       $(PANDOC_WRITER_OPTIONS) \
+	pandoc $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --reference-docx=pandoc-manuscript.docx \
 	       -o $@ $<
 
 outfile.odt: $(DEFAULT_JSON_FILE)
-	pandoc $(PANDOC_READER_OPTIONS) \
-	       $(PANDOC_WRITER_OPTIONS) \
+	pandoc $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 				 --reference-odt=pandoc-manuscript.odt \
 				 -o $@ $<
 
 outfile.epub: $(DEFAULT_JSON_FILE)
-	pandoc $(PANDOC_READER_OPTIONS) \
-	       $(PANDOC_WRITER_OPTIONS) \
+	pandoc $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 	       -o $@ $<
 
 outfile.html: $(DEFAULT_JSON_FILE)
-	pandoc $(PANDOC_READER_OPTIONS) \
-	       $(PANDOC_WRITER_OPTIONS) \
+	pandoc $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 				 --mathjax \
