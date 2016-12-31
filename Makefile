@@ -1,5 +1,8 @@
 MARKDOWN_FILE = agile-editing-pandoc.md
-PANDOC_DEFAULT_OPTIONS = -S -s --columns=5
+AFFILIATIONS_JSON_FILE = outfile.affiliations.json
+DEFAULT_JSON_FILE = outfile.json
+PANDOC_READER_OPTIONS = --smart
+PANDOC_WRITER_OPTIONS = --standalone
 
 PANDOC_LATEX_OPTIONS = --template=pandoc-peerj.latex
 PANDOC_LATEX_OPTIONS += --latex-engine=xelatex
@@ -8,61 +11,65 @@ PANDOC_LATEX_OPTIONS += -M classoption=fleqn
 PANDOC_LATEX_OPTIONS += -M documentclass=wlpeerj
 PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 
-PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
-
 # LATEX code will produce with the --natbib option, which also enables the
 # extraction of citations using BibTool PDF generation uses the --filter
 # pandoc-citeproc option.
+PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 
-# test if panflute is installed
-PANFLUTE_INSTALLED = $(shell echo "1" | pandoc -t markdown --filter filters/identity.py 2>/dev/null)
-# Only try to run the filter if Panflute seems to be available. This will
-# prevent errors at the cost of less-than-optimal output if panflute is not
-# setup correctly.
-ifneq ($(strip $(PANFLUTE_INSTALLED)),)
-PANDOC_LATEX_OPTIONS += --filter=filters/unflatten-meta.py
-endif
+LUA_PATH := panlunatic/?.lua;scripts/?.lua;?.lua;
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 
-outfile.tex: $(MARKDOWN_FILE) pandoc-peerj.latex
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+$(AFFILIATIONS_JSON_FILE): $(MARKDOWN_FILE) scripts/affiliations.lua
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       -t scripts/affiliations.lua \
+	       -o $@ $<
+
+$(DEFAULT_JSON_FILE): $(MARKDOWN_FILE) scripts/default.lua
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       -t scripts/default.lua \
+	       -o $@ $<
+
+outfile.tex: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex
+	pandoc $(PANDOC_WRITER_OPTIONS) \
+	       $(PANDOC_LATEX_OPTIONS) \
 	       --natbib \
-	       $(PANDOC_LATEX_OPTIONS) \
 	       -o $@ $<
 
-outfile.pdf: $(MARKDOWN_FILE) pandoc-peerj.latex agile-markdown.bib
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
-	        --filter pandoc-citeproc \
+outfile.pdf: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex agile-markdown.bib
+	pandoc $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_LATEX_OPTIONS) \
+	       --filter pandoc-citeproc \
 	       -o $@ $<
 
-outfile.docx: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+outfile.docx: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --reference-docx=pandoc-manuscript.docx \
 	       -o $@ $<
 
-outfile.odt: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
-				 $(PANDOC_NONTEX_OPTIONS) \
+outfile.odt: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
+	       $(PANDOC_NONTEX_OPTIONS) \
 				 --reference-odt=pandoc-manuscript.odt \
 				 -o $@ $<
 
-
-outfile.epub: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+outfile.epub: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 	       -o $@ $<
 
-outfile.html: $(MARKDOWN_FILE)
-	pandoc $(PANDOC_DEFAULT_OPTIONS) \
+outfile.html: $(DEFAULT_JSON_FILE)
+	pandoc $(PANDOC_READER_OPTIONS) \
+	       $(PANDOC_WRITER_OPTIONS) \
 	       $(PANDOC_NONTEX_OPTIONS) \
 	       --toc \
 				 --mathjax \
 				 -c pandoc.css \
-	       -M include-after:'<script src="https://d3js.org/d3.v4.min.js"></script><script src="graphs/pub-costs.js"></script>' \
 	       -o $@ $<
 
 clean:

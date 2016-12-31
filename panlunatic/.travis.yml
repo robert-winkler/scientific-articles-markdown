@@ -1,0 +1,25 @@
+sudo: false
+
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+env:
+  - PANDOC_VERSION=1.17.2-1
+  - PANDOC_VERSION=1.19.1-1
+
+before_install:
+  - mkdir pandoc-${PANDOC_VERSION}
+  - >
+      travis_retry curl --location --silent \
+        https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION%-*}/pandoc-${PANDOC_VERSION}-amd64.deb \
+        -o pandoc-${PANDOC_VERSION}/pandoc.deb
+  - cd pandoc-${PANDOC_VERSION}
+  - ar x pandoc.deb
+  - tar zvxf data.tar.gz
+  - cd ..
+
+script:
+  - git clone https://github.com/tarleb/panlunatic
+
+  # Run tests
+  - PATH="${PWD}/pandoc-${PANDOC_VERSION}/usr/bin:$PATH" make test
