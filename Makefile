@@ -17,6 +17,7 @@ PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 
 LUA_PATH := panlunatic/?.lua;scripts/?.lua;?.lua;
+export LUA_PATH
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
 

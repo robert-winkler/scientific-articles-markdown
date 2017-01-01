@@ -42,7 +42,7 @@ function panmeta.names(objects)
   if objects.name then return {objects.name} end
   local res = {}
   for _, obj in ipairs(objects) do
-    panmeta.concat_table(res, names(obj))
+    panmeta.concat_table(res, panmeta.names(obj))
   end
   return res
 end
