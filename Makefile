@@ -23,7 +23,7 @@ ifneq ($(strip $(PANFLUTE_INSTALLED)),)
 PANDOC_LATEX_OPTIONS += --filter=filters/unflatten-meta.py
 endif
 
-all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html
+all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html outfile.txt
 
 outfile.tex: $(MARKDOWN_FILE) pandoc-peerj.latex
 	pandoc $(PANDOC_DEFAULT_OPTIONS) \
@@ -64,6 +64,10 @@ outfile.html: $(MARKDOWN_FILE)
 				 -c pandoc.css \
 	       -M include-after:'<script src="https://d3js.org/d3.v4.min.js"></script><script src="graphs/pub-costs.js"></script>' \
 	       -o $@ $<
+
+
+outfile.txt: $(MARKDOWN_FILE)
+	pandoc -s -S -o $@ $<
 
 clean:
 	rm -f outfile.*
