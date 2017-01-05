@@ -9,7 +9,7 @@ author:
     email: robert.winkler@cinvestav.mx
 bibliography: agile-markdown.bib
 keywords: [open science, document formats, markdown, latex, publishing, typesetting]
-...
+---
 
 # Abstract
 
