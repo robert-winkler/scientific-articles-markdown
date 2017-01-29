@@ -1,12 +1,15 @@
 ---
 title: 'Formatting Open Science: agile creation of multiple document types by writing academic manuscripts in pandoc markdown'
 author:
-  - name: Albert Krewinkel
-    institute: Pandoc Development Team
-  - name: Robert Winkler
-    institute: CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Irapuato-León, Mexico
-    fullname: Prof. Dr. Robert Winkler
-    email: robert.winkler@cinvestav.mx
+  - Albert Krewinkel:
+      institute: pdt
+  - Robert Winkler:
+      institute: cinvestav
+      fullname: Prof. Dr. Robert Winkler
+      email: robert.winkler@cinvestav.mx
+institute:
+  - cinvestav: CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Irapuato-León, Mexico
+  - pdt: "Pandoc Development Team"
 bibliography: agile-markdown.bib
 keywords: [open science, document formats, markdown, latex, publishing, typesetting]
 ---
