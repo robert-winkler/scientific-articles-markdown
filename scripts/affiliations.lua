@@ -6,11 +6,8 @@ local abstract = {}
 local in_abstract = false
 
 function Doc(body, meta, variables)
-  -- Fragile, handle with care.  Order matters.
-  meta.author = panmeta.add_indices(panmeta.authors(meta))
-  meta.institute = panmeta.add_indices(
-    panmeta.as_names(panmeta.list_institutes(meta.author)))
-  panmeta.set_affiliation_indices(meta.author, meta.institute)
+  meta.author, meta.institute =
+    panmeta.canonicalize_authors(meta.author, meta.institute)
   if next(abstract) ~= nil then
     meta.abstract = abstract
   else
