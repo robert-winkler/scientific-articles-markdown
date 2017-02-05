@@ -69,7 +69,7 @@ outfile.html: $(DEFAULT_JSON_FILE)
 				 -c pandoc.css \
 	       -o $@ $<
 
-outfile.jsonld: $(AFFILIATIONS_JSON_FILE)
+outfile.jsonld: $(MARKDOWN_FILE)
 	pandoc -t scripts/jsonld.lua -o $@ $<
 
 outfile.txt: $(MARKDOWN_FILE)

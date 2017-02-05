@@ -8,8 +8,14 @@
 
 local _version = "0.0.1"
 local json = require "dkjson"
+local cito = require "cito"
+local panmeta = require "panmeta"
 
+panmeta.options.json_values = false
+
+local bibliography = nil
 local citation_ids = {}
+local citations_by_property = {}
 
 local function Organizations(orgs)
   local affil_json = {}
@@ -37,12 +43,46 @@ local function Authors(authors)
   return authors_json
 end
 
-local function Citations (bibliography)
-  local bibfile = io.popen("pandoc-citeproc --bib2json " .. bibliography, "r")
+local function bibliography(bibfilename)
+  local bibfile = io.popen("pandoc-citeproc --bib2json " .. bibfilename, "r")
   local jsonstr = bibfile:read("*a")
   bibfile:close()
-  local bibjson = json.decode(jsonstr)
+  return json.decode(jsonstr)
+end
 
+local function Cito (bibfile)
+  local bibjson = bibliography(bibfile)
+  function find_citation(id)
+    -- sloooow
+    for i = 1, #bibjson do
+      if bibjson[i].id == id then
+        return bibjson[i]
+      end
+    end
+  end
+
+  local res = {}
+  local bibentry, citation_ld
+  for citation_type, typed_citation_ids in pairs(citations_by_property) do
+    for i = 1, #typed_citation_ids do
+      bibentry = find_citation(typed_citation_ids[i])
+      if bibentry and bibentry.DOI then
+        citation_ld = {
+          ["@id"] = "http://dx.doi.org/" .. bibentry.DOI
+        }
+        cito_type_str = "cito:" .. citation_type
+        if not res[cito_type_str] then
+          res[cito_type_str] = {}
+        end
+        table.insert(res[cito_type_str], citation_ld)
+      end
+    end
+  end
+  return res
+end
+
+local function Citations (bibfile)
+  local bibjson = bibliography(bibfile)
   function find_citation(id)
     -- sloooow
     for i = 1, #bibjson do
@@ -76,15 +116,24 @@ local function Citations (bibliography)
     end
 
     return {
-      ["@type"] = type,
-      ["headline"] = record.title,
-      ["author"] = Authors(authors),
-      ["datePublished"] = record.issued and
+      ["@context"] = {
+        ["@vocab"]    = "http://schema.org/",
+        ["title"]     = "headline",
+        ["page"]      = "pagination",
+        ["date"]      = "datePublished",
+        ["publisher"] = "publisher",
+        ["author"]    = "author",
+      },
+      ["@type"]     = type,
+      ["@id"]       = record.DOI and ("http://dx.doi.org/" .. record.DOI),
+      ["title"]     = record.title,
+      ["author"]    = Authors(authors),
+      ["date"]      = record.issued and
         record.issued["date-parts"] and
         table.concat(record.issued["date-parts"][1], "-"),
       ["publisher"] = record.publisher and
         { ["@type"] = "Organization", ["name"] = record.publisher },
-      ["pagination"] = record.page,
+      ["page"]      = record.page,
     }
   end
 
@@ -100,32 +149,55 @@ end
 
 function Doc(body, meta, vars)
   local default_image = "https://upload.wikimedia.org/wikipedia/commons/f/fa/Globe.svg"
-  local authors = meta.author -- assume we are reading a canonicallized version
+  local authors = panmeta.canonicalize_authors(meta.author)
   local accessible_for_free
   if type(meta.accessible_for_free) == "boolean" then
     accessible_for_free = meta.accessible_for_free
   else
     accessible_for_free = true
   end
-  local res = {
-    ["@context"]         = "http://schema.org",
-    ["@type"]            = "ScholarlyArticle",
-    ["author"]           = Authors(authors),
-    ["name"]             = meta.title,
-    ["headline"]         = meta.title,
-    ["alternativeTitle"] = meta.subtitle,
-    ["datePublished"]    = meta.date or os.date("%Y-%m-%d"),
-    ["image"]            = meta.image or default_image,
-    ["isAccessibleForFree"] = accessible_for_free,
-    ["citation"]         = Citations(meta.bibliography),
+  local context = {
+    ["@vocab"]    = "http://schema.org/",
+    ["cito"]      = "http://purl.org/spar/cito/",
+    ["author"]    = "author",
+    ["name"]      = "name",
+    ["title"]     = "headline",
+    ["subtitle"]  = "alternativeTitle",
+    ["publisher"] = "publisher",
+    ["date"]      = "datePublished",
+    ["isFree"]    = "isAccessibleForFree",
+    ["image"]     = "image",
+    ["citation"]  = "citation",
   }
+
+  local res = {
+    ["@context"]  = context,
+    ["@type"]     = "ScholarlyArticle",
+    ["author"]    = Authors(authors),
+    ["name"]      = meta.title,
+    ["title"]     = meta.title,
+    ["subtitle"]  = meta.subtitle,
+    ["date"]      = meta.date or os.date("%Y-%m-%d"),
+    -- ["image"]     = meta.image or default_image,
+    ["isFree"]    = accessible_for_free,
+    ["citation"]  = Citations(meta.bibliography),
+  }
+  for k, v in pairs(Cito(meta.bibliography)) do
+    res[k] = v
+  end
   return json.encode(res)
 end
 
 ------- Inlines -------
 function Cite(s, cs)
+  local cito_prop, cit_id
   for i = 1, #cs do
-    citation_ids[cs[i].citationId] = true
+    cito_prop, cit_id = cito.cito_components(cs[i].citationId)
+    citation_ids[cit_id] = true
+    if not citations_by_property[cito_prop] then
+      citations_by_property[cito_prop] = {}
+    end
+    table.insert(citations_by_property[cito_prop], cit_id)
   end
   return s
 end

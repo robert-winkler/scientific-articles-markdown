@@ -1,5 +1,6 @@
 panlunatic = require("panlunatic")
 panmeta = require("panmeta")
+cito = require "cito"
 setmetatable(_G, {__index = panlunatic})
 
 local abstract = {}
@@ -22,4 +23,11 @@ function Doc(body, meta, variables)
   end
   meta.institute = affiliations:map(function(inst) return inst.name end)
   return panlunatic.Doc(body, meta, variables)
+end
+
+function Cite (c, cs)
+  for i = 1, #cs do
+    _, cs[i].citationId = cito.cito_components(cs[i].citationId)
+  end
+  return panlunatic.Cite(c, cs)
 end
