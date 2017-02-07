@@ -1,8 +1,9 @@
 local panmeta = {_version = "0.1.0"}
-local pretty = require("pl/pretty")
-
 local panlunatic = require "panlunatic"
-local is_equal -- forward declaration
+
+local options = {
+  json_values = true
+}
 
 local MetaObjectList = {}
 function MetaObjectList:new (item_class)
@@ -56,8 +57,13 @@ function NamedObject:canonicalize (raw_item, index)
     end
   else
     raw_name, item_attributes = next(raw_item)
-    item.name = panlunatic.Str(tostring(raw_name))
-    item.abbreviation = panlunatic.Str(tostring(raw_name))
+    if options.json_values then
+      item.name = panlunatic.Str(tostring(raw_name))
+      item.abbreviation = panlunatic.Str(tostring(raw_name))
+    else
+      item.name = raw_name
+      item.abbreviation = raw_name
+    end
     if type(item_attributes) ~= "table" then
       item.name = item_attributes
     else
@@ -126,6 +132,9 @@ local function canonicalize_authors(raw_authors, raw_institutes)
   -- ordered affiliations
   local affiliations = Institutes:init{}
   authors:each(function (_, author)
+      if not author.institute then
+        author.institute = {}
+      end
       for i, authinst in ipairs(author.institute) do
         author.institute[i] = insertMergeUniqueName(affiliations, authinst)
       end
@@ -145,4 +154,5 @@ return {
   Authors = Authors,
   Institutes = Institutes,
   canonicalize_authors = canonicalize_authors,
+  options = options,
 }
