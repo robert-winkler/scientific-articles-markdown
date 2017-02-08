@@ -19,6 +19,9 @@ PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 LUA_PATH := panlunatic/?.lua;scripts/?.lua;?.lua;
 export LUA_PATH
 
+PANDOC_VERSION := $(shell pandoc -v | sed -ne 's/^pandoc //gp')
+export PANDOC_VERSION
+
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html outfile.txt
 
 $(AFFILIATIONS_JSON_FILE): $(MARKDOWN_FILE) scripts/affiliations.lua

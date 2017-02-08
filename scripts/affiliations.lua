@@ -20,7 +20,6 @@ end
 function Cite (c, cs)
   for i = 1, #cs do
     _, cs[i].citationId = cito.cito_components(cs[i].citationId)
-    io.stderr:write(cs[i].citationId .. "\n")
   end
   return panlunatic.Cite(c, cs)
 end
