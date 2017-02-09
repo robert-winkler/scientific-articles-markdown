@@ -1,0 +1,32 @@
+% -----------------------------------------------------------------
+% Filename: charter.sty ( Bitstream Charter )
+% Created by: tex bch
+% Created using fontinst v1.335
+% Created for [4allTeX postscript font setup]
+% Created on [1996/05/04]
+% Use phbfonti.sty file (in 4allTeX package)
+% Based on PSNFSS 2.4.1 and 3.x by S. Rahtz
+% Put this file in a TEXINPUT directory.
+% -----------------------------------------------------------------
+% Can be processed by LaTeX209 and LaTeX2e
+\def\fileversion{3q}
+\def\filedate{94/10/22}
+\def\docdate{94/10/22}
+\ifx\ProvidesPackage\undefined
+\immediate\write\sixt@@n{File: charter.sty NFSS1 fontinst (PhB)}
+\ifx\selectfont\undefined
+\@latexerr{No NFSS1 detected...}\@eha\endinput\fi
+
+\ifx\declare@font\undefined\input{psnfss.sup}\fi
+\def\load@bch{\postscript@fontdef{Bitstream Charter }{bch}%
+  {bchr}{bchri}{bchb}{bchbi}{bchrc}{bchro}}
+\late@extra@def{bch}{}{}
+\load@bch
+\else
+\immediate\write\sixt@@n{File: charter.sty LaTeX2e fontinst (PhB)}
+\ProvidesPackage{charter}[\filedate\space\fileversion\space
+ LaTeX2e fontinst (PhB)]\fi
+
+\def\rmdefault{bch}
+\def\switchfont{}
+\endinput

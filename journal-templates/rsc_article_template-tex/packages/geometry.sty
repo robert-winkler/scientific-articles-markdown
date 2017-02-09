@@ -1,0 +1,561 @@
+%%
+%% This is file `geometry.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% geometry.dtx  (with options: `package')
+%% 
+%% File: geometry.dtx Copyright (C) 1996-2000 Hideo Umeki
+%%                              (hideo.umeki@toshiba.co.jp)
+%%
+%% This package may be distributed under the terms of the LaTeX
+%% Project Public License, as described in lppl.txt in the base
+%% LaTeX distribution, either version 1.2 or (at your option)
+%% any later version.
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{geometry}[2000/06/28 v2.3 Page Geometry]
+\RequirePackage{keyval}%
+\newif\ifGeom@verbose
+\newif\ifGeom@landscape
+\newif\ifGeom@nohead
+\newif\ifGeom@nofoot
+\newif\ifGeom@includemp
+\newif\ifGeom@passincmp
+\newif\ifGeom@hbody
+\newif\ifGeom@vbody
+\newif\ifGeom@dvips
+\newif\ifGeom@pdftex
+\newif\ifGeom@vtex
+\newcount\Geom@cnth
+\newcount\Geom@cntv
+\def\geom@warning#1{%
+  \ifGeom@verbose\PackageWarningNoLine{geometry}{#1}\fi}%
+\def\Geom@Dhscale{0.8}%
+\def\Geom@Dvscale{0.9}%
+\def\Geom@Dtwosideshift{20\Geom@truedimen pt}%
+\def\geom@init{%
+  \Geom@hbodyfalse
+  \Geom@vbodyfalse
+  \let\Geom@truedimen\@empty
+  \let\Geom@width\@undefined
+  \let\Geom@height\@undefined
+  \let\Geom@textwidth\@undefined
+  \let\Geom@textheight\@undefined
+  \let\Geom@hscale\@undefined
+  \let\Geom@vscale\@undefined
+  \let\Geom@lmargin\@undefined
+  \let\Geom@rmargin\@undefined
+  \let\Geom@tmargin\@undefined
+  \let\Geom@bmargin\@undefined
+  \let\Geom@twosideshift\@undefined
+  \Geom@verbosefalse
+  \Geom@landscapefalse
+  \Geom@noheadfalse
+  \Geom@nofootfalse
+  \Geom@includempfalse
+  \Geom@passincmpfalse
+  \Geom@dvipsfalse
+  \geom@initpdftex
+  \geom@initvtex}%
+\def\geom@initpdftex{%
+  \ifx\pdfpagewidth\@undefined
+    \Geom@pdftexfalse
+  \else
+    \ifnum\pdfoutput=1\relax\Geom@pdftextrue\else\Geom@pdftexfalse\fi
+  \fi}%
+\def\geom@initvtex{%
+  \ifx\VTeXversion\@undefined
+    \Geom@vtexfalse
+  \else
+    \ifnum\OpMode=\@ne
+      \Geom@vtextrue
+    \else
+      \ifnum\OpMode=\tw@
+        \Geom@vtextrue
+      \else
+        \Geom@vtexfalse
+      \fi
+    \fi
+  \fi}%
+\def\geom@setbool#1#2{%
+  \csname #2\ifx\relax#1\relax true\else#1\fi\endcsname}%
+\def\geom@checkbool#1{%
+  \csname ifGeom@#1\endcsname #1\space\else\fi}%
+\def\geom@detiv#1#2#3#4{% determine #4.
+  \setlength\@tempdima{\@nameuse{paper#1}}%
+  \setlength\@tempdimb{\@nameuse{Geom@#2}}%
+  \addtolength\@tempdima{-\@tempdimb}%
+  \setlength\@tempdimb{\@nameuse{Geom@#3}}%
+  \addtolength\@tempdima{-\@tempdimb}%
+  \ifdim\@tempdima<\z@
+    \geom@warning{`#4' results in NEGATIVE (\the\@tempdima).%
+    ^^J\@spaces Parameters of `#2' and `#3' should be shortened}%
+  \fi
+  \expandafter\edef\csname Geom@#4\endcsname{\the\@tempdima}}%
+\def\geom@detiiandiii#1#2#3{% determine #2 and #3.
+  \setlength\@tempdima{\@nameuse{paper#1}}%
+  \setlength\@tempdimb{\@nameuse{Geom@#1}}%
+  \addtolength\@tempdima{-\@tempdimb}%
+  \divide\@tempdima\tw@
+  \ifdim\@tempdima<\z@
+    \geom@warning{`#2' and `#3' result in NEGATIVE (\the\@tempdima).%
+                  ^^J\@spaces Parameter for `#1' should be shortened}%
+  \fi
+  \expandafter\edef\csname Geom@#2\endcsname{\the\@tempdima}%
+  \expandafter\edef\csname Geom@#3\endcsname{\the\@tempdima}}%
+\def\geom@detall#1#2#3#4{%
+  \@tempcnta\z@
+  \if#1h
+    \ifx\Geom@lmargin\@undefined\else\advance\@tempcnta4\relax\fi
+    \ifGeom@hbody\advance\@tempcnta2\relax\fi
+    \ifx\Geom@rmargin\@undefined\else\advance\@tempcnta1\relax\fi
+    \Geom@cnth\@tempcnta
+  \else
+    \ifx\Geom@tmargin\@undefined\else\advance\@tempcnta4\relax\fi
+    \ifGeom@vbody\advance\@tempcnta2\relax\fi
+    \ifx\Geom@bmargin\@undefined\else\advance\@tempcnta1\relax\fi
+    \Geom@cntv\@tempcnta
+  \fi
+  \ifcase\@tempcnta               % 0:(*,*,*)
+    \if#1h
+      \edef\Geom@width{\Geom@Dhscale\paperwidth}%
+    \else
+      \edef\Geom@height{\Geom@Dvscale\paperheight}%
+    \fi
+    \geom@detiiandiii{#2}{#3}{#4}%
+  \or                             % 1:(*,*,S) goto (5)
+    \geom@warning{`#3' was forced to equal `#4'}%
+    \expandafter\edef\csname Geom@#3\endcsname{\@nameuse{Geom@#4}}%
+    \geom@detiv{#2}{#3}{#4}{#2}%
+  \or\geom@detiiandiii{#2}{#3}{#4}% 2:(*,S,*)
+  \or\geom@detiv{#2}{#2}{#4}{#3}  % 3:(*,S,S)
+  \or                             % 4:(S,*,*) goto (5)
+    \geom@warning{`#4' was forced to equal `#3'}%
+    \expandafter\edef\csname Geom@#4\endcsname{\@nameuse{Geom@#3}}%
+    \geom@detiv{#2}{#3}{#4}{#2}%
+  \or\geom@detiv{#2}{#3}{#4}{#2}  % 5:(S,*,S)
+  \or\geom@detiv{#2}{#2}{#3}{#4}  % 6:(S,S,*)
+  \or                             % 7:(S,S,S) goto (5)
+    \geom@warning{Redundant specification in `#1'-direction.%
+                  ^^J\@spaces `#2' (\@nameuse{Geom@#2}) is ignored}%
+    \geom@detiv{#2}{#3}{#4}{#2}%
+  \else\fi}%
+\def\geom@clean{%
+  \ifnum\Geom@cnth<4\let\Geom@lmargin\@undefined\fi
+  \ifodd\Geom@cnth\else\let\Geom@rmargin\@undefined\fi
+  \ifnum\Geom@cntv<4\let\Geom@tmargin\@undefined\fi
+  \ifodd\Geom@cntv\else\let\Geom@bmargin\@undefined\fi
+  \ifGeom@hbody\else
+    \let\Geom@hscale\@undefined
+    \let\Geom@width\@undefined
+    \let\Geom@textwidth\@undefined
+  \fi
+  \ifGeom@vbody\else
+    \let\Geom@vscale\@undefined
+    \let\Geom@height\@undefined
+    \let\Geom@textheight\@undefined
+  \fi}%
+\def\geom@parse@divide#1#2#3#4{%
+  \def\Geom@star{*}%
+  \@tempcnta\z@
+  \@for\Geom@tmp:=#1\do{%
+    \expandafter\KV@@sp@def\expandafter\Geom@frag\expandafter{\Geom@tmp}%
+    \edef\Geom@value{\Geom@frag}%
+    \ifcase\@tempcnta\relax% cnta == 0
+            \edef\Geom@key{#2}%
+    \or    \edef\Geom@key{#3}%
+    \else  \edef\Geom@key{#4}%
+    \fi
+    \@nameuse{Geom@set\Geom@key false}%
+    \ifx\empty\Geom@value\else
+    \ifx\Geom@star\Geom@value\else
+      \setkeys{Geom}{\Geom@key=\Geom@value}%
+    \fi\fi
+    \advance\@tempcnta\@ne}%
+  \let\Geom@star\relax}%
+\def\geom@branch#1#2#3{%
+  \@tempcnta\z@
+  \@for\Geom@tmp:=#1\do{%
+    \KV@@sp@def\Geom@frag{\Geom@tmp}%
+    \edef\Geom@value{\Geom@frag}%
+    \ifcase\@tempcnta\relax% cnta == 0
+      \setkeys{Geom}{#2=\Geom@value}%
+    \or% cnta == 1
+      \setkeys{Geom}{#3=\Geom@value}%
+    \else\fi
+    \advance\@tempcnta\@ne}%
+  \ifnum\@tempcnta=\@ne
+    \setkeys{Geom}{#2=\Geom@value}%
+    \setkeys{Geom}{#3=\Geom@value}%
+  \fi}%
+\def\geom@magtooffset{%
+  \@tempdima=\mag\Geom@truedimen sp%
+  \@tempdimb=1\Geom@truedimen in%
+  \divide\@tempdimb\@tempdima
+  \multiply\@tempdimb\@m
+  \addtolength{\hoffset}{1\Geom@truedimen in}%
+  \addtolength{\voffset}{1\Geom@truedimen in}%
+  \addtolength{\hoffset}{-\@tempdimb}%
+  \addtolength{\voffset}{-\@tempdimb}}%
+\def\geom@setpaper(#1,#2){%
+  \setlength\paperwidth{#1}%
+  \setlength\paperheight{#2}}%
+\@namedef{Geom@a0paper}{%
+\geom@setpaper(841\Geom@truedimen mm,1189\Geom@truedimen mm)}%
+\@namedef{Geom@a1paper}{%
+\geom@setpaper(595\Geom@truedimen mm,841\Geom@truedimen mm)}%
+\@namedef{Geom@a2paper}{%
+\geom@setpaper(420\Geom@truedimen mm,595\Geom@truedimen mm)}%
+\@namedef{Geom@a3paper}{%
+\geom@setpaper(297\Geom@truedimen mm,420\Geom@truedimen mm)}%
+\@namedef{Geom@a4paper}{%
+\geom@setpaper(210\Geom@truedimen mm,297\Geom@truedimen mm)}%
+\@namedef{Geom@a5paper}{%
+\geom@setpaper(149\Geom@truedimen mm,210\Geom@truedimen mm)}%
+\@namedef{Geom@a6paper}{%
+\geom@setpaper(105\Geom@truedimen mm,149\Geom@truedimen mm)}%
+\@namedef{Geom@b0paper}{%
+\geom@setpaper(1000\Geom@truedimen mm,1414\Geom@truedimen mm)}%
+\@namedef{Geom@b1paper}{%
+\geom@setpaper(707\Geom@truedimen mm,1000\Geom@truedimen mm)}%
+\@namedef{Geom@b2paper}{%
+\geom@setpaper(500\Geom@truedimen mm,707\Geom@truedimen mm)}%
+\@namedef{Geom@b3paper}{%
+\geom@setpaper(353\Geom@truedimen mm,500\Geom@truedimen mm)}%
+\@namedef{Geom@b4paper}{%
+\geom@setpaper(250\Geom@truedimen mm,353\Geom@truedimen mm)}%
+\@namedef{Geom@b5paper}{%
+\geom@setpaper(176\Geom@truedimen mm,250\Geom@truedimen mm)}%
+\@namedef{Geom@b6paper}{%
+\geom@setpaper(125\Geom@truedimen mm,176\Geom@truedimen mm)}%
+\@namedef{Geom@letterpaper}{%
+\geom@setpaper(8.5\Geom@truedimen in,11\Geom@truedimen in)}%
+\@namedef{Geom@legalpaper}{%
+\geom@setpaper(8.5\Geom@truedimen in,14\Geom@truedimen in)}%
+\@namedef{Geom@executivepaper}{%
+\geom@setpaper(7.25\Geom@truedimen in,10.5\Geom@truedimen in)}%
+\define@key{Geom}{paper}{\setkeys{Geom}{#1}}%
+\define@key{Geom}{a0paper}[true]{\def\Geom@paper{a0paper}}%
+\define@key{Geom}{a1paper}[true]{\def\Geom@paper{a1paper}}%
+\define@key{Geom}{a2paper}[true]{\def\Geom@paper{a2paper}}%
+\define@key{Geom}{a3paper}[true]{\def\Geom@paper{a3paper}}%
+\define@key{Geom}{a4paper}[true]{\def\Geom@paper{a4paper}}%
+\define@key{Geom}{a5paper}[true]{\def\Geom@paper{a5paper}}%
+\define@key{Geom}{a6paper}[true]{\def\Geom@paper{a6paper}}%
+\define@key{Geom}{b0paper}[true]{\def\Geom@paper{b0paper}}%
+\define@key{Geom}{b1paper}[true]{\def\Geom@paper{b1paper}}%
+\define@key{Geom}{b2paper}[true]{\def\Geom@paper{b2paper}}%
+\define@key{Geom}{b3paper}[true]{\def\Geom@paper{b3paper}}%
+\define@key{Geom}{b4paper}[true]{\def\Geom@paper{b4paper}}%
+\define@key{Geom}{b5paper}[true]{\def\Geom@paper{b5paper}}%
+\define@key{Geom}{b6paper}[true]{\def\Geom@paper{b6paper}}%
+\define@key{Geom}{letterpaper}[true]{\def\Geom@paper{letterpaper}}%
+\define@key{Geom}{legalpaper}[true]{\def\Geom@paper{legalpaper}}%
+\define@key{Geom}{executivepaper}[true]{\def\Geom@paper{executivepaper}}%
+\define@key{Geom}{papersize}{\geom@branch{#1}{paperwidth}{paperheight}}%
+\define@key{Geom}{paperwidth}{\setlength\paperwidth{#1}%
+                              \let\Geom@paper\@undefined}%
+\define@key{Geom}{paperheight}{\setlength\paperheight{#1}%
+                              \let\Geom@paper\@undefined}%
+\define@key{Geom}{total}{\geom@branch{#1}{width}{height}}%
+\define@key{Geom}{width}{\Geom@hbodytrue\edef\Geom@width{#1}}%
+\define@key{Geom}{height}{\Geom@vbodytrue\edef\Geom@height{#1}}%
+\define@key{Geom}{body}{\geom@branch{#1}{textwidth}{textheight}}%
+\define@key{Geom}{textwidth}{\Geom@hbodytrue\edef\Geom@textwidth{#1}}%
+\define@key{Geom}{textheight}{\Geom@vbodytrue\edef\Geom@textheight{#1}}%
+\define@key{Geom}{scale}{\geom@branch{#1}{hscale}{vscale}}%
+\define@key{Geom}{hscale}{\Geom@hbodytrue\edef\Geom@hscale{#1}}%
+\define@key{Geom}{vscale}{\Geom@vbodytrue\edef\Geom@vscale{#1}}%
+\define@key{Geom}{margin}{\geom@branch{#1}{lmargin}{tmargin}%
+                          \geom@branch{#1}{rmargin}{bmargin}}%
+\define@key{Geom}{hmargin}{\geom@branch{#1}{lmargin}{rmargin}}%
+\define@key{Geom}{vmargin}{\geom@branch{#1}{tmargin}{bmargin}}%
+\define@key{Geom}{lmargin}{\edef\Geom@lmargin{#1}}%
+\define@key{Geom}{rmargin}{\edef\Geom@rmargin{#1}}%
+\define@key{Geom}{tmargin}{\edef\Geom@tmargin{#1}}%
+\define@key{Geom}{bmargin}{\edef\Geom@bmargin{#1}}%
+\define@key{Geom}{divide}{\geom@parse@divide{#1}{lmargin}{width}{rmargin}%
+                         \geom@parse@divide{#1}{tmargin}{height}{bmargin}}%
+\define@key{Geom}{hdivide}{\geom@parse@divide{#1}{lmargin}{width}{rmargin}}%
+\define@key{Geom}{vdivide}{\geom@parse@divide{#1}{tmargin}{height}{bmargin}}%
+\define@key{Geom}{offset}{\geom@branch{#1}{hoffset}{voffset}}%
+\define@key{Geom}{hoffset}{\setlength\hoffset{#1}}%
+\define@key{Geom}{voffset}{\setlength\voffset{#1}}%
+\define@key{Geom}{headheight}{\Geom@noheadfalse\setlength\headheight{#1}}%
+\define@key{Geom}{headsep}{\Geom@noheadfalse\setlength\headsep{#1}}%
+\define@key{Geom}{footskip}{\Geom@nofootfalse\setlength\footskip{#1}}%
+\define@key{Geom}{marginparwidth}%
+           {\ifGeom@passincmp\else\Geom@includemptrue\fi%
+            \setlength\marginparwidth{#1}}%
+\define@key{Geom}{marginparsep}%
+           {\ifGeom@passincmp\else\Geom@includemptrue\fi%
+            \setlength\marginparsep{#1}}%
+\define@key{Geom}{columnsep}{\setlength\columnsep{#1}}%
+\define@key{Geom}{footnotesep}{\setlength{\skip\footins}{#1}}%
+\define@key{Geom}{verbose}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@verbose}}%
+\define@key{Geom}{reset}[true]{%
+            \lowercase{\expandafter\csname if#1\endcsname\geom@init
+            \@twosidefalse\@mparswitchfalse\fi}}%
+\define@key{Geom}{includemp}[true]{%
+            \Geom@passincmptrue
+            \lowercase{\geom@setbool{#1}}{Geom@includemp}}%
+\define@key{Geom}{reversemp}[true]{%
+            \ifGeom@passincmp\else\Geom@includemptrue\fi%
+            \lowercase{\geom@setbool{#1}}{@reversemargin}}%
+\define@key{Geom}{reversemarginpar}[true]{%
+            \ifGeom@passincmp\else\Geom@includemptrue\fi%
+            \lowercase{\geom@setbool{#1}}{@reversemargin}}%
+\define@key{Geom}{twoside}[true]{%
+            \lowercase{\geom@setbool{#1}}{@twoside}%
+            \lowercase{\geom@setbool{#1}}{@mparswitch}}%
+\define@key{Geom}{twosideshift}{\@twosidetrue\@mparswitchtrue
+            \def\Geom@twosideshift{#1}}%
+\define@key{Geom}{nohead}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@nohead}}%
+\define@key{Geom}{nofoot}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@nofoot}}%
+\define@key{Geom}{noheadfoot}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@nohead}%
+            \lowercase{\geom@setbool{#1}}{Geom@nofoot}}%
+\define@key{Geom}{landscape}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@landscape}}%
+\define@key{Geom}{portrait}[true]{%
+            \lowercase{\expandafter\csname if#1\endcsname
+            \Geom@landscapefalse\else\Geom@landscapetrue\fi}}%
+\define@key{Geom}{dvips}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@dvips}}%
+\define@key{Geom}{pdftex}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@pdftex}}%
+\define@key{Geom}{vtex}[true]{%
+            \lowercase{\geom@setbool{#1}}{Geom@vtex}}%
+\define@key{Geom}{truedimen}[true]{%
+            \lowercase{\expandafter\csname if#1\endcsname
+            \def\Geom@truedimen{true}\else
+            \let\Geom@truedimen\@empty\fi}}%
+\define@key{Geom}{mag}{\mag#1}%
+\let\KV@Geom@papername\KV@Geom@paper
+\let\KV@Geom@totalwidth\KV@Geom@width
+\let\KV@Geom@totalheight\KV@Geom@height
+\let\KV@Geom@text\KV@Geom@body
+\let\KV@Geom@left\KV@Geom@lmargin
+\let\KV@Geom@right\KV@Geom@rmargin
+\let\KV@Geom@top\KV@Geom@tmargin
+\let\KV@Geom@bottom\KV@Geom@bmargin
+\let\KV@Geom@head\KV@Geom@headheight
+\let\KV@Geom@foot\KV@Geom@footskip
+\let\KV@Geom@marginpar\KV@Geom@marginparwidth
+\def\geom@process{%
+  \ifx\Geom@paper\@undefined\else\@nameuse{Geom@\Geom@paper}\fi
+  \ifdim\paperwidth<\p@
+    \PackageError{geometry}{%
+    You must set \string\paperwidth\space properly}{%
+    Set your paper type (e.g., `a4paper' for A4) as a class option^^J%
+    or as a geometry package option.}%
+  \fi
+  \ifdim\paperheight<\p@
+    \PackageError{geometry}{%
+    You must set \string\paperheight\space properly}{%
+    Set your paper type (e.g., `a4paper' for A4) as a class option^^J%
+    or as a geometry package option.}%
+  \fi
+  \ifnum\@m=\mag\else\geom@magtooffset\fi
+  \ifGeom@landscape
+    \setlength\@tempdima{\paperwidth}%
+    \setlength\paperwidth{\paperheight}%
+    \setlength\paperheight{\@tempdima}%
+  \fi
+  \ifGeom@nohead
+    \setlength\headheight{0pt}%
+    \setlength\headsep{0pt}%
+  \fi
+  \ifGeom@nofoot
+    \setlength\footskip{0pt}%
+  \fi
+  \ifGeom@hbody
+    \ifx\Geom@width\@undefined
+      \ifx\Geom@hscale\@undefined
+        \edef\Geom@width{\Geom@Dhscale\paperwidth}%
+      \else
+        \edef\Geom@width{\Geom@hscale\paperwidth}%
+      \fi
+    \fi
+    \ifx\Geom@textwidth\@undefined\else
+      \setlength\@tempdima{\Geom@textwidth}%
+      \ifGeom@includemp
+        \addtolength\@tempdima{\marginparwidth}%
+        \addtolength\@tempdima{\marginparsep}%
+      \fi
+      \edef\Geom@width{\the\@tempdima}%
+    \fi
+  \fi
+  \ifGeom@vbody
+    \ifx\Geom@height\@undefined
+      \ifx\Geom@vscale\@undefined
+        \edef\Geom@height{\Geom@Dvscale\paperheight}%
+      \else
+        \edef\Geom@height{\Geom@vscale\paperheight}%
+      \fi
+    \fi
+    \ifx\Geom@textheight\@undefined\else
+      \setlength\@tempdima{\Geom@textheight}%
+      \addtolength\@tempdima{\headheight}%
+      \addtolength\@tempdima{\headsep}%
+      \addtolength\@tempdima{\footskip}%
+      \edef\Geom@height{\the\@tempdima}%
+    \fi
+  \fi
+  \geom@detall{h}{width}{lmargin}{rmargin}%
+  \geom@detall{v}{height}{tmargin}{bmargin}%
+  \setlength\textwidth{\Geom@width}%
+  \setlength\textheight{\Geom@height}%
+  \setlength\topmargin{\Geom@tmargin}%
+  \setlength\oddsidemargin{\Geom@lmargin}%
+  \ifGeom@includemp
+    \addtolength\textwidth{-\marginparwidth}%
+    \addtolength\textwidth{-\marginparsep}%
+    \if@reversemargin
+       \addtolength\oddsidemargin{\marginparwidth}%
+       \addtolength\oddsidemargin{\marginparsep}%
+    \fi
+  \fi
+  \addtolength\textheight{-\headheight}%
+  \addtolength\textheight{-\headsep}%
+  \addtolength\textheight{-\footskip}%
+  \addtolength\topmargin{-1\Geom@truedimen in}%
+  \addtolength\oddsidemargin{-1\Geom@truedimen in}%
+  \if@twoside
+    \ifx\Geom@twosideshift\@undefined
+      \def\Geom@twosideshift{\Geom@Dtwosideshift}%
+    \fi
+    \setlength\evensidemargin{\Geom@rmargin}%
+    \addtolength\evensidemargin{-1\Geom@truedimen in}%
+    \setlength\@tempdima{\Geom@twosideshift}%
+    \addtolength\oddsidemargin{\@tempdima}%
+    \addtolength\evensidemargin{-\@tempdima}%
+    \ifGeom@includemp
+      \if@mparswitch
+        \setlength\@tempdima{\marginparwidth}%
+        \addtolength\@tempdima{\marginparsep}%
+        \addtolength\evensidemargin{\@tempdima}%
+        \if@reversemargin
+          \addtolength\evensidemargin{-\marginparwidth}%
+          \addtolength\evensidemargin{-\marginparsep}%
+        \fi
+      \fi
+    \fi
+  \else
+    \setlength\evensidemargin{\oddsidemargin}%
+  \fi}
+\def\geom@showparams{%
+  \typeout{----------------------- Geometry parameters^^J%
+  mode: %
+  \ifx\Geom@paper\@undefined
+     (default papersize)\space
+  \else
+     \Geom@paper\space
+  \fi
+  \geom@checkbool{landscape}%
+  \geom@checkbool{nohead}%
+  \geom@checkbool{nofoot}%
+  \geom@checkbool{includemp}%
+  \if@reversemargin reversemp\space\fi%
+  \if@twoside twoside\space\fi%
+  \geom@checkbool{dvips}%
+  \geom@checkbool{pdftex}%
+  \geom@checkbool{vtex}%
+  \ifx\Geom@truedimen\@empty\else
+     truedimen
+  \fi^^J%
+  h-parts: \Geom@lmargin, \Geom@width, \Geom@rmargin%
+  \ifnum\Geom@cnth=\z@\space(default)\fi^^J%
+  v-parts: \Geom@tmargin, \Geom@height, \Geom@bmargin%
+  \ifnum\Geom@cntv=\z@\space(default)\fi^^J%
+  \if@twoside
+    twosideshift: \Geom@twosideshift^^J%
+  \fi
+  ----------------------- Page layout dimensions^^J%
+  \string\paperwidth\space\space\the\paperwidth^^J%
+  \string\paperheight\space\the\paperheight^^J%
+  \string\textwidth\space\space\the\textwidth^^J%
+  \string\textheight\space\the\textheight^^J%
+  \string\oddsidemargin\space\space\the\oddsidemargin^^J%
+  \string\evensidemargin\space\the\evensidemargin^^J%
+  \string\topmargin\space\space\the\topmargin^^J%
+  \string\headheight\space\the\headheight^^J%
+  \string\headsep\@spaces\the\headsep^^J%
+  \string\footskip\space\space\space\the\footskip^^J%
+  \if@twocolumn
+    \string\columnsep\space\space\the\columnsep^^J%
+  \fi
+  \ifGeom@includemp
+    \string\marginparwidth\space\the\marginparwidth^^J%
+    \string\marginparsep\space\space\space\the\marginparsep^^J%
+  \fi
+  \string\hoffset\space\the\hoffset^^J%
+  \string\voffset\space\the\voffset^^J%
+  \string\mag\space\the\mag^^J%
+  (1in=72.27pt, 1cm=28.45pt)^^J%
+  -----------------------}}%
+\let\Geom@paper\@undefined
+\def\geom@setkey{\setkeys{Geom}}%
+\let\geom@origExecuteOptions\ExecuteOptions
+\let\ExecuteOptions\geom@setkey
+\geom@init
+\InputIfFileExists{geometry.cfg}{}{}%
+\let\ExecuteOptions\geom@origExecuteOptions
+\def\ProcessOptionsWithKV#1{%
+  \let\@tempa\@empty
+  \@for\CurrentOption:=\@classoptionslist\do{%
+    \@ifundefined{KV@#1@\CurrentOption}%
+    {}{\edef\@tempa{\@tempa,\CurrentOption,}}}%
+  \edef\@tempa{%
+    \noexpand\setkeys{#1}{\@tempa\@ptionlist{\@currname.\@currext}}}%
+  \@tempa
+  \AtEndOfPackage{\let\@unprocessedoptions\relax}}%
+\ProcessOptionsWithKV{Geom}%
+\geom@process
+\AtBeginDocument{%
+  \ifx\pdfpagewidth\@undefined % latex command is used.
+    \Geom@pdftexfalse
+    \ifx\VTeXversion\@undefined % not VTeX
+      \Geom@vtexfalse
+    \fi
+  \else                       % pdflatex command is used
+    \ifGeom@pdftex\Geom@dvipsfalse\fi
+  \fi
+  \edef\org@pw{\the\paperwidth}
+  \edef\org@ph{\the\paperheight}
+  \divide\paperwidth\@m
+  \multiply\paperwidth\the\mag
+  \divide\paperheight\@m
+  \multiply\paperheight\the\mag
+  \ifGeom@dvips
+    \AtBeginDvi{\special{%
+    papersize=\the\paperwidth,\the\paperheight}}%
+  \fi
+  \ifGeom@pdftex
+    \pdfoutput=1\relax
+    \pdfpagewidth=\the\paperwidth
+    \pdfpageheight=\the\paperheight
+  \fi
+  \ifGeom@vtex % vtex environment
+    \mediawidth=\the\paperwidth
+    \mediaheight=\the\paperheight
+  \fi
+  \setlength\paperwidth{\org@pw}
+  \setlength\paperheight{\org@ph}
+  \let\org@pw\relax
+  \let\org@ph\relax
+  \ifGeom@verbose
+    \geom@showparams
+  \fi}%
+\def\geometry#1{%
+  \geom@clean
+  \setkeys{Geom}{#1}%
+  \geom@process}%
+\endinput
+%%
+%% End of file `geometry.sty'.
