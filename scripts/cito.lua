@@ -17,10 +17,27 @@ local supported_properties = {
   "cites_as_evidence",
   "cites_as_metadata_document",
   "includes_excerpt_from",
-  "includes_qutation_from",
+  "includes_quotation_from",
+  "obtains_background_from",
   "uses_method_in",
 }
-local cito_properties = {}
+local cito_properties = {
+  method = "uses_method_in",
+  method_in = "uses_method_in",
+  agree_with = "agrees_with",
+  as_authority = "cites_as_authority",
+  authority = "cites_as_authority",
+  as_evidence = "cites_as_evidence",
+  evidence = "cites_as_evidence",
+  as_metadata_document = "cites_as_metadata_document",
+  metadata_document = "cites_as_metadata_document",
+  excerpt = "includes_excerpt_from",
+  excerpt_from = "includes_excerpt_from",
+  quotation_from = "includes_quotation_from",
+  quotation = "includes_quotation_from",
+  background = "obtains_background_from",
+  background_from = "obtains_background_from",
+}
 for i = 1, #supported_properties do
   cito_properties[supported_properties[i]] = supported_properties[i]
 end
@@ -43,4 +60,3 @@ return {
   cito_properties = cito_properties,
   cito_components = cito_components,
 }
-
