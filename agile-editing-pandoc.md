@@ -90,7 +90,7 @@ section        | `# Intro`    | `\section{Intro}`  | `<h1><Intro></h1>`
 subsection     | `## History` | `\subsection`      | `<h2><History></h2>`
                |              |                    | `{History}`          |  |
 **text style** |              |                    |                      |
-bold           | `**text**`   | `\textbf{text}`    | `<b>text</b>**`
+bold           | `**text**`   | `\textbf{text}`    | `<b>text</b>`
 italics        | `*text*`     | `\textit{text}`    | `<i>text</i>`
 **links**      |              |                    |                      |
 http link      | `<https://`  | `\usepackage{url}` | `<a href="https://`
@@ -455,7 +455,7 @@ Authoring scientific manuscripts in markdown (MD) format is straight-forward, an
 
 # Acknowledegments
 
-We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes and Dr. Magnus Palmblad for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
 
 # Software and code availability
 
