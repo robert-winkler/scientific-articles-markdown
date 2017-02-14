@@ -50,7 +50,7 @@ In a recent study, the article processing charges (APCs) for research intensive 
 Examples such as the _Journal of Statistical Software_ (_JSS_, <https://www.jstatsoft.org/>) and _eLife_ (<https://elifesciences.org/>) demonstrate the possibility of completely community-supported OA publications. **Fig. 1** compares the APCs of different OA publishing business models.<br>
 _JSS_ and _eLife_ are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
-![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png){#pub-costs}<br>
+![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png){width=50%}{#pub-costs}<br>
 **Figure 1.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.
 
 In 2009, a study was carried concerning the _"Economic Implications of Alternative Scholarly Publishing Models"_, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
@@ -86,8 +86,8 @@ Although be content elements of the documents such as title, author, abstract, t
 **Element**    | **Markdown** | **LATEX**          | **HTML**
 :------------- | :----------- | :----------------- | :-------------------
 **structure**  |              |                    |                      |
-section        | `# Intro`    | `\section{Intro}`  | `<h1><Intro></h1>`
-subsection     | `## History` | `\subsection`      | `<h2><History></h2>`
+section        | `# Intro`    | `\section{Intro}`  | `<h1>Intro</h1>`
+subsection     | `## History` | `\subsection`      | `<h2>History</h2>`
                |              |                    | `{History}`          |  |
 **text style** |              |                    |                      |
 bold           | `**text**`   | `\textbf{text}`    | `<b>text</b>`
@@ -200,7 +200,7 @@ Scientific texts often require special characters, e.g. Greek letters, mathemati
 
 The UTF-8 standard, developed and maintained by _Unicode Consortium_, enables the use of characters across languages and computer platforms. The encoding is defined as RFC document 3629 of the Network Working group [@rfc3629] and as ISO standard ISO/IEC 10646:2014 [@international_organization_for_standardization_iso/iec_2014]. Specifications of Unicode and code charts are provided on the Unicode homepage (<http://www.unicode.org/>).<br>
 
-In pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. For the correct processing of UTF-8 encoding in LATEX, the use of the `--latex-engine=xelatex` option is necessary, further the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
+In pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. The correct processing of MD with UTF-8 encoding to LATEX/PDF output requires the use of the `--latex-engine=xelatex` option and the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
 
 ```
 \usepackage{unicode-math}
@@ -217,7 +217,7 @@ BoldItalicFont = *-bolditalic,
 ]{xits-math}
 ```
 
-To facilitate the input of specific characters, so-called mnemonics can be enabled in some editors (e.g. in atom by the `character-table` package). For example, the 2-character Mnemonics ':u' gives 'ü' (diaeresis), or 'D*' the greek Δ. The possible character mnemonics and character sets are listed in RFC 1345 [@rfc1345].
+To facilitate the input of specific characters, so-called mnemonics can be enabled in some editors (e.g. in atom by the `character-table` package). For example, the 2-character Mnemonics ':u' gives 'ü' (diaeresis), or 'D*' the greek Δ. The possible character mnemonics and character sets are listed in RFC 1345 <http://www.faqs.org/rfcs/rfc1345.html> [@rfc1345].
 
 ## Formulas
 
