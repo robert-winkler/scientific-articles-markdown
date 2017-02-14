@@ -79,23 +79,26 @@ LATEX    | typesetting system    | high-quality print | TEX           | [@lampor
 HTML     | hypertext markup      | websites           | (X)HTML       | [@HTML4;@HTML5]
 MD       | Markdown              | lightweight markup | plain text MD | [@ovadia_markdown_2014;@rfc7764]
 
-Although be content elements of the documents such as title, author, abstract, text, figures, tables, etc. remain the same, the syntax of the file formats is rather different. **Tab. 2** demonstrates some simple examples of differences in different markup languages.
+Although be content elements of the documents such as title, author, abstract,
+text, figures, tables, etc. remain the same, the syntax of the file formats is
+rather different. **Tab. 2** demonstrates some simple examples of differences in
+different markup languages.
 
 **Table 2.** Examples for formatting elements and their implementations in different markup languages.
 
-**Element**    | **Markdown** | **LATEX**          | **HTML**
-:------------- | :----------- | :----------------- | :-------------------
-**structure**  |              |                    |                      |
-section        | `# Intro`    | `\section{Intro}`  | `<h1><Intro></h1>`
-subsection     | `## History` | `\subsection`      | `<h2><History></h2>`
-               |              |                    | `{History}`          |  |
-**text style** |              |                    |                      |
-bold           | `**text**`   | `\textbf{text}`    | `<b>text</b>**`
-italics        | `*text*`     | `\textit{text}`    | `<i>text</i>`
-**links**      |              |                    |                      |
-http link      | `<https://`  | `\usepackage{url}` | `<a href="https://`
-               |              | `arxiv.org/>`      | `\url{https://`      | `arxiv.org/"></a>`
-               |              |                    | `arxiv.org/}`        |  |
+**Element**    | **Markdown**   | **LATEX**          | **HTML**             |
+:------------- | :-----------   | :----------------- | :-------------------
+**structure**  |                |                    |                      |
+section        | `# Intro`      | `\section{Intro}`  | `<h1><Intro></h1>`   |
+subsection     | `## History`   | `\subsection`      | `<h2><History></h2>` |
+               |                | `{History}`        |                      |
+**text style** |                |                    |                      |
+bold           | `**text**`     | `\textbf{text}`    | `<b>text</b>`        |
+italics        | `*text*`       | `\textit{text}`    | `<i>text</i>`        |
+**links**      |                |                    |                      |
+http link      | `<https://`    | `\usepackage{url}` | `<a href="https://`  |
+               | `archive.org>` | `\url{https://`    | `arxiv.org/"></a>`   |
+               |                |  `arxiv.org/}`     |                      |
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files. Practically speaking, those file formats require the use of special word processing software.<br>
 From a writer's perspective, the use of _What You See Is What You Get (WYSIWYG)_ programs such as Microsoft Word, WPS Office or LibreOffice might be convinient, because the formatting of the document is directly visible. But the complicated syntax specifications often result in problems when using different versions and for collaborative writing. Simple conversions between file formats can be difficult or impossible. In worst case, 'old' files cannot be opened any more.<br>
