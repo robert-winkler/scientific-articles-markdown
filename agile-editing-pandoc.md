@@ -79,23 +79,26 @@ LATEX    | typesetting system    | high-quality print | TEX           | [@lampor
 HTML     | hypertext markup      | websites           | (X)HTML       | [@HTML4;@HTML5]
 MD       | Markdown              | lightweight markup | plain text MD | [@ovadia_markdown_2014;@rfc7764]
 
-Although be content elements of the documents such as title, author, abstract, text, figures, tables, etc. remain the same, the syntax of the file formats is rather different. **Tab. 2** demonstrates some simple examples of differences in different markup languages.
+Although be content elements of the documents such as title, author, abstract,
+text, figures, tables, etc. remain the same, the syntax of the file formats is
+rather different. **Tab. 2** demonstrates some simple examples of differences in
+different markup languages.
 
 **Table 2.** Examples for formatting elements and their implementations in different markup languages.
 
-**Element**    | **Markdown** | **LATEX**          | **HTML**
-:------------- | :----------- | :----------------- | :-------------------
-**structure**  |              |                    |                      |
-section        | `# Intro`    | `\section{Intro}`  | `<h1><Intro></h1>`
-subsection     | `## History` | `\subsection`      | `<h2><History></h2>`
-               |              |                    | `{History}`          |  |
-**text style** |              |                    |                      |
-bold           | `**text**`   | `\textbf{text}`    | `<b>text</b>**`
-italics        | `*text*`     | `\textit{text}`    | `<i>text</i>`
-**links**      |              |                    |                      |
-http link      | `<https://`  | `\usepackage{url}` | `<a href="https://`
-               |              | `arxiv.org/>`      | `\url{https://`      | `arxiv.org/"></a>`
-               |              |                    | `arxiv.org/}`        |  |
+**Element**    | **Markdown**   | **LATEX**          | **HTML**             |
+:------------- | :-----------   | :----------------- | :-------------------
+**structure**  |                |                    |                      |
+section        | `# Intro`      | `\section{Intro}`  | `<h1><Intro></h1>`   |
+subsection     | `## History`   | `\subsection`      | `<h2><History></h2>` |
+               |                | `{History}`        |                      |
+**text style** |                |                    |                      |
+bold           | `**text**`     | `\textbf{text}`    | `<b>text</b>`        |
+italics        | `*text*`       | `\textit{text}`    | `<i>text</i>`        |
+**links**      |                |                    |                      |
+http link      | `<https://`    | `\usepackage{url}` | `<a href="https://`  |
+               | `archive.org>` | `\url{https://`    | `arxiv.org/"></a>`   |
+               |                |  `arxiv.org/}`     |                      |
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files. Practically speaking, those file formats require the use of special word processing software.<br>
 From a writer's perspective, the use of _What You See Is What You Get (WYSIWYG)_ programs such as Microsoft Word, WPS Office or LibreOffice might be convinient, because the formatting of the document is directly visible. But the complicated syntax specifications often result in problems when using different versions and for collaborative writing. Simple conversions between file formats can be difficult or impossible. In worst case, 'old' files cannot be opened any more.<br>
@@ -106,7 +109,11 @@ In academic publishing, additionally the creation of different output formats fr
 - For the distribution of a seminar script, with an online version in HTML and a print version in PDF.
 - For submitting a journal manuscript for peer-review in DOCX, as well as a preprint version with another journal style in PDF.
 
-Some of the tasks can be performed e.g. with LATEX, but an integrated solution remains a challenge. Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substantial manual corrections.<br>
+Some of the tasks can be performed e.g. with LATEX, but an integrated solution
+remains a challenge. Several programs for the conversion between documents
+formats exist, such as the e-book library program
+calibre <http://calibre-ebook.com/>. But the results of such conversions are
+often not satisfactory and require substantial manual corrections.<br>
 Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats. The need for hybrid publishing has been recognized outside of science [@dptcollective_toolkit_2015; @kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far. Therefore, we investigated the possibility to generate multiple publication formats from a simple manuscript source file.
 
 # Concepts of markdown and pandoc
@@ -335,13 +342,13 @@ linked-data browsers:
   "@context": {
     "@vocab": "http://schema.org/",
     "date": "datePublished",
-    "title": "headline"
-    "subtitle": "alternativeTitle",
+    "title": "headline",
+    "subtitle": "alternativeTitle"
   },
   "@type": "ScholarlyArticle",
   "title": "Formatting Open Science",
-  "subtitle": "writing academic manuscripts in pandoc markdown"
-  "date": "2017-02-10",
+  "subtitle": "writing academic manuscripts in pandoc markdown",
+  "date": "2017-02-10"
 }
 ```
 
