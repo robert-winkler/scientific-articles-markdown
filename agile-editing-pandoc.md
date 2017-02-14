@@ -109,7 +109,11 @@ In academic publishing, additionally the creation of different output formats fr
 - For the distribution of a seminar script, with an online version in HTML and a print version in PDF.
 - For submitting a journal manuscript for peer-review in DOCX, as well as a preprint version with another journal style in PDF.
 
-Some of the tasks can be performed e.g. with LATEX, but an integrated solution remains a challenge. Several programs for the conversion between documents formats exist, such as the e-book library program calibre <https://code.google.com/archive/p/faenza-icon-theme/>. But the results of such conversions are often not satisfactory and require substantial manual corrections.<br>
+Some of the tasks can be performed e.g. with LATEX, but an integrated solution
+remains a challenge. Several programs for the conversion between documents
+formats exist, such as the e-book library program
+calibre <http://calibre-ebook.com/>. But the results of such conversions are
+often not satisfactory and require substantial manual corrections.<br>
 Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats. The need for hybrid publishing has been recognized outside of science [@dptcollective_toolkit_2015; @kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far. Therefore, we investigated the possibility to generate multiple publication formats from a simple manuscript source file.
 
 # Concepts of markdown and pandoc
