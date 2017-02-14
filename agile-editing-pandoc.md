@@ -342,13 +342,13 @@ linked-data browsers:
   "@context": {
     "@vocab": "http://schema.org/",
     "date": "datePublished",
-    "title": "headline"
-    "subtitle": "alternativeTitle",
+    "title": "headline",
+    "subtitle": "alternativeTitle"
   },
   "@type": "ScholarlyArticle",
   "title": "Formatting Open Science",
-  "subtitle": "writing academic manuscripts in pandoc markdown"
-  "date": "2017-02-10",
+  "subtitle": "writing academic manuscripts in pandoc markdown",
+  "date": "2017-02-10"
 }
 ```
 
