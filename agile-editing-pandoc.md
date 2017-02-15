@@ -50,12 +50,12 @@ In a recent study, the article processing charges (APCs) for research intensive 
 Examples such as the _Journal of Statistical Software_ (_JSS_, <https://www.jstatsoft.org/>) and _eLife_ (<https://elifesciences.org/>) demonstrate the possibility of completely community-supported OA publications. **Fig. 1** compares the APCs of different OA publishing business models.<br>
 _JSS_ and _eLife_ are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
-![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png){width=50%}{#pub-costs}<br>
+![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png){width=50%}   
 **Figure 1.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.
 
 In 2009, a study was carried concerning the _"Economic Implications of Alternative Scholarly Publishing Models"_, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
 
-![Publishing costs](fig-hybrid-publishing-costs.png)<br>
+![Publishing costs](fig-hybrid-publishing-costs.png)    
 **Figure 2.** Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].
 
 Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdraw from the science budget [@van_noorden_open_2013].<br>
@@ -120,15 +120,14 @@ Therefore, we were looking for a solution, which enables the creation of scienti
 
 Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, this markdown (MD) file are parsed to generate the final HTML document. With this concept, the source file remains easily readable and the author can focus on the contents rather than formatting. Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, pandoc MD (<http://pandoc.org/>) adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Tab. 2** demonstrates the simplicity of MD compared to other markup languages. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
 
-![Workfow for the generation of multiple document formats with pandoc](fig-pandoc-workflow.png)<br>
-**Figure 3.** Workfow for the generation of multiple document formats with pandoc.
+![Workfow for the generation of multiple document formats with pandoc](fig-pandoc-workflow.png){width=50%}  
+**Figure 3.** Workfow for the generation of multiple document formats with pandoc. The markdown (MD) file contains the manuscript text with formatting tags, and can also refer to external files such as images or reference databases. The pandoc processor converts the MD file to the desired output formats. Documents, citations etc. can be defined in style files or templates.      
 
 # Markdown editors and online editing
 
 The usability of a text editor is important for the author, either writing alone or with several co-authors. In this section we present software and strategies for different scenarios. **Fig. 4** summarizes various options for local or networked editing of MD files.
 
-![Offline and online editing of markdown files](fig-editing-options.png)<br>
-
+![Offline and online editing of markdown files](fig-editing-options.png){width=50%}  
 **Figure 4.** Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.
 
 ## Markdown editors
@@ -199,7 +198,13 @@ e.g.
 ![Publishing costs](fig-hybrid-publishing-costs.png)
 ```
 
-The `alt text` is used e.g. in HTML output. Additional parameters such as image width are possible.
+The `alt text` is used e.g. in HTML output. Image dimensions can be defined in braces:
+
+```
+![](fig-hybrid-publishing-costs.png){width=5cm}
+```
+
+As well, an identifier for the figure can be defined with `#`, resulting e.g. in the image attributes `{#figure1 height=30%}`.
 
 ## Symbols
 
@@ -352,7 +357,6 @@ linked-data browsers:
 }
 ```
 
-
 ## Flexible metadata authoring
 
 We developed a method to allow authors the flexible specification of authors and
@@ -374,7 +378,6 @@ institute:
   fs: Science Formatting Working Group
 ```
 
-
 ## Citation types
 
 Writers are in the position to add information about the reason a citation is
@@ -385,14 +388,12 @@ citations. Our method is base on CiTO, the Citation Typing Ontology
 [@method:shotton_cito_2010], which specifies a vocabulary for the motivation
 when citing a resource. This is, to the best of our knowledge, the first method
 allowing inline qualification of bibliography relations.
-
 The type of a citations can be added to a Markdown citation using
 `@CITO_PROPERTY:KEY`, where `CITO_PROPERTY` is a supported CiTO property, and
 `KEY` is the usual citation key. Our tool extracts that information and includes
 it in the generated linked data output. A general CiTO property (`cites`) is
 used if no CiTO property is found in a citation key. Capitalizing on author
 convenience, we allow shortening of properties when sensible.
-
 As an example, we take the case where authors of a biological paper include a
 reference to the paper describing a method used in their work. The CiTO ontology
 provides the `uses_method_in` property for such relations. The context in which
@@ -400,7 +401,6 @@ the property is used removes possible ambiguities; our tool hence allows
 shortening this to `method`. Users of western blotting might hence write
 `@method:towbin_1979`, where *towbin_1979* is the citation identifier of the
 describing paper by @towbin_electrophoretic_1979.
-
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
