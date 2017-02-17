@@ -362,7 +362,8 @@ Writers can add information about the reason a citation is given. This might hel
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
-At this moment, DOCX is the most common format for manuscript submission. Some publishers also ask for LATEX or accept ODT. In this example, we want to create a manuscript for a _PLoS_ journal in DOCX and ODT format for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.
+At this moment, DOCX is the most common format for manuscript submission. Some publishers also ask for LATEX or accept ODT. In this example, we want to create a manuscript for a _PLoS_ journal in DOCX and ODT format for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.  
+The examples for DOCX/ ODT are kept relatively simple, to show the proof-of-principle and to provide a plain document for the development of own templates. Nevertheless, the generated documents should be suitable for submission after little manual editing. For specific journals it may be necessary to create more sophisticated templates or to copy/ paste the generic DOCX/ ODT output into the publisher's template.
 
 ## Development of a DOCX/ ODT template
 
@@ -403,7 +404,11 @@ pandoc -D latex > template-peerj.latex
 ```
 
 This template can be adjusted, e.g. by defining Unicode encoding (see above), by including particular packages or setting document options (line numbering, font size). Following, the template can be used with the pandoc parameter `--template=pandoc-peerj.latex`.<br>
-The templates used for this document are included as Supplemental Material (see section _Software and code availability_ below).
+The templates used for this document are included as Supplemental Material (see section _Software and code availability_ below).  
+
+## Styles for HTML and EPUB
+
+The style for HTML and EPUB formats can be defined in .css stylesheets. The Supplemental Material contains a simple example .css file for modifying the HTML output, which can be used with the pandoc parameter `-c pandoc.css`.
 
 # Automating document production
 
@@ -416,12 +421,12 @@ The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- D
 
 # Perspective
 
-Following the trend to peer production, the formatting of scientific content must become more efficient. Markdown/ pandoc has the potential to play a key role in the transition of from propietary to community-driven academic production. Important research tools, such as the statistical computing and graphics language R (<https://www.r-project.org/>), provide already MD functionality (<http://rmarkdown.rstudio.com/>). The software for writing manuscripts in MD is mature enough to be used by academic writers. Therefore, publishers also should consider to implement the MD format into their editorial platforms. 
+Following the trend to peer production, the formatting of scientific content must become more efficient. Markdown/ pandoc has the potential to play a key role in the transition of from propietary to community-driven academic production. Important research tools, such as the statistical computing and graphics language R (<https://www.r-project.org/>), provide already MD functionality (<http://rmarkdown.rstudio.com/>). The software for writing manuscripts in MD is mature already enough to be used by academic writers. Therefore, publishers also should consider to implement the MD format into their editorial platforms.
 
 # Conclusions
 
 Authoring scientific manuscripts in markdown (MD) format is straight-forward, and manual formatting is reduced to a minimum. The simple syntax of MD facilitates the document editing and collaborative writing. The rapid conversion of MD to multiple formats such as DOCX, LATEX, PDF, EPUB and HTML can be done easily using pandoc, and templates enable the automated generation of documents according to specific journal styles.  
-The additional features we implemented facilitate the correct indexing of meta information of journal articles aaccording to the 'semantic web' philosophy.  
+The additional features we implemented facilitate the correct indexing of meta information of journal articles according to the 'semantic web' philosophy.  
 Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
 
 # Acknowledegments
