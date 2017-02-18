@@ -79,6 +79,6 @@ outfile.txt: $(MARKDOWN_FILE)
 	pandoc -s -S -o $@ $<
 
 clean:
-	rm -f outfile.*
+	rm -f outfile*
 
 .PHONY: all clean
