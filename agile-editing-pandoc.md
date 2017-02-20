@@ -362,7 +362,8 @@ Writers can add information about the reason a citation is given. This might hel
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
-At this moment, DOCX is the most common format for manuscript submission. Some publishers also ask for LATEX or accept ODT. In this example, we want to create a manuscript for a _PLoS_ journal in DOCX and ODT format for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.  
+Scientific manuscripts have to be submitted in a format, which is defined by the journal or publisher. At this moment, DOCX is the most common file format for manuscript submission. Some publishers also accept or require LATEX or ODT formats. Additionally to the general style of the manuscript - organization of sections, fonts, etc. - also the citation style of the journal has to be followed. Often, the same manuscript has to be prepared for different journals, e.g. if the manuscript was rejected by a journal and has to be formatted for another one, or if a preprint of the paper is submitted to an archive that requires a distinct document format than the target peer-reviewed journal.  
+In this example, we want to create a manuscript for a _PLoS_ journal in DOCX and ODT format for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.  
 The examples for DOCX/ ODT are kept relatively simple, to show the proof-of-principle and to provide a plain document for the development of own templates. Nevertheless, the generated documents should be suitable for submission after little manual editing. For specific journals it may be necessary to create more sophisticated templates or to copy/ paste the generic DOCX/ ODT output into the publisher's template.
 
 ## Development of a DOCX/ ODT template
@@ -374,7 +375,9 @@ pandoc -S -s --csl=plos.csl --filter pandoc-citeproc
 -o pandoc-manuscript.docx agile-editing-pandoc.md
 ```
 
-The document settings and styles of the resulting file `pandoc-manuscript.docx` can be modified, and following it can be used as document template (`--reference-docx=pandoc-manuscript.docx`).
+The parameters `-S -s` generate a typographically correct (dashes, non-breaking spaces etc.) standalone document. A bibliography with the _PLoS_ style is created by the citeproc filter setting `--csl=plos.csl --filter pandoc-citeproc`.
+
+The document settings and styles of the resulting file `pandoc-manuscript.docx` can be optimized and be used again as document template (`--reference-docx=pandoc-manuscript.docx`).
 
 ```
 pandoc -S -s --reference-docx=pandoc-manuscript.docx --csl=plos.csl
