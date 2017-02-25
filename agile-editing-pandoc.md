@@ -313,15 +313,15 @@ For the direct creation of an article specific BIB database without using LATEX,
 
 Document information such as title, authors, abstract etc. can be defined in a metadata block written in YAML syntax. YAML ("YAML Ain't Markup Language", <http://yaml.org/>) is a data serialization standard in simple, human readable format. Variables defined in the YAML section are processed by pandoc and integrated into the generated documents. The YAML metadata block is recognized by three hyphens (`---`) at the beginning, and three hyphens or dots (`...`) at the end, e.g.:
 
-```
+```yaml
 ---
 title: Formatting Open Science
-subtitle: writing academic manuscripts in pandoc markdown
+subtitle: agile creation of multiple document types
 date: 2017-02-10
 ...
 ```
 
-An important aspect of Open Science is the public availability of all relevant information. The data should be acessible via default tools. We believe that this principle should also be applied to article metadata. Thus, we created a custom pandoc writer that emits the article's data as JSON–LD [@method:lanthaler_jsonld_2012]. This allows querying the journal's data with standard tools of the semantic web. The above YAML information would be output as:
+The public availability of all relevant information is a central aspect of Open Science.  Analoguous to article contents, data should be acessible via default tools. We believe that this principle must also be applied to article metadata. Thus, we created a custom pandoc writer that emits the article's data as JSON–LD [@method:lanthaler_jsonld_2012], allowing for informational and navigational queries of the journal's data with standard tools of the semantic web. The above YAML information would be output as:
 
 ```json
 {
@@ -333,18 +333,18 @@ An important aspect of Open Science is the public availability of all relevant i
   },
   "@type": "ScholarlyArticle",
   "title": "Formatting Open Science",
-  "subtitle": "writing academic manuscripts in pandoc markdown",
+  "subtitle": "agile creation of multiple document types",
   "date": "2017-02-10"
 }
 ```
 
-This format allows processing of the information by standard conform data processing software and browsers:
+This format allows processing of the information by standard conform data processing software and browsers.
 
 ## Flexible metadata authoring
 
-We developed a method to allow authors the flexible specification of authors and their respective affiliations. Author names can be given as a string, via the key of a single-element object, or explicitly as a `name` attribute of an object. Affiliations can be specified directly as properties of the author object, or separately in the `institute` object.
+We developed a method to allow writers the flexible specification of authors and their respective affiliations. Author names can be given as a string, via the key of a single-element object, or explicitly as a `name` attribute of an object. Affiliations can be specified directly as properties of the author object, or separately in the `institute` object.
 
-Additional information, e.g. email addresses or identifiers like ORCID[@haak_orcid_2012], can be added as additional values:
+Additional information, e.g. email addresses or identifiers like ORCID [@haak_orcid_2012], can be added as additional values:
 
 ```
 author:
@@ -358,7 +358,11 @@ institute:
 
 ## Citation types
 
-Writers can add information about the reason a citation is given. This might help reviewers and readers, and can simplify the search for relevant litarature. We developed an extended citation syntax that integrates seamlessly into markdown and can be used to add complementary information to citations. Our method is based on CiTO, the Citation Typing Ontology [@method:shotton_cito_2010], which specifies a vocabulary for the motivation when citing a resource. The type of a citations can be added to a markdown citation using `@CITO_PROPERTY:KEY`, where `CITO_PROPERTY` is a supported CiTO property, and `KEY` is the usual citation key. Our tool extracts that information and includes it in the generated linked data output. A general CiTO property (`cites`) is used, if no CiTO property is found in a citation key. Focussing on author convenience, we allow shortening of properties, when sensible. For example, if authors of a biological paper include a reference to the paper describing a method used in their work, the CiTO ontology provides the `providesMethodFor` property for such relations. The context, in which the property is used, removes possible ambiguities; our tool hence allows shortening this to `methodfor`. Users of western blotting might hence write `@methodfor:towbin_1979`, where _towbin_1979_ is the citation identifier of the describing paper by @towbin_electrophoretic_1979.
+Writers can add information about the reason a citation is given. This might help reviewers and readers, and can simplify the search for relevant litarature. We developed an extended citation syntax that integrates seamlessly into markdown and can be used to add complementary information to citations. Our method is based on CiTO, the Citation Typing Ontology [@method:shotton_cito_2010], which specifies a vocabulary for the motivation when citing a resource. The type of a citations can be added to a markdown citation using `@CITO_PROPERTY:KEY`, where `CITO_PROPERTY` is a supported CiTO property, and `KEY` is the usual citation key. Our tool extracts that information and includes it in the generated linked data output. A general CiTO property (*cites*) is used, if no CiTO property is found in a citation key.
+
+The work at hand will always be the subject of the generated semantic *subject-predicate-object* triples. Some CiTO predicates cannot be used in a sensical way under this condition. Focussing on author convenience, we use this fact to allow shortening of properties when sensible. E.g. if authors of a biological paper include a reference to the paper describing a method which was used in their work, this relation can be described by the *uses\_method\_in* property of the CiTO ontology. The inverse property, *provides\_method\_for*, would always be nonsensical in this context as implied by causality. It is therefor not supported by our tool. This allows us to introduce an abbreviation (*method*) for the latter property, as any ambiguity has been eliminated. Users of western blotting might hence write `@method_in:towbin_1979` or even just `@method:towbin_1979`, where *towbin\_1979* is the citation identifier of the describing paper by @towbin_electrophoretic_1979.
+
+
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
