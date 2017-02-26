@@ -3,6 +3,7 @@ title: 'Formatting Open Science: agile creation of multiple document types by wr
 author:
   - Albert Krewinkel:
       institute: pdt
+      orcid: 0000-0002-9455-0796
   - Robert Winkler:
       institute: cinvestav
       fullname: Prof. Dr. Robert Winkler
