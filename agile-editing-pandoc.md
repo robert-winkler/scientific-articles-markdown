@@ -24,33 +24,58 @@ keywords:
 
 # Abstract
 
-The timely publication of scientific results is essential for dynamic advances in science. The ubiquitous availability of computers which are connected to a global network made the rapid and low-cost distribution of information through electronic channels possible. New concepts, such as Open Access publishing and preprint servers are currently changing the traditional print media business towards a community-driven peer production. However, the cost of scientific literature generation, which is either charged to readers, authors or sponsors, is still high. The main active participants in the authoring and evaluation of scientific manuscripts are volunteers, and the cost for online publishing infrastructure is close to negligible. A major time and cost factor though is the formatting of manuscripts in the production stage. In this article we demonstrate the feasibility to write scientific manuscripts in plain markdown (MD) text files, which can be easily converted into common publication formats, such as PDF, HTML or EPUB, using pandoc. The simple syntax of markdown assures the long-term readability of raw files and the development of software and workflows. We show the implementation of typical elements of scientific manuscripts -- formulas, tables, code blocks and citations -- and present tools for editing, collaborative writing and version control. We give an example on how to prepare a manuscript with distinct output formats, a DOCX file for submission to a journal and a LATEX/PDF version for deposition as a PeerJ preprint. Further, we implemented new features for supporting 'semantic web' applications, such as additional tags for article meta-information, and reasons for citing specific references according to the CiTO stiandard. Reducing the work spent on manuscript formatting translates directly to time and cost savings for writers, publishers, readers and sponsors. Therefore, the adoption of the MD format contributes to the agile production of open science literature.
+The timely publication of scientific results is essential for dynamic advances
+in science. The ubiquitous availability of computers which are connected to a
+global network made the rapid and low-cost distribution of information through
+electronic channels possible. New concepts, such as Open Access publishing and
+preprint servers are currently changing the traditional print media business
+towards a community-driven peer production. However, the cost of scientific
+literature generation, which is either charged to readers, authors or sponsors,
+is still high. The main active participants in the authoring and evaluation of
+scientific manuscripts are volunteers, and the cost for online publishing
+infrastructure is close to negligible. A major time and cost factor though is
+the formatting of manuscripts in the production stage. In this article we
+demonstrate the feasibility of writing scientific manuscripts in plain markdown
+(MD) text files, which can be easily converted into common publication formats,
+such as PDF, HTML or EPUB, using pandoc. The simple syntax of markdown assures
+the long-term readability of raw files and the development of software and
+workflows. We show the implementation of typical elements of scientific
+manuscripts -- formulas, tables, code blocks and citations -- and present tools
+for editing, collaborative writing and version control. We give an example on
+how to prepare a manuscript with distinct output formats, a DOCX file for
+submission to a journal, and a LATEX/PDF version for deposition as a PeerJ
+preprint. Further, we implemented new features for supporting 'semantic web'
+applications, such as additional tags for article meta-information, and reasons
+for citing specific references according to the CiTO standard. Reducing the
+work spent on manuscript formatting translates directly to time and cost savings
+for writers, publishers, readers and sponsors. Therefore, the adoption of the MD
+format contributes to the agile production of open science literature.
 
 # Introduction
 
-Agile development of science depends on the continuous exchange of information between the researchers [@woelfle_open_2011]. In the past, physical copies of scientific works had to be produced and distributed. Therefore, publishers needed to invest considerable economical resources for typesetting and printing. Since the journals were mainly financed by their subscribers, their editors not only had to decide on the scientific quality of a submitted manuscript, but also on the potential interest to their readers. The availability of globally connected computers enabled the rapid exchange of information at low cost. Yochai Benkler (2006) predicts important changes in the information production economy, which are based on three observations:
+Agile development of science depends on the continuous exchange of information between researchers [@woelfle_open_2011]. In the past, physical copies of scientific works had to be produced and distributed. Therefore, publishers needed to invest considerable economical resources for typesetting and printing. Since the journals were mainly financed by their subscribers, their editors not only had to decide on the scientific quality of a submitted manuscript, but also on the potential interest to their readers. The availability of globally connected computers enabled the rapid exchange of information at low cost. Yochai Benkler (2006) predicts important changes in the information production economy, which are based on three observations:
 
 1. A nonmarket motivation in areas such as education, arts, science, politics and theology.
 2. The actual rise of nonmarket production, made possible through networked individuals and coordinate effects.
 3. The emergence of large-scale peer production, e.g. of software and encyclopedias.
 
-Immaterial goods such as knowledge and culture are not lost, when consumed or shared -- they are 'nonrival' --, and they enable a networked information economy, which is not commercially driven [@benkler_wealth_2006].
+Immaterial goods such as knowledge and culture are not lost when consumed or shared -- they are 'nonrival' --, and they enable a networked information economy, which is not commercially driven [@benkler_wealth_2006].
 
 ## Preprints and e-prints
 
-In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints - 'e-prints' - about high-energy particle theory at the Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001]. Currently, arXiv (<https://arxiv.org/>) publishes e-prints related to physics, mathematics, computer science, quantitative biology quantitative finance and statistics. Just a few years after the start of the first preprint servers, their important contribution to scientific communication was evident [@ginsparg_first_1994;@youngen_citation_1998;@brown_e-volution_2001]. In 2014, arXiv reached the impressive number of 1 million e-prints [@van_noorden_arxiv_2014].<br>
+In some areas of science already existed a preprint culture, i.e. a paper-based exchange system of research ideas and results, when Paul Ginsparg in 1991 initiated a server for the distribution of electronic preprints -- 'e-prints' -- about high-energy particle theory at the Los Alamos National Laboratory (LANL), USA [@ginsparg_first_1994]. Later, the LANL server moved with Ginsparg to Cornell University, USA, and was renamed to arXiv [@butler_alamos_2001]. Currently, arXiv (<https://arxiv.org/>) publishes e-prints related to physics, mathematics, computer science, quantitative biology, quantitative finance and statistics. Just a few years after the start of the first preprint servers, their important contribution to scientific communication was evident [@ginsparg_first_1994;@youngen_citation_1998;@brown_e-volution_2001]. In 2014, arXiv reached the impressive number of 1 million e-prints [@van_noorden_arxiv_2014].<br>
 In more conservative areas, such as chemistry and biology, accepting the publishing prior peer-review took more time [@brown_role_2003]. A preprint server for life sciences (<http://biorxiv.org/>) was launched by the Cold Spring Habor Laboratory, USA, in 2013 [@callaway_preprints_2013]. _PeerJ preprints_ (<https://peerj.com/preprints/>), started in the same year, accepts manuscripts from biological sciences, medical sciences, health sciences and computer sciences.<br>
 The terms 'preprints' and 'e-prints' are used synonymously, since the physical distribution of preprints has become obsolete. A major drawback of preprint publishing are the sometimes restrictive policies of scientific publishers. The SHERPA/RoMEO project informs about copyright policies and self-archiving options of individual publishers (<http://www.sherpa.ac.uk/romeo/>).
 
 ## Open Access
 
-The term _'Open Access'_ was introduced 2002 by the Budapest Open Access Initiative and was defined as:
+The term _'Open Access'_ (OA) was introduced 2002 by the Budapest Open Access Initiative and was defined as:
 
 _"Barrier-free access to online works and other resources. OA literature is digital, online, free of charge (gratis OA), and free of needless copyright and licensing restrictions (libre OA)."_ [@suber_open_2012]
 
-Frustrated by the difficulty to access even digitized scientific literature, three scientists founded the _Public Library of Science (PLoS)_. In 2003, _PLoS Biology_ was published as the first fully Open Access (OA) journal for biology [@brown_why_2003;@eisen_publish_2003].<br>
+Frustrated by the difficulty to access even digitized scientific literature, three scientists founded the _Public Library of Science (PLoS)_. In 2003, _PLoS Biology_ was published as the first fully Open Access journal for biology [@brown_why_2003;@eisen_publish_2003].<br>
 Thanks to the great success of OA publishing, many conventional print publishers now offer a so-called 'Open Access option', i.e. to make accepted articles free to read for an additional payment. The copyright in this hybrid models might remain with the publisher, whilst fully OA usually provide a liberal license, such as the Creative Commons Attribution 4.0 International (CC BY 4.0, <https://creativecommons.org/licenses/by/4.0/>).<br>
-OA literature is only one component of a more general _open_ philosophy, which also includes the access to scholarships, software, and data [@willinsky_unacknowledged_2005]. Interestingly, there are several different 'schools' of thinking on how to understand and define _Open Science_, as well the position that any science is open by definition, because of its objective to make generated knowledge public [@fecher_open_2014].
+OA literature is only one component of a more general _open_ philosophy, which also includes the access to scholarships, software, and data [@willinsky_unacknowledged_2005]. Interestingly, there are several different 'schools of thought' on how to understand and define _Open Science_, as well the position that any science is open by definition, because of its objective to make generated knowledge public [@fecher_open_2014].
 
 ## Cost of journal article production
 
@@ -58,15 +83,13 @@ In a recent study, the article processing charges (APCs) for research intensive 
 Examples such as the _Journal of Statistical Software_ (_JSS_, <https://www.jstatsoft.org/>) and _eLife_ (<https://elifesciences.org/>) demonstrate the possibility of completely community-supported OA publications. **Fig. 1** compares the APCs of different OA publishing business models.<br>
 _JSS_ and _eLife_ are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
-![Article Processing Charges in Open Access publishing](fig-OA-strategies-APCs.png){width=50%}<br>
-**Figure 1.** Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.
+![Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.](fig-OA-strategies-APCs.png "Article Processing Charges in Open Access publishing"){width=50%}
 
 In 2009, a study was carried concerning the _"Economic Implications of Alternative Scholarly Publishing Models"_, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
 
-![Publishing costs](fig-hybrid-publishing-costs.png)<br>
-**Figure 2.** Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].
+![Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].](fig-hybrid-publishing-costs.png "Publishing costs")
 
-Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdraw from the science budget [@van_noorden_open_2013].<br>
+Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdrawn from the science budget [@van_noorden_open_2013].<br>
 Generally, the production costs of an article could be roughly divided into commercial and academic/ technical costs (**Fig. 2**). For nonmarket production, the commercial costs such as margins/ profits, management etc. can be drastically reduced. Hardware and services for hosting an editorial system, such as Open Journal Systems of the Public Knowledge Project (<https://pkp.sfu.ca/ojs/>) can be provided by public institutions. Employed scholars can perform editor and reviewer activities without additional cost for the journals. Nevertheless, 'article processing', which includes the manuscript handling during peer review and production represents the most expensive part.<br>
 Therefore, we investigated a strategy for the efficient formatting of scientific manuscripts.
 
@@ -75,7 +98,7 @@ Therefore, we investigated a strategy for the efficient formatting of scientific
 Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be very different. Most publishers require the formatting of submitted manuscripts in a certain format. Ignoring this **Guide for Authors**, e.g. by submitting a manuscript with a different reference style, gives a negative impression with a journal's editorial staff. Too carelessly prepared manuscripts can even provoke a straight 'desk-reject' [@volmer_how_2016].<br>
 Currently DOC(X), LATEX and/ or PDF file formats are the most frequently used formats for journal submission platforms. But even if the content of a submitted manuscript might be accepted during the peer review 'as is', the format still needs to be adjusted to the particular publication style in the production stage. For the electronic distribution of scientific works, which is gaining more and more importance, additional formats (EPUB, (X)HTML) need to be generated. **Tab. 1** lists the file formats which are currently the most relevant ones for scientific publishing.
 
-**Table 1.** Current standard formats for scientific publishing.
+Table: Current standard formats for scientific publishing.
 
 **Type** | **Description**       | **Use**            | **Syntax**    | **Reference**
 :------- | :-------------------- | :----------------- | :------------ | :---------------------------------------------------------
@@ -87,9 +110,9 @@ LATEX    | typesetting system    | high-quality print | TEX           | [@lampor
 HTML     | hypertext markup      | websites           | (X)HTML       | [@HTML4;@HTML5]
 MD       | Markdown              | lightweight markup | plain text MD | [@ovadia_markdown_2014;@rfc7764]
 
-Although be content elements of the documents such as title, author, abstract, text, figures, tables, etc. remain the same, the syntax of the file formats is rather different. **Tab. 2** demonstrates some simple examples of differences in different markup languages.
+Although the content elements of documents, such as title, author, abstract, text, figures, tables, etc., remain the same, the syntax of the file formats is rather different. **Tab. 2** demonstrates some simple examples of differences in different markup languages.
 
-**Table 2.** Examples for formatting elements and their implementations in different markup languages.
+Table: Examples for formatting elements and their implementations in different markup languages.
 
 ------------------------------------------------------------------------
 **Element**     **Markdown**     **LATEX**          **HTML**
@@ -116,9 +139,9 @@ http link       `<https://`      `\usepackage{url}` `<a href="https://`
 --------------------------------------------------------------------------
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files. Practically speaking, those file formats require the use of special word processing software.<br>
-From a writer's perspective, the use of _What You See Is What You Get (WYSIWYG)_ programs such as Microsoft Word, WPS Office or LibreOffice might be convinient, because the formatting of the document is directly visible. But the complicated syntax specifications often result in problems when using different versions and for collaborative writing. Simple conversions between file formats can be difficult or impossible. In worst case, 'old' files cannot be opened any more.<br>
-In some parts of the scientific community therefore LATEX, a typesetting program in plain text format, is very popular. With LATEX, documents with highest typographic quality can be produced. However, the source files are cluttered with LATEX commands and the source text can be complicated to read. Compilation errors in LATEX are sometimes difficult to find. Therefore, LATEX is not very user friendly, especially for casual writers or beginners.<br>
-In academic publishing, additionally the creation of different output formats from the same source text is desirable:
+From a writer's perspective, the use of _What You See Is What You Get (WYSIWYG)_ programs such as Microsoft Word, WPS Office or LibreOffice might be convinient, because the formatting of the document is directly visible. But the complicated syntax specifications often result in problems when using different software versions and for collaborative writing. Simple conversions between file formats can be difficult or impossible. In a worst-case scenario, 'old' files cannot be opened any more for lack of compatible software.<br>
+In some parts of the scientific community therefore LATEX, a typesetting program in plain text format, is very popular. With LATEX, documents with highest typographic quality can be produced. However, the source files are cluttered with LATEX commands and the source text can be complicated to read. Causes of compilation errors in LATEX are sometimes difficult to find. Therefore, LATEX is not very user friendly, especially for casual writers or beginners.<br>
+In academic publishing, it is additionally desirable to create different output formats from the same source text:
 
 - For the publishing of a book, with a print version in PDF and an electronic version in EPUB.
 - For the distribution of a seminar script, with an online version in HTML and a print version in PDF.
@@ -129,31 +152,29 @@ Therefore, we were looking for a solution, which enables the creation of scienti
 
 # Concepts of markdown and pandoc
 
-Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, this markdown (MD) file are parsed to generate the final HTML document. With this concept, the source file remains easily readable and the author can focus on the contents rather than formatting. Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, pandoc MD (<http://pandoc.org/>) adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Tab. 2** demonstrates the simplicity of MD compared to other markup languages. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
+Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, the Markdown (MD) files are parsed to generate the final HTML document. With this concept, the source file remains easily readable and the author can focus on the contents rather than formatting. Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, pandoc-flavored MD (<http://pandoc.org/>) adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Tab. 2** demonstrates the simplicity of MD compared to other markup languages. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
 
-![Workfow for the generation of multiple document formats with pandoc](fig-pandoc-workflow.png){width=50%}<br>
-**Figure 3.** Workfow for the generation of multiple document formats with pandoc. The markdown (MD) file contains the manuscript text with formatting tags, and can also refer to external files such as images or reference databases. The pandoc processor converts the MD file to the desired output formats. Documents, citations etc. can be defined in style files or templates.
+![Workfow for the generation of multiple document formats with pandoc. The markdown (MD) file contains the manuscript text with formatting tags, and can also refer to external files such as images or reference databases. The pandoc processor converts the MD file to the desired output formats. Documents, citations etc. can be defined in style files or templates.](fig-pandoc-workflow.png "Workfow for the generation of multiple document formats with pandoc"){width=50%}
 
 # Markdown editors and online editing
 
 The usability of a text editor is important for the author, either writing alone or with several co-authors. In this section we present software and strategies for different scenarios. **Fig. 4** summarizes various options for local or networked editing of MD files.
 
-![Offline and online editing of markdown files](fig-editing-options.png){width=50%}<br>
-**Figure 4.** Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.
+![Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.](fig-editing-options.png "Offline and online editing of markdown files"){width=50%}
+
 
 ## Markdown editors
 
-Because of the simple MD syntax, basically any text editor is suitable for editing markdown files. The formatting tags are written in plain text and easy to remember. Therefore, the author is not distracted by looking around for layout options with the mouse. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins additional functionality for markdown editing, e.g. syntax highlighting, command helpers, live preview or structure browsing.<br>
+Because of the simple MD syntax, basically any text editor is suitable for editing markdown files. The formatting tags are written in plain text and easy to remember. Therefore, the author is not distracted by looking around for layout options with the mouse. For several popular text editors, such as vim (<http://www.vim.org/>), GNU Emacs (<https://www.gnu.org/software/emacs/>), atom (<https://atom.io/>) or geany (<http://www.geany.org/>), plugins provide additional functionality for markdown editing, e.g. syntax highlighting, command helpers, live preview or structure browsing.<br>
 Various dedicated markdown editors have been published as well. Many of those are cross-platform compatible, such as Abricotine (<http://abricotine.brrd.fr/>), ghostwriter (<https://github.com/wereturtle/ghostwriter>) and CuteMarkEd (<https://cloose.github.io/CuteMarkEd/>).<br>
 The lightweight format is also ideal for writing on mobile devices. Numerous applications are available on the App stores for Android and iOS systems. The programs Swype and Dragon (<http://www.nuance.com/>) facilitate the input of text on such devices by guessing words from gestures and speech recognition (dictation).<br>
 **Fig. 5.** shows the editing of a markdown file, using the cross-platform editor Atom with several markdown plugins.
 
-![CuteMarkEd editor](fig-atom-editor.png)<br>
-**Figure 5.** Document directory tree, editing window and HTML preview using the Atom editor.
+![Document directory tree, editing window and HTML preview using the Atom editor.](fig-atom-editor.png "CuteMarkEd editor")
 
 ## Online editing and collaborative writing
 
-Storing manuscripts on network drives (_The Cloud_) has become popular because of several reasons:
+Storing manuscripts on network drives (_The Cloud_) has become popular for several reasons:
 
 - Protection against data loss.
 - Synchronization of documents between several devices.
@@ -161,8 +182,7 @@ Storing manuscripts on network drives (_The Cloud_) has become popular because o
 
 Markdown files on a Google Drive (<https://drive.google.com>) for instance can be edited online with StackEdit (<https://stackedit.io>). **Fig. 6** demonstrates the online editing of a markdown file on an ownCloud (<https://owncloud.com/>) installation. OwnCloud is an Open Source software platform, which allows the set-up of a file server on personal webspace. The functionality of an ownCloud installation can be enhanced by installing plugins.
 
-![Online editing on with an ownCloud plugin](fig-owncloud-md-editor.png)<br>
-**Figure 6.** Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.
+![Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.](fig-owncloud-md-editor.png "Online editing on with an ownCloud plugin")
 
 Even mathematical formulas are rendered correctly in the HTML live preview window of the ownCloud markdown plugin (**Fig. 6** ).
 
@@ -170,8 +190,8 @@ Even mathematical formulas are rendered correctly in the HTML live preview windo
 
 Programmers, especially when working in distributed teams, rely on version control systems to manage changes of code. Currently, Git (<https://git-scm.com/>), which is also used e.g. for the development of the Linux kernel, is one of the most employed software solutions for versioning. Git allows the parallel work of collaborators and has an efficient merging and conflict resolution system. A Git respository may be used from a single local author to keep track of changes, or by a team with a remote repository, e.g. on github (<https://github.com/>) or bitbucket (<https://bitbucket.org/>). Because of the plain text format of markdown, Git can be used for version control and distributed writing. For the writing of the present article, the co-authors (Germany and Mexico) used a remote Git repository on bitbucket. The plain text syntax of markdown facilitates the visualization of differences of document versions, as shown in **Fig. 7**.
 
-![Version control using a git repository](fig-bitbucket-diff.png)<br>
-**Figure 7.** Version control and collaborative editing using a git repository on bitbucket.
+![Version control and collaborative editing using a git repository on bitbucket.](fig-bitbucket-diff.png "Version control using a git repository")
+
 
 # Pandoc markdown for scientific texts
 
@@ -223,7 +243,7 @@ Scientific texts often require special characters, e.g. Greek letters, mathemati
 
 The UTF-8 standard, developed and maintained by _Unicode Consortium_, enables the use of characters across languages and computer platforms. The encoding is defined as RFC document 3629 of the Network Working group [@rfc3629] and as ISO standard ISO/IEC 10646:2014 [@international_organization_for_standardization_iso/iec_2014]. Specifications of Unicode and code charts are provided on the Unicode homepage (<http://www.unicode.org/>).<br>
 
-In pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. The correct processing of MD with UTF-8 encoding to LATEX/PDF output requires the use of the `--latex-engine=xelatex` option and the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>) for high quality typesetting of scientific texts can be set in the LATEX template:
+In pandoc mardown documents, Unicode characters such as °, α , ä , Å can be inserted directly and passed to the different output documents. The correct processing of MD with UTF-8 encoding to LATEX/PDF output requires the use of the `--latex-engine=xelatex` option and the use of an appropiate font. The Times-like XITS font (<https://github.com/khaledhosny/xits-math>), suitable for high quality typesetting of scientific texts, can be set in the LATEX template:
 
 ```
 \usepackage{unicode-math}
@@ -357,7 +377,7 @@ We developed a method to allow writers the flexible specification of authors and
 
 Additional information, e.g. email addresses or identifiers like ORCID [@haak_orcid_2012], can be added as additional values:
 
-```
+```yaml
 author:
   - John Doe:
       institute: fs
@@ -377,7 +397,7 @@ The work at hand will always be the subject of the generated semantic *subject-p
 
 # Example: Manuscript with output of DOCX/ ODT format and LATEX/ PDF for submission to different journals.
 
-Scientific manuscripts have to be submitted in a format, which is defined by the journal or publisher. At this moment, DOCX is the most common file format for manuscript submission. Some publishers also accept or require LATEX or ODT formats. Additionally to the general style of the manuscript - organization of sections, fonts, etc. - also the citation style of the journal has to be followed. Often, the same manuscript has to be prepared for different journals, e.g. if the manuscript was rejected by a journal and has to be formatted for another one, or if a preprint of the paper is submitted to an archive that requires a distinct document format than the target peer-reviewed journal.  
+Scientific manuscripts have to be submitted in a format, which is defined by the journal or publisher. At this moment, DOCX is the most common file format for manuscript submission. Some publishers also accept or require LATEX or ODT formats. Additionally to the general style of the manuscript - organization of sections, fonts, etc. - also the citation style of the journal has to be followed. Often, the same manuscript has to be prepared for different journals, e.g. if the manuscript was rejected by a journal and has to be formatted for another one, or if a preprint of the paper is submitted to an archive that requires a distinct document format than the targeted peer-reviewed journal.  
 In this example, we want to create a manuscript for a _PLoS_ journal in DOCX and ODT format for WYSIWYG word processors. Further, a version in LATEX/ PDF should be produced for PeerJ submission and archiving at the PeerJ preprint server.  
 The examples for DOCX/ ODT are kept relatively simple, to show the proof-of-principle and to provide a plain document for the development of own templates. Nevertheless, the generated documents should be suitable for submission after little manual editing. For specific journals it may be necessary to create more sophisticated templates or to copy/ paste the generic DOCX/ ODT output into the publisher's template.
 
@@ -385,31 +405,31 @@ The examples for DOCX/ ODT are kept relatively simple, to show the proof-of-prin
 
 A first DOCX document with bibliography in _PLoS_ format is created with pandoc DOCX output:
 
-```
+```bash
 pandoc -S -s --csl=plos.csl --filter pandoc-citeproc
--o pandoc-manuscript.docx agile-editing-pandoc.md
+  -o pandoc-manuscript.docx agile-editing-pandoc.md
 ```
 
 The parameters `-S -s` generate a typographically correct (dashes, non-breaking spaces etc.) standalone document. A bibliography with the _PLoS_ style is created by the citeproc filter setting `--csl=plos.csl --filter pandoc-citeproc`.
 
 The document settings and styles of the resulting file `pandoc-manuscript.docx` can be optimized and be used again as document template (`--reference-docx=pandoc-manuscript.docx`).
 
-```
+```bash
 pandoc -S -s --reference-docx=pandoc-manuscript.docx --csl=plos.csl
---filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
+  --filter pandoc-citeproc -o outfile.docx agile-editing-pandoc.md
 ```
 
 It is also possible to directly re-use a previous output file as template (i.e. template and output file have the same file name):
 
-```
+```bash
 pandoc -S -s --columns=10 --reference-docx= pandoc-manuscript.docx --csl=plos.csl
---filter pandoc-citeproc -o pandoc-manuscript.docx agile-editing-pandoc.md
+  --filter pandoc-citeproc -o pandoc-manuscript.docx agile-editing-pandoc.md
 ```
 
 In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as pandoc template for other manuscripts with the same specifications. In this case, running pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template. A page with DOCX manuscript formatting of this article is shown in **Fig. 8**.
 
-![Editing a pandoc generated DOCX in Office 365](fig-DOCX-document-in-O365.png)<br>
-**Figure 8.** Opening a pandoc-generated DOCX in Microsoft Office 365.
+![Opening a pandoc-generated DOCX in Microsoft Office 365.](fig-DOCX-document-in-O365.png "Editing a pandoc generated DOCX in Office 365")
+
 
 The same procedure can be applied with an ODT formatted document.
 
@@ -417,7 +437,7 @@ The same procedure can be applied with an ODT formatted document.
 
 The default pandoc LATEX template can be written into a separate file by:
 
-```
+```bash
 pandoc -D latex > template-peerj.latex
 ```
 
@@ -455,7 +475,7 @@ We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bi
 
 The relevant software for creating this manuscript used is cited according to [@smith_software_2016] and listed in **Tab. 3**. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
 
-**Table 3.** Relevant software used for this article.
+Table: Relevant software used for this article.
 
 **Software**    | **Use**                               | **Authors**                     | **Version** | **Release** | **Homepage/ repository**
 :-------------- | :------------------------------------ | :------------------------------ | :---------- | :---------- | :----------------------------------------------
