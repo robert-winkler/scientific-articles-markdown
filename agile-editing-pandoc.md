@@ -181,7 +181,7 @@ Following, the potential of typesetting scientific manuscripts with pandoc is de
 There are several options to write tables in markdown. The most flexible alternative - which was also used for this article - are pipe tables. The contents of different cells are separated by pipe symbols (`|`):
 
 ```
-Left | Center | Right | Default
+ Left | Center | Right | Default
 :-----|:------:|------:|---------
  LLL  | CCC    | RRR   | DDD
 ```
