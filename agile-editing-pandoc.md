@@ -110,9 +110,10 @@ italics         `*text*`         `\textit{text}`    `<i>text</i>`
 **links**
 
 http link       `<https://`      `\usepackage{url}` `<a href="https://`
-                 `archive.org>`  `\url{https://`     `arxiv.org/"></a>`
-                                  `arxiv.org/}`
-------------------------------------------------------------------------
+                 `archive.org>`  `\url{https://`     `arxiv.org">`
+                                  `arxiv.org}`       `https://archive.org`
+                                                     `</a>`
+--------------------------------------------------------------------------
 
 Documents with the commonly used Office Open XML (DOCX Microsoft Word files) and OpenDocument (ODT LibreOffice) file formats can be opened in a standard text editor after unzipping. However, content and formatting information is distributed into various folders and files. Practically speaking, those file formats require the use of special word processing software.<br>
 From a writer's perspective, the use of _What You See Is What You Get (WYSIWYG)_ programs such as Microsoft Word, WPS Office or LibreOffice might be convinient, because the formatting of the document is directly visible. But the complicated syntax specifications often result in problems when using different versions and for collaborative writing. Simple conversions between file formats can be difficult or impossible. In worst case, 'old' files cannot be opened any more.<br>
