@@ -10,7 +10,10 @@ author:
       email: robert.winkler@cinvestav.mx
       orcid: 0000-0001-6732-1958
 institute:
-  - cinvestav: 'CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology, Irapuato-León, Mexico'
+  - cinvestav:
+      name: CINVESTAV Unidad Irapuato, Department of Biochemistry and Biotechnology
+      address: 'Km. 9.6 Libramiento Norte Carr. Irapuato-León, 36821 Irapuato Gto. México'
+      phone: +52 (462) 623 9635
   - pdt: Pandoc Development Team
 bibliography: agile-markdown.bib
 keywords:
