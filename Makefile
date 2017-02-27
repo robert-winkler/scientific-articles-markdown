@@ -20,7 +20,7 @@ LUA_PATH := panmeta/?.lua;;
 export LUA_PATH
 
 ## PanMeta
-PANMETA_VERSION = v0.1.4
+PANMETA_VERSION = v0.1.5
 PANMETA_URL = https://github.com/formatting-science/panmeta/releases/download/$(PANMETA_VERSION)/panmeta.tar.gz
 
 PANDOC_VERSION := $(shell pandoc -v | sed -ne 's/^pandoc //gp')
