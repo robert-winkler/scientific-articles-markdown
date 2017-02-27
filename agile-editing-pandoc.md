@@ -459,7 +459,7 @@ The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- D
 
 # Perspective
 
-Following the trend to peer production, the formatting of scientific content must become more efficient. Markdown/ pandoc has the potential to play a key role in the transition of from propietary to community-driven academic production. Important research tools, such as the statistical computing and graphics language R (<https://www.r-project.org/>), already adopted the MD syntax (<http://rmarkdown.rstudio.com/>). The software for writing manuscripts in MD is mature already enough to be used by academic writers. Therefore, publishers also should consider to implement the MD format into their editorial platforms.
+Following the trend to peer production, the formatting of scientific content must become more efficient. Markdown/ pandoc has the potential to play a key role in the transition of from propietary to community-driven academic production. Important research tools, such as the statistical computing and graphics language R [@R_2014] and the Jupyter notebook project [@kluyver_jupyter_2016], already adopted the MD syntax (e.g. <http://rmarkdown.rstudio.com/>). The software for writing manuscripts in MD is mature already enough to be used by academic writers. Therefore, publishers also should consider to implement the MD format into their editorial platforms.
 
 # Conclusions
 
