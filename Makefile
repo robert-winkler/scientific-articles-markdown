@@ -16,22 +16,26 @@ PANDOC_LATEX_OPTIONS += --csl=peerj.csl
 # pandoc-citeproc option.
 PANDOC_NONTEX_OPTIONS = --filter pandoc-citeproc --csl=plos.csl
 
-LUA_PATH := panlunatic/?.lua;scripts/?.lua;?.lua;
+LUA_PATH := panmeta/?.lua;;
 export LUA_PATH
+
+## PanMeta
+PANMETA_VERSION = v0.1.4
+PANMETA_URL = https://github.com/formatting-science/panmeta/releases/download/$(PANMETA_VERSION)/panmeta.tar.gz
 
 PANDOC_VERSION := $(shell pandoc -v | sed -ne 's/^pandoc //gp')
 export PANDOC_VERSION
 
 all: outfile.tex outfile.pdf outfile.docx outfile.odt outfile.epub outfile.html outfile.txt
 
-$(AFFILIATIONS_JSON_FILE): $(MARKDOWN_FILE) scripts/affiliations.lua
+$(AFFILIATIONS_JSON_FILE): $(MARKDOWN_FILE) panmeta
 	pandoc $(PANDOC_READER_OPTIONS) \
-	       -t scripts/affiliations.lua \
+	       -t panmeta/writers/affiliations.lua \
 	       -o $@ $<
 
-$(DEFAULT_JSON_FILE): $(MARKDOWN_FILE) scripts/default.lua
+$(DEFAULT_JSON_FILE): $(MARKDOWN_FILE) panmeta
 	pandoc $(PANDOC_READER_OPTIONS) \
-	       -t scripts/default.lua \
+	       -t panmeta/writers/default.lua \
 	       -o $@ $<
 
 outfile.tex: $(AFFILIATIONS_JSON_FILE) $(MARKDOWN_FILE) pandoc-peerj.latex
@@ -73,10 +77,15 @@ outfile.html: $(DEFAULT_JSON_FILE)
 	       -o $@ $<
 
 outfile.jsonld: $(MARKDOWN_FILE)
-	pandoc -t scripts/jsonld.lua -o $@ $<
+	pandoc -t panmeta/writers/jsonld.lua -o $@ $<
 
 outfile.txt: $(MARKDOWN_FILE)
 	pandoc -s -S -o $@ $<
+
+panmeta:
+	curl --location --remote-name \
+		https://github.com/formatting-science/panmeta/releases/download/$(PANMETA_VERSION)/panmeta.tar.gz
+	tar zvxf panmeta.tar.gz
 
 clean:
 	rm -f outfile*
