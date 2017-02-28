@@ -1,5 +1,5 @@
 ---
-title: 'Formatting Open Science: agile creation of multiple document types by writing academic manuscripts in pandoc markdown'
+title: 'Formatting Open Science: agile creation of multiple document types by writing academic manuscripts with pandoc-scholar'
 author:
   - Albert Krewinkel:
       institute: pdt
