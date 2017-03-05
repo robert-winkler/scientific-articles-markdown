@@ -189,6 +189,11 @@ Markdown files on a Google Drive (<https://drive.google.com>) for instance can b
 
 Even mathematical formulas are rendered correctly in the HTML live preview window of the ownCloud markdown plugin (**Fig. 6** ).
 
+The collaboration and authoring platform Authorea (<https://www.authorea.com/>)
+also supports markdown as one of multiple possible input formats. This can be
+beneficial for collaborations in which one or more authors are not familiar with
+markdown syntax.
+
 ## Document versioning and change control
 
 Programmers, especially when working in distributed teams, rely on version control systems to manage changes of code. Currently, Git (<https://git-scm.com/>), which is also used e.g. for the development of the Linux kernel, is one of the most employed software solutions for versioning. Git allows the parallel work of collaborators and has an efficient merging and conflict resolution system. A Git respository may be used from a single local author to keep track of changes, or by a team with a remote repository, e.g. on github (<https://github.com/>) or bitbucket (<https://bitbucket.org/>). Because of the plain text format of markdown, Git can be used for version control and distributed writing. For the writing of the present article, the co-authors (Germany and Mexico) used a remote Git repository on bitbucket. The plain text syntax of markdown facilitates the visualization of differences of document versions, as shown in **Fig. 7**.
