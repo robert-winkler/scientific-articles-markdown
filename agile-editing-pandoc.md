@@ -99,19 +99,20 @@ Therefore, we investigated a strategy for the efficient formatting of scientific
 ## Current standard publishing formats
 
 Generally speaking, a scientific manuscript is composed from contents and formatting. Whilst the content, i.e. text, figures, tables, citations etc., may remain the same between different publishing forms and journal styles, the formatting can be very different. Most publishers require the formatting of submitted manuscripts in a certain format. Ignoring this **Guide for Authors**, e.g. by submitting a manuscript with a different reference style, gives a negative impression with a journal's editorial staff. Too carelessly prepared manuscripts can even provoke a straight 'desk-reject' [@volmer_how_2016].<br>
-Currently DOC(X), LATEX and/ or PDF file formats are the most frequently used formats for journal submission platforms. But even if the content of a submitted manuscript might be accepted during the peer review 'as is', the format still needs to be adjusted to the particular publication style in the production stage. For the electronic distribution of scientific works, which is gaining more and more importance, additional formats (EPUB, (X)HTML) need to be generated. **Tab. 1** lists the file formats which are currently the most relevant ones for scientific publishing.
+Currently DOC(X), LATEX and/ or PDF file formats are the most frequently used formats for journal submission platforms. But even if the content of a submitted manuscript might be accepted during the peer review 'as is', the format still needs to be adjusted to the particular publication style in the production stage. For the electronic distribution and archiving of scientific works, which is gaining more and more importance, additional formats (EPUB, (X)HTML, JATS) need to be generated. **Tab. 1** lists the file formats which are currently the most relevant ones for scientific publishing.
 
 Table: Current standard formats for scientific publishing.
 
-**Type** | **Description**       | **Use**            | **Syntax**    | **Reference**
-:------- | :-------------------- | :----------------- | :------------ | :---------------------------------------------------------
-DOCX     | Office Open XML       | WYSIWYG editing    | XML, ZIP      | [@OOXML]
-ODT      | OpenDocument          | WYSIWYG editing    | XML, ZIP      | [@ODF]
-PDF      | portable document     | print replacement  | PDF           | [@international_organization_for_standardization_iso_2013]
-EPUB     | electronic publishing | ebooks             | HTML5, ZIP    | [@eikebrokk_epub_2014]
-LATEX    | typesetting system    | high-quality print | TEX           | [@lamport_latex:_1994]
-HTML     | hypertext markup      | websites           | (X)HTML       | [@HTML4;@HTML5]
-MD       | Markdown              | lightweight markup | plain text MD | [@ovadia_markdown_2014;@rfc7764]
+**Type** | **Description**           | **Use**            | **Syntax**    | **Reference**
+:------- | :------------------------ | :----------------- | :------------ | :---------------------------------------------------------
+DOCX     | Office Open XML           | WYSIWYG editing    | XML, ZIP      | [@OOXML]
+ODT      | OpenDocument              | WYSIWYG editing    | XML, ZIP      | [@ODF]
+PDF      | portable document         | print replacement  | PDF           | [@international_organization_for_standardization_iso_2013]
+EPUB     | electronic publishing     | ebooks             | HTML5, ZIP    | [@eikebrokk_epub_2014]
+JATS     | journal article tag suite | journal publishing | XML           | [@JATS]
+LATEX    | typesetting system        | high-quality print | TEX           | [@lamport_latex:_1994]
+HTML     | hypertext markup          | websites           | (X)HTML       | [@HTML4;@HTML5]
+MD       | Markdown                  | lightweight markup | plain text MD | [@ovadia_markdown_2014;@rfc7764]
 
 Although the content elements of documents, such as title, author, abstract, text, figures, tables, etc., remain the same, the syntax of the file formats is rather different. **Tab. 2** demonstrates some simple examples of differences in different markup languages.
 
@@ -149,6 +150,7 @@ In academic publishing, it is additionally desirable to create different output 
 - For the publishing of a book, with a print version in PDF and an electronic version in EPUB.
 - For the distribution of a seminar script, with an online version in HTML and a print version in PDF.
 - For submitting a journal manuscript for peer-review in DOCX, as well as a preprint version with another journal style in PDF.
+- For archiving and exchanging article data using the Journal Article Tag Suite (JATS) [@JATS], a standardized format developed by the NLM.
 
 Some of the tasks can be performed e.g. with LATEX, but an integrated solution remains a challenge. Several programs for the conversion between documents formats exist, such as the e-book library program calibre <http://calibre-ebook.com/>. But the results of such conversions are often not satisfactory and require substantial manual corrections.<br>
 Therefore, we were looking for a solution, which enables the creation of scientific manuscripts in a simple format, and the subsequent generation of multiple output formats. The need for hybrid publishing has been recognized outside of science [@dptcollective_toolkit_2015; @kielhorn_multi_2011], but the requirements specific to scientific publishing have not been addressed so far. Therefore, we investigated the possibility to generate multiple publication formats from a simple manuscript source file.
@@ -390,6 +392,16 @@ institute:
   fs: Science Formatting Working Group
 ```
 
+## JATS support
+
+The journal article tag suite (JATS) was developed by the NLM and standardized
+by ANSI/NISO as an archiving and exchange format of journal articles and the
+associated metadata [@JATS], including data of the type shown above. The
+`pandoc-jats` writer is a plugin usable with pandoc to produce JATS-formatted
+output. The writer was adapted to be compatible with our metadata authoring
+method, allowing for simple generation of files which contain the relevant
+metadata.
+
 ## Citation types
 
 Writers can add information about the reason a citation is given. This might help reviewers and readers, and can simplify the search for relevant litarature. We developed an extended citation syntax that integrates seamlessly into markdown and can be used to add complementary information to citations. Our method is based on CiTO, the Citation Typing Ontology [@method:shotton_cito_2010], which specifies a vocabulary for the motivation when citing a resource. The type of a citations can be added to a markdown citation using `@CITO_PROPERTY:KEY`, where `CITO_PROPERTY` is a supported CiTO property, and `KEY` is the usual citation key. Our tool extracts that information and includes it in the generated linked data output. A general CiTO property (*cites*) is used, if no CiTO property is found in a citation key.
@@ -453,12 +465,12 @@ The style for HTML and EPUB formats can be defined in .css stylesheets. The Supp
 
 # Automating document production
 
-The commands necessary to produce the document in a specific formats or styles can be defined in a simple `Makefile`. An example `Makefile` is included in the source code of this preprint/ . The desired output file format can be chosen when calling `make`. E.g. `make outfile.pdf` produces this preprint in PDF format. Calling `make` without any option creates all listed document types.<br>
-A `Makefile` producing DOCX, ODT, PDF, LATEX, HTML and EPUB files of this document is provided as Supplemental Material.
+The commands necessary to produce the document in a specific formats or styles can be defined in a simple `Makefile`. An example `Makefile` is included in the source code of this preprint. The desired output file format can be chosen when calling `make`. E.g. `make outfile.pdf` produces this preprint in PDF format. Calling `make` without any option creates all listed document types.
+A `Makefile` producing DOCX, ODT, JATS, PDF, LATEX, HTML and EPUB files of this document is provided as Supplemental Material.
 
 ## Cross-platform compatibility
 
-The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- DOCX, ODT, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
+The `make` process was tested on Windows 10 and Linux 64 bit. All documents -- DOCX, ODT, JATS, LATEX, PDF, EPUB and HTML -- were generated successfully, which demonstrates the cross-platform compatibility of the workflow.
 
 # Perspective
 
@@ -472,7 +484,7 @@ Altogether, the MD format supports the agile writing and fast production of scie
 
 # Acknowledegments
 
-We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes and Prof. Magnus Palmblad for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes, Prof. Magnus Palmblad and Martin Fenner for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
 
 # Software and code availability
 
@@ -484,6 +496,7 @@ Table: Relevant software used for this article.
 :-------------- | :------------------------------------ | :------------------------------ | :---------- | :---------- | :----------------------------------------------
 pandoc          | universal markup converter            | John MacFarlane                 | 1.16.0.2    | 16/01/13    | <http://www.pandoc.org>
 pandoc-citeproc | library for CSL citations with pandoc | John MacFarlane, Andrea Rossato | 0.9.1       | 16/03/19    | <https://github.com/jgm/pandoc-citeproc>
+pandoc-jats     | creation of JATS files with pandoc    | Martin Fenner                   | 0.9         | 15/04/26    | <https://github.com/mfenner/pandoc-jats>
 ownCloud        | personal cloud software               | ownCloud GmbH, Community        | 9.1.1       | 16/09/20    | <https://owncloud.org/>
 Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1         | 16/03/08    | <https://github.com/icewind1991/files_markdown>
 BibTool         | Bibtex database tool                  | Gerd Neugebauer                 | 2.63        | 16/01/16    | <https://github.com/ge-ne/bibtool>
