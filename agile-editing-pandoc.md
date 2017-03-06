@@ -233,10 +233,9 @@ document of the respective format is produced. This is method can be extended to
 apply any kind of format-specific typographic functionality which would
 otherwise be unavailable in markdown syntax.
 
+## Figures and images
 
-## Figures
-
-Figures are inserted as follows:
+Images are inserted as follows:
 
 ```
 ![alt text](image location/ name)
@@ -248,13 +247,16 @@ e.g.
 ![Publishing costs](fig-hybrid-publishing-costs.png)
 ```
 
-The `alt text` is used e.g. in HTML output. Image dimensions can be defined in braces:
+The *alt text* is used e.g. in HTML output. Image dimensions can be defined in braces:
 
 ```
 ![](fig-hybrid-publishing-costs.png){width=5cm}
 ```
 
 As well, an identifier for the figure can be defined with `#`, resulting e.g. in the image attributes `{#figure1 height=30%}`.
+
+A paragraph containing only an image is interpreted as a figure. The *alt text*
+is then output as the figure's caption.
 
 ## Symbols
 
