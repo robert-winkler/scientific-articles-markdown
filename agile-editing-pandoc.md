@@ -225,6 +225,15 @@ LLL  |  CCC   |   RRR | DDD
 
 The headings and the alignment of the cells is given in the first two lines. The cell width is variable. The pandoc parameter `--columns=NUM` can be used to define the length of lines in characters. If contents do not fit, they will be wrapped.
 
+Complex tables, e.g. tables featuring multiple headers or those containing cells
+spanning multiple rows or columns, are currently not representable in markdown
+format. However, it is possible to embed LATEX and HTML tables into the
+document. These format-specific tables will only be included in the output if a
+document of the respective format is produced. This is method can be extended to
+apply any kind of format-specific typographic functionality which would
+otherwise be unavailable in markdown syntax.
+
+
 ## Figures
 
 Figures are inserted as follows:
