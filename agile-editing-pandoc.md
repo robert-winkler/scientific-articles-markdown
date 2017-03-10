@@ -413,10 +413,10 @@ institute:
 The journal article tag suite (JATS) was developed by the NLM and standardized
 by ANSI/NISO as an archiving and exchange format of journal articles and the
 associated metadata [@JATS], including data of the type shown above. The
-`pandoc-jats` writer is a plugin usable with pandoc to produce JATS-formatted
-output. The writer was adapted to be compatible with our metadata authoring
-method, allowing for simple generation of files which contain the relevant
-metadata.
+`pandoc-jats` writer by Martin Fenner is a plugin usable with pandoc to produce
+JATS-formatted output. The writer was adapted to be compatible with our metadata
+authoring method, allowing for simple generation of files which contain the
+relevant metadata.
 
 ## Citation types
 
