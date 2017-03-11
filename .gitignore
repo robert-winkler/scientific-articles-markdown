@@ -12,6 +12,6 @@ outfile.*
 # Submitted file
 Formatting_Open_Science_Krewinkel-Winkler.pdf
 
-# Panmeta
-panmeta.tar.gz
-/panmeta
+# pandoc-scholar
+pandoc-scholar.tar.gz
+/pandoc-scholar
