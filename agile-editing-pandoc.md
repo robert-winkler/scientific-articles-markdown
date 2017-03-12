@@ -498,9 +498,16 @@ Authoring scientific manuscripts in markdown (MD) format is straight-forward, an
 The additional features we implemented facilitate the correct indexing of meta information of journal articles according to the 'semantic web' philosophy.  
 Altogether, the MD format supports the agile writing and fast production of scientific literature. The associated time and cost reduction especially favours community-driven publication strategies.
 
-# Acknowledegments
+# Acknowledgments
 
-We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool and Dr. Ricardo A. Chávez Montes, Prof. Magnus Palmblad and Martin Fenner for comments on the manuscript. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a
+bibtex data base using BibTool, as well as Dr. Ricardo A. Chávez Montes,
+Prof. Magnus Palmblad and Martin Fenner for comments on the manuscript. Warm
+thanks also go to Anubhav Kumar and Jennifer König for proofreading. The work
+was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico,
+with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro
+de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional
+(CINVESTAV).
 
 # Software and code availability
 
