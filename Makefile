@@ -17,6 +17,8 @@ TEMPLATE_FILE_LATEX   = pandoc-peerj.latex
 PANDOC_SCHOLAR_PATH = pandoc-scholar
 -include $(PANDOC_SCHOLAR_PATH)/Makefile
 
+LUA_PATH = $(PANDOC_SCHOLAR_PATH)/scholarly-metadata/?.lua;;
+export LUA_PATH
 
 ## Pandoc Scholar download
 PANDOC_SCHOLAR_VERSION = v1.1.0
