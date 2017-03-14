@@ -486,7 +486,7 @@ ownCloud        | personal cloud software               | ownCloud GmbH, Communi
 Markdown Editor | plugin for ownCloud                   | Robin Appelman                  | 0.1         | 16/03/08    | <https://github.com/icewind1991/files_markdown>
 BibTool         | Bibtex database tool                  | Gerd Neugebauer                 | 2.63        | 16/01/16    | <https://github.com/ge-ne/bibtool>
 
-The software created as part of this article, _pandoc-scholar_, is suitable for general use and has been published at <https://github.com/pandoc-scholar/pandoc-scholar>, DOI: [10.5281/zenodo.376761](https://doi.org/10.5281/zenodo.376761). The source code of this manuscript, as well as the templates and pandoc Makefile, have been deposited to <https://github.com/robert-winkler/scientific-articles-markdown/>, DOI: [10.5281/zenodo.203050](https://doi.org/10.5281/zenodo.203050).
+The software created as part of this article, _pandoc-scholar_, is suitable for general use and has been published at <https://github.com/pandoc-scholar/pandoc-scholar>, DOI: [10.5281/zenodo.376761](https://doi.org/10.5281/zenodo.376761). The source code of this manuscript, as well as the templates and pandoc Makefile, have been deposited to <https://github.com/robert-winkler/scientific-articles-markdown/>.
 
 Drawings for document types, devices and applications have been adopted from Calibre <http://calibre-ebook.com/>, openclipart <https://openclipart.org/> and the GNOME Theme Faenza <https://code.google.com/archive/p/faenza-icon-theme/>.
 
