@@ -36,11 +36,11 @@
                 bottom=2.25cm,%
                 headheight=12pt,%
                 letterpaper]{geometry}%
-                
+
 \RequirePackage[labelfont={bf,sf},%
                 labelsep=period,%
                 justification=raggedright]{caption}
-                
+
 \RequirePackage{natbib}
 \bibliographystyle{apalike}
 
@@ -50,7 +50,7 @@
 \newcommand\wllogo{%
 \renewcommand*\rmdefault{ugq}\normalfont\upshape{}write%
 \renewcommand*\rmdefault{cmr}\normalfont\upshape{\bf\LaTeX}}
-                
+
 %
 % headers and footers
 %
@@ -83,7 +83,7 @@
   {}
   {0em}
   {\MakeUppercase{#1}}
-  []  
+  []
 \titleformat{\subsection}
   {\sffamily\bfseries}
   {\thesubsection}
@@ -95,12 +95,12 @@
   {\thesubsubsection}
   {0.5em}
   {#1}
-  []    
+  []
 \titleformat{\paragraph}[runin]
   {\sffamily\small\bfseries}
   {}
   {0em}
-  {#1} 
+  {#1}
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
@@ -128,8 +128,8 @@
   {}
   {}
   {}
-  [\ \textbullet\ ]  
-  
+  [\ \textbullet\ ]
+
 \RequirePackage{enumitem}
 %\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
 
@@ -160,7 +160,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \go}
 
 %
-% custom title page 
+% custom title page
 %
 \renewcommand{\@maketitle}{%
 {%
@@ -206,10 +206,10 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \definecolor{color2}{RGB}{250,232,207} % Color of the box behind the abstract
 \newcommand{\keywordname}{Keywords:} % Defines the keywords heading name
 
-\renewcommand\Authfont{\fontsize{12}{14}\usefont{OT1}{phv}{b}{n}}
-\renewcommand\Affilfont{\fontsize{10}{12}\usefont{OT1}{phv}{b}{n}}
+\renewcommand\Authfont{\fontsize{12}{14}\usefont{T1}{phv}{b}{n}}
+\renewcommand\Affilfont{\fontsize{10}{12}\usefont{T1}{phv}{b}{n}}
 
-\newlength{\tocsep} 
+\newlength{\tocsep}
 \setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
 \setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
 
