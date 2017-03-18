@@ -71,11 +71,11 @@ Examples such as the _Journal of Statistical Software_ (_JSS_, <https://www.jsta
 
 _JSS_ and _eLife_ are peer-reviewed and indexed by Thomson Reuters. Both journals are located in the Q1 quality quartile in all their registered subject categories of the Scimago Journal & Country Rank (<http://www.scimagojr.com/>), demonstrating that high-quality publications can be produced without charging the scientific authors or readers.
 
-![Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.](fig-OA-strategies-APCs_small.png "Article Processing Charges in Open Access publishing")
+![Article Processing Charge (APCs) that authors have to pay for with different Open Access (OA) publishing models. Data from [@solomon_article_2016] and journal web-pages.](Fig1.png "Article Processing Charges in Open Access publishing")
 
 In 2009, a study was carried out concerning the _"Economic Implications of Alternative Scholarly Publishing Models"_, which demonstrates an overall societal benefit by using OA publishing model [@houghton_economic_2009]. In the same report, the real publication costs are evaluated. The relative costs of an article for the publisher are represented in **Fig. 2**.
 
-![Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].](fig-hybrid-publishing-costs_small.png "Publishing costs")
+![Estimated publishing cost for a 'hybrid' journal (conventional with Open Access option). Data from [@houghton_economic_2009].](Fig2.png "Publishing costs")
 
 Conventional publishers justify their high subscription or APC prices with the added value, e.g. journalism (stated in the graphics as 'non-article processing'). But also stakeholder profits, which could be as high as 50%, must be considered, and are withdrawn from the science budget [@van_noorden_open_2013].
 
@@ -97,7 +97,7 @@ From a writer's perspective, the use of _What You See Is What You Get (WYSIWYG)_
 
 In some parts of the scientific community therefore LATEX, a typesetting program in plain text format, is very popular. With LATEX, documents with highest typographic quality can be produced. However, the source files are cluttered with LATEX commands and the source text can be complicated to read. Causes of compilation errors in LATEX are sometimes difficult to find. Therefore, LATEX is not very user friendly, especially for casual writers or beginners.
 
-Table: Current standard formats for scientific publishing.
+**Table 1**. Current standard formats for scientific publishing.
 
 **Type** | **Description**           | **Use**            | **Syntax**    | **Reference**
 :------- | :------------------------ | :----------------- | :------------ | :---------------------------------------------------------
@@ -110,7 +110,7 @@ LATEX    | typesetting system        | high-quality print | TEX           | [@la
 HTML     | hypertext markup          | websites           | (X)HTML       | [@HTML4;@HTML5]
 MD       | Markdown                  | lightweight markup | plain text MD | [@ovadia_markdown_2014;@rfc7764]
 
-Table: Examples for formatting elements and their implementations in different markup languages.
+**Table 2.** Examples for formatting elements and their implementations in different markup languages.
 
 **Element**    | **Markdown**           | **LATEX**                                  | **HTML**
 :------------- | :--------------------- | :----------------------------------------- | :----------------------------------
@@ -138,13 +138,13 @@ Therefore, we were looking for a solution that enables the creation of scientifi
 
 Markdown was originally developed by John Gruber in collaboration with Aaron Swartz, with the goal to simplify the writing of HTML documents <http://daringfireball.net/projects/markdown/>. Instead of coding a file in HTML syntax, the content of a document is written in plain text and annotated with simple tags which define the formatting. Subsequently, the Markdown (MD) files are parsed to generate the final HTML document. With this concept, the source file remains easily readable and the author can focus on the contents rather than formatting. Despite its original focus on the web, the MD format has been proven to be well suited for academic writing [@ovadia_markdown_2014]. In particular, pandoc-flavored MD (<http://pandoc.org/>) adds several extensions which facilitate the authoring of academic documents and their conversion into multiple output formats. **Tab. 2** demonstrates the simplicity of MD compared to other markup languages. **Fig. 3** illustrates the generation of various formatted documents from a manuscript in pandoc MD. Some relevant functions for scientific texts are explained below in more detail.
 
-![Workfow for the generation of multiple document formats with pandoc. The markdown (MD) file contains the manuscript text with formatting tags, and can also refer to external files such as images or reference databases. The pandoc processor converts the MD file to the desired output formats. Documents, citations etc. can be defined in style files or templates.](fig-pandoc-workflow_small.png "Workfow for the generation of multiple document formats with pandoc")
+![Workfow for the generation of multiple document formats with pandoc. The markdown (MD) file contains the manuscript text with formatting tags, and can also refer to external files such as images or reference databases. The pandoc processor converts the MD file to the desired output formats. Documents, citations etc. can be defined in style files or templates.](Fig3.png "Workfow for the generation of multiple document formats with pandoc")
 
 # Markdown editors and online editing
 
 The usability of a text editor is important for the author, either writing alone or with several co-authors. In this section we present software and strategies for different scenarios. **Fig. 4** summarizes various options for local or networked editing of MD files.
 
-![Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.](fig-editing-options_small.png "Offline and online editing of markdown files")
+![Markdown files can be edited on local devices or on cloud drives. A local or remote git repository enables advanced advanced version control.](Fig4.png "Offline and online editing of markdown files")
 
 ## Markdown editors
 
@@ -156,7 +156,7 @@ The lightweight format is also ideal for writing on mobile devices. Numerous app
 
 **Fig. 5.** shows the editing of a markdown file, using the cross-platform editor Atom with several markdown plugins.
 
-![Document directory tree, editing window and HTML preview using the Atom editor.](fig-atom-editor.png "CuteMarkEd editor")
+![Document directory tree, editing window and HTML preview using the Atom editor.](Fig5.png "Atom editor")
 
 ## Online editing and collaborative writing
 
@@ -168,7 +168,7 @@ Storing manuscripts on network drives (_The Cloud_) has become popular for sever
 
 Markdown files on a Google Drive (<https://drive.google.com>) for instance can be edited online with StackEdit (<https://stackedit.io>). **Fig. 6** demonstrates the online editing of a markdown file on an ownCloud (<https://owncloud.com/>) installation. OwnCloud is an Open Source software platform, which allows the set-up of a file server on personal webspace. The functionality of an ownCloud installation can be enhanced by installing plugins.
 
-![Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.](fig-owncloud-md-editor.png "Online editing on with an ownCloud plugin")
+![Direct online editing of this manuscript with live preview using the ownCloud Markdown Editor plugin by Robin Appelman.](Fig6.png "Online editing on with an ownCloud plugin")
 
 Even mathematical formulas are rendered correctly in the HTML live preview window of the ownCloud markdown plugin (**Fig. 6** ).
 
@@ -178,7 +178,7 @@ The collaboration and authoring platform Authorea (<https://www.authorea.com/>) 
 
 Programmers, especially when working in distributed teams, rely on version control systems to manage changes of code. Currently, Git (<https://git-scm.com/>), which is also used e.g. for the development of the Linux kernel, is one of the most employed software solutions for versioning. Git allows the parallel work of collaborators and has an efficient merging and conflict resolution system. A Git repository may be used by a single local author to keep track of changes, or by a team with a remote repository, e.g. on github (<https://github.com/>) or bitbucket (<https://bitbucket.org/>). Because of the plain text format of markdown, Git can be used for version control and distributed writing. For the writing of the present article, the co-authors (Germany and Mexico) used a remote Git repository on bitbucket. The plain text syntax of markdown facilitates the visualization of differences of document versions, as shown in **Fig. 7**.
 
-![Version control and collaborative editing using a git repository on bitbucket.](fig-bitbucket-diff.png "Version control using a git repository")
+![Version control and collaborative editing using a git repository on bitbucket.](Fig7.png "Version control using a git repository")
 
 # Pandoc markdown for scientific texts
 
@@ -425,7 +425,7 @@ pandoc -S -s --columns=10 --reference-docx=pandoc-manuscript.docx
 
 In this way, the template can be incrementally adjusted to the desired document formatting. The final document may be employed later as pandoc template for other manuscripts with the same specifications. In this case, running pandoc the first time with the template, the contents of the new manuscript would be filled into the provided DOCX template. A page with DOCX manuscript formatting of this article is shown in **Fig. 8**.
 
-![Opening a pandoc-generated DOCX in Microsoft Office 365.](fig-DOCX-document-in-O365.png "Editing a pandoc generated DOCX in Office 365")
+![Opening a pandoc-generated DOCX in Microsoft Office 365.](Fig8.png "Editing a pandoc generated DOCX in Office 365")
 
 The same procedure can be applied with an ODT formatted document.
 
@@ -467,7 +467,7 @@ Altogether, the MD format supports the agile writing and fast production of scie
 
 # Acknowledgments
 
-We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool, as well as Dr. Ricardo A. Chávez Montes, Prof. Magnus Palmblad and Martin Fenner for comments on the manuscript. Warm thanks also go to Anubhav Kumar and Jennifer König for proofreading. The work was funded by the Consejo Nacional de Ciencia y Tecnología (CONACyT) Mexico, with the grant FRONTERAS 2015-2/814 and by institutional funding of the Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional (CINVESTAV).
+We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bibtex data base using BibTool, as well as Dr. Ricardo A. Chávez Montes, Prof. Magnus Palmblad and Martin Fenner for comments on the manuscript. Warm thanks also go to Anubhav Kumar and Jennifer König for proofreading.
 
 \newpage
 
@@ -475,7 +475,7 @@ We cordially thank Dr. Gerd Neugebauer for his help in creating a subset of a bi
 
 The relevant software for creating this manuscript used is cited according to [@smith_software_2016] and listed in **Tab. 3**. Since unique identifiers are missing for most software projects, we only refer to the project homepages or software repositories:
 
-Table: Relevant software used for this article.
+**Table 3.** Relevant software used for this article.
 
 **Software**    | **Use**                               | **Authors**                     | **Version** | **Release** | **Homepage/ repository**
 :-------------- | :------------------------------------ | :------------------------------ | :---------- | :---------- | :----------------------------------------------
