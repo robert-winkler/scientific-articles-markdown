@@ -115,8 +115,8 @@ MD       | Markdown                  | lightweight markup | plain text MD | [@ov
 **Element**    | **Markdown**           | **LATEX**                                  | **HTML**
 :------------- | :--------------------- | :----------------------------------------- | :----------------------------------
 **structure**  |                        |                                            |
-section        | `# Intro`              | `\section{Intro}`                          | `<h1><Intro></h1>`
-subsection     | `## History`           | `\subsection{History}`                     | `<h2><History></h2>`
+section        | `# Intro`              | `\section{Intro}`                          | `<h1>Intro</h1>`
+subsection     | `## History`           | `\subsection{History}`                     | `<h2>History</h2>`
 **text style** |                        |                                            |
 bold           | `**text**`             | `\textbf{text}`                            | `<b>text</b>`
 italics        | `*text*`               | `\textit{text}`                            | `<i>text</i>`
